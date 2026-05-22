@@ -11,9 +11,37 @@
     "mtime": 1779460783.4960532,
     "hash": "da6a47a2be481603652c03c4bc0f14ee"
   },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/schemas/scope-contract.ts": {
+    "mtime": 1779461091.4809723,
+    "hash": "b75000cab9ec945d8a1bfa607a84b2ed"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/schemas/finding.ts": {
+    "mtime": 1779461109.603203,
+    "hash": "496b1a96a1f2b6cf87843e9d77272ecf"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/schemas/verification.ts": {
+    "mtime": 1779461109.772205,
+    "hash": "284034b01accc70e274e2b7833213429"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/schemas/policy.ts": {
+    "mtime": 1779461091.9839787,
+    "hash": "32b93cddd3de35c8b601f57140c65220"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/schemas/summary.ts": {
+    "mtime": 1779461116.7462938,
+    "hash": "d8d047011d7a4dd34a6863071c19a0fd"
+  },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/cli/help.test.ts": {
     "mtime": 1779460740.345504,
     "hash": "cdde6a3e0c02a890e9944c4ae9b7bf10"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/tests/schemas/scope-contract.test.ts": {
+    "mtime": 1779461092.320983,
+    "hash": "43c2295e49c854f089542c81f750a3c2"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/tests/schemas/policy.test.ts": {
+    "mtime": 1779461092.4889853,
+    "hash": "81493ac1c35d00225d9f89405308efa4"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/README.md": {
     "mtime": 1779460720.1252468,

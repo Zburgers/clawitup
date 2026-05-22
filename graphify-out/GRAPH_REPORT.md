@@ -1,16 +1,16 @@
 # Graph Report - clawitup  (2026-05-22)
 
 ## Corpus Check
-- 12 files · ~10,660 words
+- 19 files · ~10,987 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 255 nodes · 247 edges · 26 communities (23 shown, 3 thin omitted)
+- 278 nodes · 274 edges · 27 communities (24 shown, 3 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f8b22f0f`
+- Built from commit: `af40321e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -40,6 +40,7 @@
 - [[_COMMUNITY_Community 22|Community 22]]
 - [[_COMMUNITY_Community 23|Community 23]]
 - [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 26|Community 26]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `ClawItUp v0.2 - Git-Native Red Team / Filter / Blue Team Audit Gate` - 19 edges
@@ -56,7 +57,7 @@
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
 
-## Communities (26 total, 3 thin omitted)
+## Communities (27 total, 3 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.07
@@ -67,8 +68,8 @@ Cohesion: 0.07
 Nodes (27): ClawItUp Audit Gate Implementation Plan, code:bash (npm test -- tests/schemas/scope-contract.test.ts tests/schem), code:ts (// src/schemas/scope-contract.ts), code:bash (npm test -- tests/schemas), code:bash (git add src/schemas tests/schemas), code:ts (// tests/runtime/artifact-store.test.ts), code:ts (// tests/runtime/policy-engine.test.ts), code:bash (npm test -- tests/runtime/artifact-store.test.ts tests/runti) (+19 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.08
-Nodes (24): 14. Build Phases, 15. Human and Agent Reading Guide, 16. Out-of-Scope List, 17. Success Criteria, 18. Final Product Identity, 1. Product Summary, 2. Compatibility Direction: How ClawItUp Aligns With GitAgent/GitClaw, 6. Recommended Repository Structure (+16 more)
+Cohesion: 0.07
+Nodes (28): 15. Human and Agent Reading Guide, 16. Out-of-Scope List, 17. Success Criteria, 18. Final Product Identity, 1. Product Summary, 2. Compatibility Direction: How ClawItUp Aligns With GitAgent/GitClaw, 3. Product Positioning, 4. MVP Scope (+20 more)
 
 ### Community 3 - "Community 3"
 Cohesion: 0.08
@@ -119,8 +120,8 @@ Cohesion: 0.33
 Nodes (6): 13.1 Demo features to ship for, 13.2 Demo commands, 13.3 Demo story, 13.4 The winning demo moment, 13. Demo Plan, code:bash (clawitup init)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.33
-Nodes (6): 3. Product Positioning, code:txt (LLM reads code -> leaves comments), code:txt (Graph-aware repo initialization), Longer pitch, One-liner, What makes it different
+Cohesion: 0.17
+Nodes (11): Finding, FindingSchema, FindingSeveritySchema, FindingStatusSchema, PolicyResult, PolicyResultSchema, parsed, Summary (+3 more)
 
 ### Community 16 - "Community 16"
 Cohesion: 0.33
@@ -131,8 +132,8 @@ Cohesion: 0.33
 Nodes (6): code:ts (// tests/commands/audit.test.ts), code:bash (npm test -- tests/commands/audit.test.ts), code:bash (clawitup audit --scope auth), code:bash (npm test -- tests/commands/audit.test.ts tests/runtime), code:bash (git add src/commands/audit.ts src/runtime tests/commands src), Task 6: Orchestrate A Report-First Audit With An Injected Gitclaw Runner
 
 ### Community 18 - "Community 18"
-Cohesion: 0.33
-Nodes (6): code:ts (// tests/runtime/memory-gate.test.ts), code:ts (// tests/runtime/graphify.test.ts), code:bash (npm test -- tests/runtime/memory-gate.test.ts tests/runtime/), code:bash (npm test -- tests/runtime), code:bash (git add src/runtime tests/runtime tools skills/run-context-g), Task 8: Add Graphify, Search, And Memory Gate Integration
+Cohesion: 0.29
+Nodes (7): 14. Build Phases, Phase 0 — Foundation, Phase 1 — Report-First Pipeline, Phase 2 — Real Verification, Phase 3 — Eval Harness, Phase 4 — Optional Patch Mode, Phase 5 — Optional Integrations
 
 ### Community 19 - "Community 19"
 Cohesion: 0.33
@@ -143,28 +144,32 @@ Cohesion: 0.47
 Nodes (3): cli, names, buildCli()
 
 ### Community 21 - "Community 21"
-Cohesion: 0.4
-Nodes (5): 4. MVP Scope, Brutal constraint, code:txt (Scope is bounded -> Red Team finds -> Filter verifies -> Blu), MVP must ship, MVP should not ship yet
+Cohesion: 0.33
+Nodes (5): ExpansionBudgetSchema, ScopeContract, ScopeContractSchema, ScopeModeSchema, parsed
+
+### Community 26 - "Community 26"
+Cohesion: 0.33
+Nodes (6): code:ts (// tests/commands/audit-ci.test.ts), code:bash (npm test -- tests/commands/audit-ci.test.ts), code:yaml (name: ClawItUp Audit), code:bash (npm test -- tests/commands/audit-ci.test.ts tests/runtime/po), code:bash (git add .github/workflows/clawitup-audit.yml src tests READM), Task 7: Add CI Diff Mode And GitHub Actions Policy Gating
 
 ## Knowledge Gaps
-- **173 isolated node(s):** `cli`, `names`, `code:bash (clawitup init)`, `What this repo is for`, `code:bash (npm install)` (+168 more)
+- **184 isolated node(s):** `ScopeModeSchema`, `ExpansionBudgetSchema`, `ScopeContract`, `FindingSchema`, `Finding` (+179 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ClawItUp v0.2 - Git-Native Red Team / Filter / Blue Team Audit Gate` connect `Community 2` to `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 8`, `Community 9`, `Community 10`, `Community 14`, `Community 15`, `Community 21`?**
-  _High betweenness centrality (0.187) - this node is a cross-community bridge._
-- **Why does `Planning Notes` connect `Community 1` to `Community 11`, `Community 13`, `Community 16`, `Community 17`, `Community 18`, `Community 19`?**
-  _High betweenness centrality (0.061) - this node is a cross-community bridge._
+- **Why does `ClawItUp v0.2 - Git-Native Red Team / Filter / Blue Team Audit Gate` connect `Community 2` to `Community 4`, `Community 5`, `Community 6`, `Community 7`, `Community 8`, `Community 9`, `Community 10`, `Community 14`, `Community 18`?**
+  _High betweenness centrality (0.157) - this node is a cross-community bridge._
+- **Why does `Planning Notes` connect `Community 1` to `Community 11`, `Community 13`, `Community 16`, `Community 17`, `Community 19`, `Community 26`?**
+  _High betweenness centrality (0.051) - this node is a cross-community bridge._
 - **Why does `10. GitClaw Runtime Direction` connect `Community 4` to `Community 2`?**
-  _High betweenness centrality (0.046) - this node is a cross-community bridge._
-- **What connects `cli`, `names`, `code:bash (clawitup init)` to the rest of the system?**
-  _173 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.039) - this node is a cross-community bridge._
+- **What connects `ScopeModeSchema`, `ExpansionBudgetSchema`, `ScopeContract` to the rest of the system?**
+  _184 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.07 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.07 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07 - nodes in this community are weakly interconnected._
