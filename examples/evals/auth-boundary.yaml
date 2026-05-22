@@ -1,0 +1,59 @@
+{
+  "name": "auth-boundary",
+  "taskFile": "../tasks/auth-audit.md",
+  "demoAppRoot": "../vulnerable-demo-app",
+  "requiredArtifacts": [
+    "scope-contract.json",
+    "findings.json",
+    "policy-result.json",
+    "final-summary.md"
+  ],
+  "expectedRealBugs": 2,
+  "findings": [
+    {
+      "id": "RT-AUTH-001",
+      "kind": "real_bug",
+      "title": "Route tenant override bypasses the session tenant",
+      "evidence": "examples/vulnerable-demo-app/src/auth.ts trusts the requested tenant id when selecting context."
+    },
+    {
+      "id": "RT-AUTH-002",
+      "kind": "real_bug",
+      "title": "Invoice amount parsing accepts negative values",
+      "evidence": "examples/vulnerable-demo-app/src/invoices.ts returns any finite amount without a nonnegative guard."
+    },
+    {
+      "id": "FP-AUTH-001",
+      "kind": "false_positive",
+      "title": "Token storage in localStorage",
+      "evidence": "The demo app does not contain any localStorage token storage path."
+    },
+    {
+      "id": "OS-AUTH-001",
+      "kind": "out_of_scope",
+      "title": "Whole-repo dependency audit",
+      "evidence": "The task file scopes the eval to the auth boundary demo app."
+    },
+    {
+      "id": "DUP-AUTH-001",
+      "kind": "duplicate",
+      "title": "Duplicate tenant override finding",
+      "evidence": "This repeats RT-AUTH-001 and should not count twice."
+    },
+    {
+      "id": "RH-AUTH-001",
+      "kind": "human_review",
+      "title": "Blue-team remediation handoff",
+      "evidence": "The fix needs a follow-up handoff and regression test plan."
+    }
+  ],
+  "policyResult": "FAIL",
+  "remediationHandoff": {
+    "summary": "Tenant selection must keep the authenticated session as the source of truth.",
+    "nextSteps": [
+      "Treat route tenant ids as untrusted input.",
+      "Add a regression test for cross-tenant invoice reads.",
+      "Reject token-storage claims that are not backed by the demo code."
+    ]
+  }
+}
