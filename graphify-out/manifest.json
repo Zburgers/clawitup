@@ -31,6 +31,18 @@
     "mtime": 1779461116.7462938,
     "hash": "d8d047011d7a4dd34a6863071c19a0fd"
   },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/deterministic-gates.ts": {
+    "mtime": 1779461235.6008062,
+    "hash": "67de415e03331dc283f3d69619163877"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/git.ts": {
+    "mtime": 1779461235.7908087,
+    "hash": "50c5c4a09a0806c2d853281d48b73ac5"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/scope-builder.ts": {
+    "mtime": 1779461235.9898112,
+    "hash": "3517152ee7b023a9e8dfdcc838c47f8d"
+  },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/cli/help.test.ts": {
     "mtime": 1779460740.345504,
     "hash": "cdde6a3e0c02a890e9944c4ae9b7bf10"
@@ -42,6 +54,14 @@
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/schemas/policy.test.ts": {
     "mtime": 1779461092.4889853,
     "hash": "81493ac1c35d00225d9f89405308efa4"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/deterministic-gates.test.ts": {
+    "mtime": 1779461236.1848137,
+    "hash": "f5bd228156e0b13587c5a400f03d5b54"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/scope-builder.test.ts": {
+    "mtime": 1779461236.3968165,
+    "hash": "fd19ebbc81bedccff03fde14e2e176dc"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/README.md": {
     "mtime": 1779460720.1252468,

@@ -211,6 +211,96 @@
       "norm_label": "summary"
     },
     {
+      "label": "deterministic-gates.ts",
+      "file_type": "code",
+      "source_file": "src/runtime/deterministic-gates.ts",
+      "source_location": "L1",
+      "id": "src_runtime_deterministic_gates_ts",
+      "community": 27,
+      "norm_label": "deterministic-gates.ts"
+    },
+    {
+      "label": "BoundedGateResults",
+      "file_type": "code",
+      "source_file": "src/runtime/deterministic-gates.ts",
+      "source_location": "L1",
+      "id": "runtime_deterministic_gates_boundedgateresults",
+      "community": 27,
+      "norm_label": "boundedgateresults"
+    },
+    {
+      "label": "takeBoundedGateResults()",
+      "file_type": "code",
+      "source_file": "src/runtime/deterministic-gates.ts",
+      "source_location": "L7",
+      "id": "runtime_deterministic_gates_takeboundedgateresults",
+      "community": 27,
+      "norm_label": "takeboundedgateresults()"
+    },
+    {
+      "label": "git.ts",
+      "file_type": "code",
+      "source_file": "src/runtime/git.ts",
+      "source_location": "L1",
+      "id": "src_runtime_git_ts",
+      "community": 28,
+      "norm_label": "git.ts"
+    },
+    {
+      "label": "GitReader",
+      "file_type": "code",
+      "source_file": "src/runtime/git.ts",
+      "source_location": "L1",
+      "id": "runtime_git_gitreader",
+      "community": 28,
+      "norm_label": "gitreader"
+    },
+    {
+      "label": "scope-builder.ts",
+      "file_type": "code",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L1",
+      "id": "src_runtime_scope_builder_ts",
+      "community": 21,
+      "norm_label": "scope-builder.ts"
+    },
+    {
+      "label": "DEFAULT_EXPANSION_BUDGET",
+      "file_type": "code",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L3",
+      "id": "runtime_scope_builder_default_expansion_budget",
+      "community": 21,
+      "norm_label": "default_expansion_budget"
+    },
+    {
+      "label": "inferRiskLenses()",
+      "file_type": "code",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L11",
+      "id": "runtime_scope_builder_inferrisklenses",
+      "community": 21,
+      "norm_label": "inferrisklenses()"
+    },
+    {
+      "label": "buildLocalScopeContract()",
+      "file_type": "code",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L33",
+      "id": "runtime_scope_builder_buildlocalscopecontract",
+      "community": 21,
+      "norm_label": "buildlocalscopecontract()"
+    },
+    {
+      "label": "buildCiScopeContract()",
+      "file_type": "code",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L45",
+      "id": "runtime_scope_builder_buildciscopecontract",
+      "community": 21,
+      "norm_label": "buildciscopecontract()"
+    },
+    {
       "label": "help.test.ts",
       "file_type": "code",
       "source_file": "tests/cli/help.test.ts",
@@ -272,6 +362,42 @@
       "id": "schemas_policy_test_parsed",
       "community": 15,
       "norm_label": "parsed"
+    },
+    {
+      "label": "deterministic-gates.test.ts",
+      "file_type": "code",
+      "source_file": "tests/runtime/deterministic-gates.test.ts",
+      "source_location": "L1",
+      "id": "tests_runtime_deterministic_gates_test_ts",
+      "community": 27,
+      "norm_label": "deterministic-gates.test.ts"
+    },
+    {
+      "label": "result",
+      "file_type": "code",
+      "source_file": "tests/runtime/deterministic-gates.test.ts",
+      "source_location": "L7",
+      "id": "runtime_deterministic_gates_test_result",
+      "community": 27,
+      "norm_label": "result"
+    },
+    {
+      "label": "scope-builder.test.ts",
+      "file_type": "code",
+      "source_file": "tests/runtime/scope-builder.test.ts",
+      "source_location": "L1",
+      "id": "tests_runtime_scope_builder_test_ts",
+      "community": 21,
+      "norm_label": "scope-builder.test.ts"
+    },
+    {
+      "label": "scope",
+      "file_type": "code",
+      "source_file": "tests/runtime/scope-builder.test.ts",
+      "source_location": "L10",
+      "id": "runtime_scope_builder_test_scope",
+      "community": 21,
+      "norm_label": "scope"
     },
     {
       "label": "README.md",
@@ -684,7 +810,7 @@
       "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
       "source_location": "L90",
       "id": "clawitup_clawitup_v0_2_refined_spec_3_product_positioning",
-      "community": 2,
+      "community": 26,
       "norm_label": "3. product positioning"
     },
     {
@@ -693,7 +819,7 @@
       "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
       "source_location": "L92",
       "id": "clawitup_clawitup_v0_2_refined_spec_one_liner",
-      "community": 2,
+      "community": 26,
       "norm_label": "one-liner"
     },
     {
@@ -702,7 +828,7 @@
       "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
       "source_location": "L96",
       "id": "clawitup_clawitup_v0_2_refined_spec_longer_pitch",
-      "community": 2,
+      "community": 26,
       "norm_label": "longer pitch"
     },
     {
@@ -711,7 +837,7 @@
       "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
       "source_location": "L104",
       "id": "clawitup_clawitup_v0_2_refined_spec_what_makes_it_different",
-      "community": 2,
+      "community": 26,
       "norm_label": "what makes it different"
     },
     {
@@ -720,7 +846,7 @@
       "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
       "source_location": "L108",
       "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_3",
-      "community": 2,
+      "community": 26,
       "norm_label": "code:txt (llm reads code -> leaves comments)"
     },
     {
@@ -729,7 +855,7 @@
       "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
       "source_location": "L114",
       "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_4",
-      "community": 2,
+      "community": 26,
       "norm_label": "code:txt (graph-aware repo initialization)"
     },
     {
@@ -2007,7 +2133,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L139",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_2_define_scope_finding_verification_summary_and_policy_contracts",
-      "community": 1,
+      "community": 13,
       "norm_label": "task 2: define scope, finding, verification, summary, and policy contracts"
     },
     {
@@ -2016,7 +2142,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L152",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_8",
-      "community": 1,
+      "community": 13,
       "norm_label": "code:ts (// tests/schemas/scope-contract.test.ts)"
     },
     {
@@ -2025,7 +2151,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L178",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_9",
-      "community": 1,
+      "community": 13,
       "norm_label": "code:ts (// tests/schemas/policy.test.ts)"
     },
     {
@@ -2034,7 +2160,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L200",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_10",
-      "community": 1,
+      "community": 13,
       "norm_label": "code:bash (npm test -- tests/schemas/scope-contract.test.ts tests/schem)"
     },
     {
@@ -2043,7 +2169,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L210",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_11",
-      "community": 1,
+      "community": 13,
       "norm_label": "code:ts (// src/schemas/scope-contract.ts)"
     },
     {
@@ -2052,7 +2178,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L241",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_12",
-      "community": 1,
+      "community": 13,
       "norm_label": "code:bash (npm test -- tests/schemas)"
     },
     {
@@ -2061,7 +2187,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L250",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_13",
-      "community": 1,
+      "community": 13,
       "norm_label": "code:bash (git add src/schemas tests/schemas)"
     },
     {
@@ -2070,7 +2196,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L255",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_3_build_scope_creation_and_deterministic_gate_budgets",
-      "community": 13,
+      "community": 1,
       "norm_label": "task 3: build scope creation and deterministic gate budgets"
     },
     {
@@ -2079,7 +2205,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L266",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_14",
-      "community": 13,
+      "community": 1,
       "norm_label": "code:ts (// tests/runtime/scope-builder.test.ts)"
     },
     {
@@ -2088,7 +2214,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L291",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_15",
-      "community": 13,
+      "community": 1,
       "norm_label": "code:ts (// tests/runtime/deterministic-gates.test.ts)"
     },
     {
@@ -2097,7 +2223,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L308",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_16",
-      "community": 13,
+      "community": 1,
       "norm_label": "code:bash (npm test -- tests/runtime/scope-builder.test.ts tests/runtim)"
     },
     {
@@ -2106,7 +2232,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L316",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_17",
-      "community": 13,
+      "community": 1,
       "norm_label": "code:ts (// src/runtime/scope-builder.ts)"
     },
     {
@@ -2115,7 +2241,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L363",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_18",
-      "community": 13,
+      "community": 1,
       "norm_label": "code:bash (npm test -- tests/runtime)"
     },
     {
@@ -2124,7 +2250,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L372",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_19",
-      "community": 13,
+      "community": 1,
       "norm_label": "code:bash (git add src/runtime tests/runtime)"
     },
     {
@@ -2295,7 +2421,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L665",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_7_add_ci_diff_mode_and_github_actions_policy_gating",
-      "community": 26,
+      "community": 1,
       "norm_label": "task 7: add ci diff mode and github actions policy gating"
     },
     {
@@ -2304,7 +2430,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L677",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_35",
-      "community": 26,
+      "community": 1,
       "norm_label": "code:ts (// tests/commands/audit-ci.test.ts)"
     },
     {
@@ -2313,7 +2439,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L697",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_36",
-      "community": 26,
+      "community": 1,
       "norm_label": "code:bash (npm test -- tests/commands/audit-ci.test.ts)"
     },
     {
@@ -2322,7 +2448,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L717",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_37",
-      "community": 26,
+      "community": 1,
       "norm_label": "code:yaml (name: clawitup audit)"
     },
     {
@@ -2331,7 +2457,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L750",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_38",
-      "community": 26,
+      "community": 1,
       "norm_label": "code:bash (npm test -- tests/commands/audit-ci.test.ts tests/runtime/po)"
     },
     {
@@ -2340,7 +2466,7 @@
       "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
       "source_location": "L760",
       "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_39",
-      "community": 26,
+      "community": 1,
       "norm_label": "code:bash (git add .github/workflows/clawitup-audit.yml src tests readm)"
     },
     {
@@ -2567,9 +2693,9 @@
       "source_file": "src/schemas/scope-contract.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_scope_contract_ts",
-      "target": "schemas_scope_contract_scopemodeschema",
-      "confidence_score": 1.0
+      "target": "schemas_scope_contract_scopemodeschema"
     },
     {
       "relation": "contains",
@@ -2577,9 +2703,9 @@
       "source_file": "src/schemas/scope-contract.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_scope_contract_ts",
-      "target": "schemas_scope_contract_expansionbudgetschema",
-      "confidence_score": 1.0
+      "target": "schemas_scope_contract_expansionbudgetschema"
     },
     {
       "relation": "contains",
@@ -2587,9 +2713,9 @@
       "source_file": "src/schemas/scope-contract.ts",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_scope_contract_ts",
-      "target": "schemas_scope_contract_scopecontractschema",
-      "confidence_score": 1.0
+      "target": "schemas_scope_contract_scopecontractschema"
     },
     {
       "relation": "contains",
@@ -2597,8 +2723,19 @@
       "source_file": "src/schemas/scope-contract.ts",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_scope_contract_ts",
-      "target": "schemas_scope_contract_scopecontract",
+      "target": "schemas_scope_contract_scopecontract"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_runtime_scope_builder_ts",
+      "target": "src_schemas_scope_contract_ts",
       "confidence_score": 1.0
     },
     {
@@ -2608,9 +2745,9 @@
       "source_file": "tests/schemas/scope-contract.test.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_schemas_scope_contract_test_ts",
-      "target": "src_schemas_scope_contract_ts",
-      "confidence_score": 1.0
+      "target": "src_schemas_scope_contract_ts"
     },
     {
       "relation": "imports",
@@ -2619,8 +2756,19 @@
       "source_file": "tests/schemas/scope-contract.test.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_schemas_scope_contract_test_ts",
-      "target": "schemas_scope_contract_scopecontractschema",
+      "target": "schemas_scope_contract_scopecontractschema"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_runtime_scope_builder_ts",
+      "target": "schemas_scope_contract_scopecontract",
       "confidence_score": 1.0
     },
     {
@@ -2629,9 +2777,9 @@
       "source_file": "src/schemas/finding.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_finding_ts",
-      "target": "schemas_finding_findingseverityschema",
-      "confidence_score": 1.0
+      "target": "schemas_finding_findingseverityschema"
     },
     {
       "relation": "contains",
@@ -2639,9 +2787,9 @@
       "source_file": "src/schemas/finding.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_finding_ts",
-      "target": "schemas_finding_findingstatusschema",
-      "confidence_score": 1.0
+      "target": "schemas_finding_findingstatusschema"
     },
     {
       "relation": "contains",
@@ -2649,9 +2797,9 @@
       "source_file": "src/schemas/finding.ts",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_finding_ts",
-      "target": "schemas_finding_findingschema",
-      "confidence_score": 1.0
+      "target": "schemas_finding_findingschema"
     },
     {
       "relation": "contains",
@@ -2659,9 +2807,9 @@
       "source_file": "src/schemas/finding.ts",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_finding_ts",
-      "target": "schemas_finding_finding",
-      "confidence_score": 1.0
+      "target": "schemas_finding_finding"
     },
     {
       "relation": "imports_from",
@@ -2670,9 +2818,9 @@
       "source_file": "src/schemas/verification.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_verification_ts",
-      "target": "src_schemas_finding_ts",
-      "confidence_score": 1.0
+      "target": "src_schemas_finding_ts"
     },
     {
       "relation": "imports",
@@ -2681,9 +2829,9 @@
       "source_file": "src/schemas/verification.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_verification_ts",
-      "target": "schemas_finding_findingseverityschema",
-      "confidence_score": 1.0
+      "target": "schemas_finding_findingseverityschema"
     },
     {
       "relation": "imports",
@@ -2692,9 +2840,9 @@
       "source_file": "src/schemas/verification.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_verification_ts",
-      "target": "schemas_finding_findingstatusschema",
-      "confidence_score": 1.0
+      "target": "schemas_finding_findingstatusschema"
     },
     {
       "relation": "contains",
@@ -2702,9 +2850,9 @@
       "source_file": "src/schemas/verification.ts",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_verification_ts",
-      "target": "schemas_verification_verificationschema",
-      "confidence_score": 1.0
+      "target": "schemas_verification_verificationschema"
     },
     {
       "relation": "contains",
@@ -2712,9 +2860,9 @@
       "source_file": "src/schemas/verification.ts",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_verification_ts",
-      "target": "schemas_verification_verification",
-      "confidence_score": 1.0
+      "target": "schemas_verification_verification"
     },
     {
       "relation": "imports_from",
@@ -2723,9 +2871,9 @@
       "source_file": "src/schemas/summary.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_summary_ts",
-      "target": "src_schemas_verification_ts",
-      "confidence_score": 1.0
+      "target": "src_schemas_verification_ts"
     },
     {
       "relation": "imports",
@@ -2734,9 +2882,9 @@
       "source_file": "src/schemas/summary.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_summary_ts",
-      "target": "schemas_verification_verificationschema",
-      "confidence_score": 1.0
+      "target": "schemas_verification_verificationschema"
     },
     {
       "relation": "contains",
@@ -2744,9 +2892,9 @@
       "source_file": "src/schemas/policy.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_policy_ts",
-      "target": "schemas_policy_policyresultschema",
-      "confidence_score": 1.0
+      "target": "schemas_policy_policyresultschema"
     },
     {
       "relation": "contains",
@@ -2754,9 +2902,9 @@
       "source_file": "src/schemas/policy.ts",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_policy_ts",
-      "target": "schemas_policy_policyresult",
-      "confidence_score": 1.0
+      "target": "schemas_policy_policyresult"
     },
     {
       "relation": "imports_from",
@@ -2765,9 +2913,9 @@
       "source_file": "src/schemas/summary.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_summary_ts",
-      "target": "src_schemas_policy_ts",
-      "confidence_score": 1.0
+      "target": "src_schemas_policy_ts"
     },
     {
       "relation": "imports_from",
@@ -2776,9 +2924,9 @@
       "source_file": "tests/schemas/policy.test.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_schemas_policy_test_ts",
-      "target": "src_schemas_policy_ts",
-      "confidence_score": 1.0
+      "target": "src_schemas_policy_ts"
     },
     {
       "relation": "imports",
@@ -2787,9 +2935,9 @@
       "source_file": "src/schemas/summary.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_summary_ts",
-      "target": "schemas_policy_policyresultschema",
-      "confidence_score": 1.0
+      "target": "schemas_policy_policyresultschema"
     },
     {
       "relation": "imports",
@@ -2798,9 +2946,9 @@
       "source_file": "tests/schemas/policy.test.ts",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_schemas_policy_test_ts",
-      "target": "schemas_policy_policyresultschema",
-      "confidence_score": 1.0
+      "target": "schemas_policy_policyresultschema"
     },
     {
       "relation": "contains",
@@ -2808,9 +2956,9 @@
       "source_file": "src/schemas/summary.ts",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_summary_ts",
-      "target": "schemas_summary_summaryschema",
-      "confidence_score": 1.0
+      "target": "schemas_summary_summaryschema"
     },
     {
       "relation": "contains",
@@ -2818,8 +2966,155 @@
       "source_file": "src/schemas/summary.ts",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schemas_summary_ts",
-      "target": "schemas_summary_summary",
+      "target": "schemas_summary_summary"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/deterministic-gates.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_runtime_deterministic_gates_ts",
+      "target": "runtime_deterministic_gates_boundedgateresults",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/deterministic-gates.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_runtime_deterministic_gates_ts",
+      "target": "runtime_deterministic_gates_takeboundedgateresults",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/runtime/deterministic-gates.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tests_runtime_deterministic_gates_test_ts",
+      "target": "src_runtime_deterministic_gates_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/runtime/deterministic-gates.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tests_runtime_deterministic_gates_test_ts",
+      "target": "runtime_deterministic_gates_takeboundedgateresults",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/git.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_runtime_git_ts",
+      "target": "runtime_git_gitreader",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_runtime_scope_builder_ts",
+      "target": "runtime_scope_builder_default_expansion_budget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "src_runtime_scope_builder_ts",
+      "target": "runtime_scope_builder_inferrisklenses",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "src_runtime_scope_builder_ts",
+      "target": "runtime_scope_builder_buildlocalscopecontract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "src_runtime_scope_builder_ts",
+      "target": "runtime_scope_builder_buildciscopecontract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/runtime/scope-builder.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tests_runtime_scope_builder_test_ts",
+      "target": "src_runtime_scope_builder_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "runtime_scope_builder_buildlocalscopecontract",
+      "target": "runtime_scope_builder_inferrisklenses",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/runtime/scope-builder.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "runtime_scope_builder_buildciscopecontract",
+      "target": "runtime_scope_builder_inferrisklenses",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/runtime/scope-builder.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tests_runtime_scope_builder_test_ts",
+      "target": "runtime_scope_builder_buildlocalscopecontract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/runtime/scope-builder.test.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tests_runtime_scope_builder_test_ts",
+      "target": "runtime_scope_builder_buildciscopecontract",
       "confidence_score": 1.0
     },
     {
@@ -2848,9 +3143,9 @@
       "source_file": "tests/schemas/scope-contract.test.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_schemas_scope_contract_test_ts",
-      "target": "schemas_scope_contract_test_parsed",
-      "confidence_score": 1.0
+      "target": "schemas_scope_contract_test_parsed"
     },
     {
       "relation": "contains",
@@ -2858,8 +3153,28 @@
       "source_file": "tests/schemas/policy.test.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_schemas_policy_test_ts",
-      "target": "schemas_policy_test_parsed",
+      "target": "schemas_policy_test_parsed"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/runtime/deterministic-gates.test.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tests_runtime_deterministic_gates_test_ts",
+      "target": "runtime_deterministic_gates_test_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/runtime/scope-builder.test.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "tests_runtime_scope_builder_test_ts",
+      "target": "runtime_scope_builder_test_scope",
       "confidence_score": 1.0
     },
     {
@@ -5264,5 +5579,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "af40321e5fa08b668d34c9b51da45fb9c90ea95f"
+  "built_at_commit": "bdf9a87e06db60304525367583c628abcff8dcfb"
 }
