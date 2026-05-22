@@ -1,0 +1,54 @@
+{
+  "/home/naki/Desktop/itsthatnewshit/clawitup/vitest.config.ts": {
+    "mtime": 1779460719.2272353,
+    "hash": "cee27075656c7eca86a16bd1828ea0a5"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/cli.ts": {
+    "mtime": 1779460719.506239,
+    "hash": "de21fdffc715a32189e61cbd75c8261b"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/index.ts": {
+    "mtime": 1779460783.4960532,
+    "hash": "da6a47a2be481603652c03c4bc0f14ee"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/tests/cli/help.test.ts": {
+    "mtime": 1779460740.345504,
+    "hash": "cdde6a3e0c02a890e9944c4ae9b7bf10"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/README.md": {
+    "mtime": 1779460720.1252468,
+    "hash": "c17e0c9a362c7928b29fc7a45f334d08"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/BRAINSTORM.md": {
+    "mtime": 1779444918.8691797,
+    "hash": "44ca321c65ddf3c3a93ba996415eb4bc"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/AGENTS.md": {
+    "mtime": 1779445374.9719324,
+    "hash": "f07b9404a71a45b783c9ebe550db4459"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/agent.yaml": {
+    "mtime": 1779445555.61682,
+    "hash": "d12ee6496017baea6778b64416ee6546"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/SOUL.md": {
+    "mtime": 1779445555.6248202,
+    "hash": "a6a271f3b314f5e666864184035cd8cf"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/CLAWITUP_V0_2_REFINED_SPEC.md": {
+    "mtime": 1779459980.5208352,
+    "hash": "466a93eebd51b95fb3a6c713b7b3fc88"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/memory/MEMORY.md": {
+    "mtime": 1779445555.6228201,
+    "hash": "8d3816121352b9ad0908ee3f82779f97"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/docs/plans/2026-05-22-clawitup-audit-gate-design.md": {
+    "mtime": 1779460032.5844977,
+    "hash": "f4c1323c60be4d539449b621b1b3b123"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/docs/plans/2026-05-22-clawitup-audit-gate-implementation.md": {
+    "mtime": 1779460204.1186805,
+    "hash": "52859eab72f2e13372db6345508933f8"
+  }
+}

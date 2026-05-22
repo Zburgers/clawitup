@@ -1,0 +1,4780 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "vitest.config.ts",
+      "file_type": "code",
+      "source_file": "vitest.config.ts",
+      "source_location": "L1",
+      "id": "vitest_config_ts",
+      "community": 25,
+      "norm_label": "vitest.config.ts"
+    },
+    {
+      "label": "cli.ts",
+      "file_type": "code",
+      "source_file": "src/cli.ts",
+      "source_location": "L1",
+      "id": "src_cli_ts",
+      "community": 20,
+      "norm_label": "cli.ts"
+    },
+    {
+      "label": "buildCli()",
+      "file_type": "code",
+      "source_file": "src/cli.ts",
+      "source_location": "L3",
+      "id": "src_cli_buildcli",
+      "community": 20,
+      "norm_label": "buildcli()"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src/index.ts",
+      "source_location": "L1",
+      "id": "src_index_ts",
+      "community": 20,
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "help.test.ts",
+      "file_type": "code",
+      "source_file": "tests/cli/help.test.ts",
+      "source_location": "L1",
+      "id": "tests_cli_help_test_ts",
+      "community": 20,
+      "norm_label": "help.test.ts"
+    },
+    {
+      "label": "cli",
+      "file_type": "code",
+      "source_file": "tests/cli/help.test.ts",
+      "source_location": "L6",
+      "id": "cli_help_test_cli",
+      "community": 20,
+      "norm_label": "cli"
+    },
+    {
+      "label": "names",
+      "file_type": "code",
+      "source_file": "tests/cli/help.test.ts",
+      "source_location": "L7",
+      "id": "cli_help_test_names",
+      "community": 20,
+      "norm_label": "names"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 12,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "ClawItUp",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "clawitup_readme_clawitup",
+      "community": 12,
+      "norm_label": "clawitup"
+    },
+    {
+      "label": "MVP commands",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L16",
+      "id": "clawitup_readme_mvp_commands",
+      "community": 12,
+      "norm_label": "mvp commands"
+    },
+    {
+      "label": "code:bash (clawitup init)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "id": "clawitup_readme_codeblock_1",
+      "community": 12,
+      "norm_label": "code:bash (clawitup init)"
+    },
+    {
+      "label": "What this repo is for",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L25",
+      "id": "clawitup_readme_what_this_repo_is_for",
+      "community": 12,
+      "norm_label": "what this repo is for"
+    },
+    {
+      "label": "Development",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "id": "clawitup_readme_development",
+      "community": 12,
+      "norm_label": "development"
+    },
+    {
+      "label": "code:bash (npm install)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L34",
+      "id": "clawitup_readme_codeblock_2",
+      "community": 12,
+      "norm_label": "code:bash (npm install)"
+    },
+    {
+      "label": "BRAINSTORM.md",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L1",
+      "id": "brainstorm_md",
+      "community": 0,
+      "norm_label": "brainstorm.md"
+    },
+    {
+      "label": "\ud83e\udde0 Brainstorming: ClawItUp Project Ideas",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L1",
+      "id": "clawitup_brainstorm_brainstorming_clawitup_project_ideas",
+      "community": 0,
+      "norm_label": "\ud83e\udde0 brainstorming: clawitup project ideas"
+    },
+    {
+      "label": "\ud83c\udfaf Project Scope",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L9",
+      "id": "clawitup_brainstorm_project_scope",
+      "community": 0,
+      "norm_label": "\ud83c\udfaf project scope"
+    },
+    {
+      "label": "\ud83d\udca1 Brainstorm Categories",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L20",
+      "id": "clawitup_brainstorm_brainstorm_categories",
+      "community": 0,
+      "norm_label": "\ud83d\udca1 brainstorm categories"
+    },
+    {
+      "label": "Category A: Developer Productivity Tools",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L22",
+      "id": "clawitup_brainstorm_category_a_developer_productivity_tools",
+      "community": 0,
+      "norm_label": "category a: developer productivity tools"
+    },
+    {
+      "label": "Idea A1: **Git Commit Analyzer Agent**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L24",
+      "id": "clawitup_brainstorm_idea_a1_git_commit_analyzer_agent",
+      "community": 0,
+      "norm_label": "idea a1: **git commit analyzer agent**"
+    },
+    {
+      "label": "Idea A2: **Code Quality Guardian Agent**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L30",
+      "id": "clawitup_brainstorm_idea_a2_code_quality_guardian_agent",
+      "community": 0,
+      "norm_label": "idea a2: **code quality guardian agent**"
+    },
+    {
+      "label": "Idea A3: **Documentation Generator Agent**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L36",
+      "id": "clawitup_brainstorm_idea_a3_documentation_generator_agent",
+      "community": 0,
+      "norm_label": "idea a3: **documentation generator agent**"
+    },
+    {
+      "label": "Category B: Team Collaboration & Workflow",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L44",
+      "id": "clawitup_brainstorm_category_b_team_collaboration_workflow",
+      "community": 0,
+      "norm_label": "category b: team collaboration & workflow"
+    },
+    {
+      "label": "Idea B1: **GitHub Issue Triage Agent**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L46",
+      "id": "clawitup_brainstorm_idea_b1_github_issue_triage_agent",
+      "community": 0,
+      "norm_label": "idea b1: **github issue triage agent**"
+    },
+    {
+      "label": "Idea B2: **Meeting Notes \u2192 Issue Generator**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L52",
+      "id": "clawitup_brainstorm_idea_b2_meeting_notes_issue_generator",
+      "community": 0,
+      "norm_label": "idea b2: **meeting notes \u2192 issue generator**"
+    },
+    {
+      "label": "Idea B3: **Smart PR Reviewer Agent**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L58",
+      "id": "clawitup_brainstorm_idea_b3_smart_pr_reviewer_agent",
+      "community": 0,
+      "norm_label": "idea b3: **smart pr reviewer agent**"
+    },
+    {
+      "label": "Category C: AI Agent Infrastructure",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L66",
+      "id": "clawitup_brainstorm_category_c_ai_agent_infrastructure",
+      "community": 0,
+      "norm_label": "category c: ai agent infrastructure"
+    },
+    {
+      "label": "Idea C1: **GitAgent CLI Wrapper + Dashboard**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L68",
+      "id": "clawitup_brainstorm_idea_c1_gitagent_cli_wrapper_dashboard",
+      "community": 0,
+      "norm_label": "idea c1: **gitagent cli wrapper + dashboard**"
+    },
+    {
+      "label": "Idea C2: **Agent Skill Marketplace**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L74",
+      "id": "clawitup_brainstorm_idea_c2_agent_skill_marketplace",
+      "community": 0,
+      "norm_label": "idea c2: **agent skill marketplace**"
+    },
+    {
+      "label": "Idea C3: **Agent Memory & State Visualizer**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L80",
+      "id": "clawitup_brainstorm_idea_c3_agent_memory_state_visualizer",
+      "community": 0,
+      "norm_label": "idea c3: **agent memory & state visualizer**"
+    },
+    {
+      "label": "Category D: Knowledge & Learning",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L88",
+      "id": "clawitup_brainstorm_category_d_knowledge_learning",
+      "community": 0,
+      "norm_label": "category d: knowledge & learning"
+    },
+    {
+      "label": "Idea D1: **Codebase Onboarding Agent**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L90",
+      "id": "clawitup_brainstorm_idea_d1_codebase_onboarding_agent",
+      "community": 0,
+      "norm_label": "idea d1: **codebase onboarding agent**"
+    },
+    {
+      "label": "Idea D2: **Dependency Audit & Update Agent**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L96",
+      "id": "clawitup_brainstorm_idea_d2_dependency_audit_update_agent",
+      "community": 0,
+      "norm_label": "idea d2: **dependency audit & update agent**"
+    },
+    {
+      "label": "Idea D3: **Test Data Generator Agent**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L102",
+      "id": "clawitup_brainstorm_idea_d3_test_data_generator_agent",
+      "community": 0,
+      "norm_label": "idea d3: **test data generator agent**"
+    },
+    {
+      "label": "Category E: Niche/Creative Ideas",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L110",
+      "id": "clawitup_brainstorm_category_e_niche_creative_ideas",
+      "community": 0,
+      "norm_label": "category e: niche/creative ideas"
+    },
+    {
+      "label": "Idea E1: **Git History Debugger**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L112",
+      "id": "clawitup_brainstorm_idea_e1_git_history_debugger",
+      "community": 0,
+      "norm_label": "idea e1: **git history debugger**"
+    },
+    {
+      "label": "Idea E2: **Open Source Contribution Assistant**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L118",
+      "id": "clawitup_brainstorm_idea_e2_open_source_contribution_assistant",
+      "community": 0,
+      "norm_label": "idea e2: **open source contribution assistant**"
+    },
+    {
+      "label": "Idea E3: **Technical Blog Post Generator**",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L124",
+      "id": "clawitup_brainstorm_idea_e3_technical_blog_post_generator",
+      "community": 0,
+      "norm_label": "idea e3: **technical blog post generator**"
+    },
+    {
+      "label": "\ud83e\udd14 Evaluation Criteria",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L132",
+      "id": "clawitup_brainstorm_evaluation_criteria",
+      "community": 0,
+      "norm_label": "\ud83e\udd14 evaluation criteria"
+    },
+    {
+      "label": "\ud83c\udfac My Top 3 Picks",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L145",
+      "id": "clawitup_brainstorm_my_top_3_picks",
+      "community": 0,
+      "norm_label": "\ud83c\udfac my top 3 picks"
+    },
+    {
+      "label": "\u2753 Questions for You",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L164",
+      "id": "clawitup_brainstorm_questions_for_you",
+      "community": 0,
+      "norm_label": "\u2753 questions for you"
+    },
+    {
+      "label": "\ud83d\ude80 Next Phase: Idea Selection",
+      "file_type": "document",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L177",
+      "id": "clawitup_brainstorm_next_phase_idea_selection",
+      "community": 0,
+      "norm_label": "\ud83d\ude80 next phase: idea selection"
+    },
+    {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "id": "agents_md",
+      "community": 22,
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "id": "clawitup_agents_graphify",
+      "community": 22,
+      "norm_label": "graphify"
+    },
+    {
+      "label": "SOUL.md",
+      "file_type": "document",
+      "source_file": "SOUL.md",
+      "source_location": "L1",
+      "id": "soul_md",
+      "community": 23,
+      "norm_label": "soul.md"
+    },
+    {
+      "label": "Identity",
+      "file_type": "document",
+      "source_file": "SOUL.md",
+      "source_location": "L1",
+      "id": "clawitup_soul_identity",
+      "community": 23,
+      "norm_label": "identity"
+    },
+    {
+      "label": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1",
+      "id": "clawitup_v0_2_refined_spec_md",
+      "community": 2,
+      "norm_label": "clawitup_v0_2_refined_spec.md"
+    },
+    {
+      "label": "ClawItUp v0.2 - Git-Native Red Team / Filter / Blue Team Audit Gate",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1",
+      "id": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "community": 2,
+      "norm_label": "clawitup v0.2 - git-native red team / filter / blue team audit gate"
+    },
+    {
+      "label": "1. Product Summary",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L9",
+      "id": "clawitup_clawitup_v0_2_refined_spec_1_product_summary",
+      "community": 2,
+      "norm_label": "1. product summary"
+    },
+    {
+      "label": "2. Compatibility Direction: How ClawItUp Aligns With GitAgent/GitClaw",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L35",
+      "id": "clawitup_clawitup_v0_2_refined_spec_2_compatibility_direction_how_clawitup_aligns_with_gitagent_gitclaw",
+      "community": 2,
+      "norm_label": "2. compatibility direction: how clawitup aligns with gitagent/gitclaw"
+    },
+    {
+      "label": "code:txt (clawitup CLI)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L63",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_1",
+      "community": 2,
+      "norm_label": "code:txt (clawitup cli)"
+    },
+    {
+      "label": "code:txt (agent.yaml)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L75",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_2",
+      "community": 2,
+      "norm_label": "code:txt (agent.yaml)"
+    },
+    {
+      "label": "3. Product Positioning",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L90",
+      "id": "clawitup_clawitup_v0_2_refined_spec_3_product_positioning",
+      "community": 15,
+      "norm_label": "3. product positioning"
+    },
+    {
+      "label": "One-liner",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L92",
+      "id": "clawitup_clawitup_v0_2_refined_spec_one_liner",
+      "community": 15,
+      "norm_label": "one-liner"
+    },
+    {
+      "label": "Longer pitch",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L96",
+      "id": "clawitup_clawitup_v0_2_refined_spec_longer_pitch",
+      "community": 15,
+      "norm_label": "longer pitch"
+    },
+    {
+      "label": "What makes it different",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L104",
+      "id": "clawitup_clawitup_v0_2_refined_spec_what_makes_it_different",
+      "community": 15,
+      "norm_label": "what makes it different"
+    },
+    {
+      "label": "code:txt (LLM reads code -> leaves comments)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L108",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_3",
+      "community": 15,
+      "norm_label": "code:txt (llm reads code -> leaves comments)"
+    },
+    {
+      "label": "code:txt (Graph-aware repo initialization)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L114",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_4",
+      "community": 15,
+      "norm_label": "code:txt (graph-aware repo initialization)"
+    },
+    {
+      "label": "4. MVP Scope",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L135",
+      "id": "clawitup_clawitup_v0_2_refined_spec_4_mvp_scope",
+      "community": 21,
+      "norm_label": "4. mvp scope"
+    },
+    {
+      "label": "MVP must ship",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L139",
+      "id": "clawitup_clawitup_v0_2_refined_spec_mvp_must_ship",
+      "community": 21,
+      "norm_label": "mvp must ship"
+    },
+    {
+      "label": "MVP should not ship yet",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L156",
+      "id": "clawitup_clawitup_v0_2_refined_spec_mvp_should_not_ship_yet",
+      "community": 21,
+      "norm_label": "mvp should not ship yet"
+    },
+    {
+      "label": "Brutal constraint",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L176",
+      "id": "clawitup_clawitup_v0_2_refined_spec_brutal_constraint",
+      "community": 21,
+      "norm_label": "brutal constraint"
+    },
+    {
+      "label": "code:txt (Scope is bounded -> Red Team finds -> Filter verifies -> Blu)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L180",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_5",
+      "community": 21,
+      "norm_label": "code:txt (scope is bounded -> red team finds -> filter verifies -> blu)"
+    },
+    {
+      "label": "5. Primary User Workflow",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L188",
+      "id": "clawitup_clawitup_v0_2_refined_spec_5_primary_user_workflow",
+      "community": 5,
+      "norm_label": "5. primary user workflow"
+    },
+    {
+      "label": "5.1 Initialize ClawItUp",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L190",
+      "id": "clawitup_clawitup_v0_2_refined_spec_5_1_initialize_clawitup",
+      "community": 5,
+      "norm_label": "5.1 initialize clawitup"
+    },
+    {
+      "label": "code:bash (clawitup init)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L192",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_6",
+      "community": 5,
+      "norm_label": "code:bash (clawitup init)"
+    },
+    {
+      "label": "code:txt ([clawitup:init] Git repository detected)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L210",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_7",
+      "community": 5,
+      "norm_label": "code:txt ([clawitup:init] git repository detected)"
+    },
+    {
+      "label": "5.2 Run a focused audit",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L219",
+      "id": "clawitup_clawitup_v0_2_refined_spec_5_2_run_a_focused_audit",
+      "community": 5,
+      "norm_label": "5.2 run a focused audit"
+    },
+    {
+      "label": "code:bash (clawitup audit --scope auth)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L223",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_8",
+      "community": 5,
+      "norm_label": "code:bash (clawitup audit --scope auth)"
+    },
+    {
+      "label": "code:bash (clawitup audit \"Audit auth, RBAC, and organization boundary )",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L229",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_9",
+      "community": 5,
+      "norm_label": "code:bash (clawitup audit \"audit auth, rbac, and organization boundary )"
+    },
+    {
+      "label": "code:bash (clawitup audit --task tasks/auth-audit.md)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L235",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_10",
+      "community": 5,
+      "norm_label": "code:bash (clawitup audit --task tasks/auth-audit.md)"
+    },
+    {
+      "label": "code:txt (auth)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L245",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_11",
+      "community": 5,
+      "norm_label": "code:txt (auth)"
+    },
+    {
+      "label": "code:txt (Audit my whole monorepo for everything.)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L258",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_12",
+      "community": 5,
+      "norm_label": "code:txt (audit my whole monorepo for everything.)"
+    },
+    {
+      "label": "5.3 Run a change-aware shipping gate",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L262",
+      "id": "clawitup_clawitup_v0_2_refined_spec_5_3_run_a_change_aware_shipping_gate",
+      "community": 5,
+      "norm_label": "5.3 run a change-aware shipping gate"
+    },
+    {
+      "label": "code:bash (clawitup audit --ci)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L266",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_13",
+      "community": 5,
+      "norm_label": "code:bash (clawitup audit --ci)"
+    },
+    {
+      "label": "6. Recommended Repository Structure",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L284",
+      "id": "clawitup_clawitup_v0_2_refined_spec_6_recommended_repository_structure",
+      "community": 2,
+      "norm_label": "6. recommended repository structure"
+    },
+    {
+      "label": "code:txt (clawitup/)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L286",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_14",
+      "community": 2,
+      "norm_label": "code:txt (clawitup/)"
+    },
+    {
+      "label": "7. Agent Architecture",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L384",
+      "id": "clawitup_clawitup_v0_2_refined_spec_7_agent_architecture",
+      "community": 10,
+      "norm_label": "7. agent architecture"
+    },
+    {
+      "label": "7.1 Orchestrator Agent",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L386",
+      "id": "clawitup_clawitup_v0_2_refined_spec_7_1_orchestrator_agent",
+      "community": 10,
+      "norm_label": "7.1 orchestrator agent"
+    },
+    {
+      "label": "7.2 Red Team Agents",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L410",
+      "id": "clawitup_clawitup_v0_2_refined_spec_7_2_red_team_agents",
+      "community": 10,
+      "norm_label": "7.2 red team agents"
+    },
+    {
+      "label": "7.3 False Positive Filter Agent",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L432",
+      "id": "clawitup_clawitup_v0_2_refined_spec_7_3_false_positive_filter_agent",
+      "community": 10,
+      "norm_label": "7.3 false positive filter agent"
+    },
+    {
+      "label": "code:txt (CONFIRMED)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L440",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_15",
+      "community": 10,
+      "norm_label": "code:txt (confirmed)"
+    },
+    {
+      "label": "7.4 Blue Team Agents",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L460",
+      "id": "clawitup_clawitup_v0_2_refined_spec_7_4_blue_team_agents",
+      "community": 10,
+      "norm_label": "7.4 blue team agents"
+    },
+    {
+      "label": "7.5 Policy Gate",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L480",
+      "id": "clawitup_clawitup_v0_2_refined_spec_7_5_policy_gate",
+      "community": 10,
+      "norm_label": "7.5 policy gate"
+    },
+    {
+      "label": "7.6 Human Handoff Agent",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L501",
+      "id": "clawitup_clawitup_v0_2_refined_spec_7_6_human_handoff_agent",
+      "community": 10,
+      "norm_label": "7.6 human handoff agent"
+    },
+    {
+      "label": "8. Artifact Contract",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L516",
+      "id": "clawitup_clawitup_v0_2_refined_spec_8_artifact_contract",
+      "community": 7,
+      "norm_label": "8. artifact contract"
+    },
+    {
+      "label": "code:txt (runs/<run-id>/)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L520",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_16",
+      "community": 7,
+      "norm_label": "code:txt (runs/<run-id>/)"
+    },
+    {
+      "label": "8.1 Red Team Finding Schema",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L555",
+      "id": "clawitup_clawitup_v0_2_refined_spec_8_1_red_team_finding_schema",
+      "community": 7,
+      "norm_label": "8.1 red team finding schema"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L559",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_17",
+      "community": 7,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "8.2 Verification Schema",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L595",
+      "id": "clawitup_clawitup_v0_2_refined_spec_8_2_verification_schema",
+      "community": 7,
+      "norm_label": "8.2 verification schema"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L597",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_18",
+      "community": 7,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "8.3 Final Summary Schema",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L608",
+      "id": "clawitup_clawitup_v0_2_refined_spec_8_3_final_summary_schema",
+      "community": 7,
+      "norm_label": "8.3 final summary schema"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L610",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_19",
+      "community": 7,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "8.4 Scope Contract Schema",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L626",
+      "id": "clawitup_clawitup_v0_2_refined_spec_8_4_scope_contract_schema",
+      "community": 7,
+      "norm_label": "8.4 scope contract schema"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L630",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_20",
+      "community": 7,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "9. Graphify Workflow",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L661",
+      "id": "clawitup_clawitup_v0_2_refined_spec_9_graphify_workflow",
+      "community": 8,
+      "norm_label": "9. graphify workflow"
+    },
+    {
+      "label": "Init behavior",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L667",
+      "id": "clawitup_clawitup_v0_2_refined_spec_init_behavior",
+      "community": 8,
+      "norm_label": "init behavior"
+    },
+    {
+      "label": "code:bash (graphify update .)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L671",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_21",
+      "community": 8,
+      "norm_label": "code:bash (graphify update .)"
+    },
+    {
+      "label": "code:txt (graphify-out/)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L679",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_22",
+      "community": 8,
+      "norm_label": "code:txt (graphify-out/)"
+    },
+    {
+      "label": "Required agent rule",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L687",
+      "id": "clawitup_clawitup_v0_2_refined_spec_required_agent_rule",
+      "community": 8,
+      "norm_label": "required agent rule"
+    },
+    {
+      "label": "code:md (Before making architecture-level claims, read `graphify-out/)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L691",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_23",
+      "community": 8,
+      "norm_label": "code:md (before making architecture-level claims, read `graphify-out/)"
+    },
+    {
+      "label": "Layer-specific usage",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L697",
+      "id": "clawitup_clawitup_v0_2_refined_spec_layer_specific_usage",
+      "community": 8,
+      "norm_label": "layer-specific usage"
+    },
+    {
+      "label": "9.1 Deterministic Context and Verification Gates",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L709",
+      "id": "clawitup_clawitup_v0_2_refined_spec_9_1_deterministic_context_and_verification_gates",
+      "community": 8,
+      "norm_label": "9.1 deterministic context and verification gates"
+    },
+    {
+      "label": "9.2 Scope Expansion Rules",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L726",
+      "id": "clawitup_clawitup_v0_2_refined_spec_9_2_scope_expansion_rules",
+      "community": 8,
+      "norm_label": "9.2 scope expansion rules"
+    },
+    {
+      "label": "10. GitClaw Runtime Direction",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L742",
+      "id": "clawitup_clawitup_v0_2_refined_spec_10_gitclaw_runtime_direction",
+      "community": 4,
+      "norm_label": "10. gitclaw runtime direction"
+    },
+    {
+      "label": "10.1 Use TypeScript CLI",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L744",
+      "id": "clawitup_clawitup_v0_2_refined_spec_10_1_use_typescript_cli",
+      "community": 4,
+      "norm_label": "10.1 use typescript cli"
+    },
+    {
+      "label": "code:txt (TypeScript)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L748",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_24",
+      "community": 4,
+      "norm_label": "code:txt (typescript)"
+    },
+    {
+      "label": "10.2 CLI commands for MVP",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L757",
+      "id": "clawitup_clawitup_v0_2_refined_spec_10_2_cli_commands_for_mvp",
+      "community": 4,
+      "norm_label": "10.2 cli commands for mvp"
+    },
+    {
+      "label": "code:bash (clawitup init)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L759",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_25",
+      "community": 4,
+      "norm_label": "code:bash (clawitup init)"
+    },
+    {
+      "label": "10.3 CLI commands for later",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L770",
+      "id": "clawitup_clawitup_v0_2_refined_spec_10_3_cli_commands_for_later",
+      "community": 4,
+      "norm_label": "10.3 cli commands for later"
+    },
+    {
+      "label": "code:bash (clawitup verify --run latest)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L772",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_26",
+      "community": 4,
+      "norm_label": "code:bash (clawitup verify --run latest)"
+    },
+    {
+      "label": "10.4 SDK runner concept",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L780",
+      "id": "clawitup_clawitup_v0_2_refined_spec_10_4_sdk_runner_concept",
+      "community": 4,
+      "norm_label": "10.4 sdk runner concept"
+    },
+    {
+      "label": "code:ts (import { query } from \"gitclaw\";)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L794",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_27",
+      "community": 4,
+      "norm_label": "code:ts (import { query } from \"gitclaw\";)"
+    },
+    {
+      "label": "10.5 GitHub Actions Runtime",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L812",
+      "id": "clawitup_clawitup_v0_2_refined_spec_10_5_github_actions_runtime",
+      "community": 4,
+      "norm_label": "10.5 github actions runtime"
+    },
+    {
+      "label": "code:txt (GitHub PR or push)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L816",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_28",
+      "community": 4,
+      "norm_label": "code:txt (github pr or push)"
+    },
+    {
+      "label": "10.6 Safety hooks",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L826",
+      "id": "clawitup_clawitup_v0_2_refined_spec_10_6_safety_hooks",
+      "community": 4,
+      "norm_label": "10.6 safety hooks"
+    },
+    {
+      "label": "code:txt (rm -rf)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L832",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_29",
+      "community": 4,
+      "norm_label": "code:txt (rm -rf)"
+    },
+    {
+      "label": "code:txt (ls)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L846",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_30",
+      "community": 4,
+      "norm_label": "code:txt (ls)"
+    },
+    {
+      "label": "10.7 Failure Handling",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L861",
+      "id": "clawitup_clawitup_v0_2_refined_spec_10_7_failure_handling",
+      "community": 4,
+      "norm_label": "10.7 failure handling"
+    },
+    {
+      "label": "11. Repo-Level Memory System",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L878",
+      "id": "clawitup_clawitup_v0_2_refined_spec_11_repo_level_memory_system",
+      "community": 6,
+      "norm_label": "11. repo-level memory system"
+    },
+    {
+      "label": "code:txt (memory/)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L884",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_31",
+      "community": 6,
+      "norm_label": "code:txt (memory/)"
+    },
+    {
+      "label": "11.1 `shared/repo-profile.md`",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L912",
+      "id": "clawitup_clawitup_v0_2_refined_spec_11_1_shared_repo_profile_md",
+      "community": 6,
+      "norm_label": "11.1 `shared/repo-profile.md`"
+    },
+    {
+      "label": "code:md (# Repo Profile)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L916",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_32",
+      "community": 6,
+      "norm_label": "code:md (# repo profile)"
+    },
+    {
+      "label": "11.2 `shared/false-positive-patterns.md`",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L937",
+      "id": "clawitup_clawitup_v0_2_refined_spec_11_2_shared_false_positive_patterns_md",
+      "community": 6,
+      "norm_label": "11.2 `shared/false-positive-patterns.md`"
+    },
+    {
+      "label": "code:md (# False Positive Patterns)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L941",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_33",
+      "community": 6,
+      "norm_label": "code:md (# false positive patterns)"
+    },
+    {
+      "label": "11.3 `shared/confirmed-bug-patterns.md`",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L948",
+      "id": "clawitup_clawitup_v0_2_refined_spec_11_3_shared_confirmed_bug_patterns_md",
+      "community": 6,
+      "norm_label": "11.3 `shared/confirmed-bug-patterns.md`"
+    },
+    {
+      "label": "code:md (# Confirmed Bug Patterns)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L952",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_34",
+      "community": 6,
+      "norm_label": "code:md (# confirmed bug patterns)"
+    },
+    {
+      "label": "11.4 `shared/remediation-playbook.md`",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L959",
+      "id": "clawitup_clawitup_v0_2_refined_spec_11_4_shared_remediation_playbook_md",
+      "community": 6,
+      "norm_label": "11.4 `shared/remediation-playbook.md`"
+    },
+    {
+      "label": "code:md (# Remediation Playbook)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L963",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_35",
+      "community": 6,
+      "norm_label": "code:md (# remediation playbook)"
+    },
+    {
+      "label": "11.5 Audit Ledger Direction",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L973",
+      "id": "clawitup_clawitup_v0_2_refined_spec_11_5_audit_ledger_direction",
+      "community": 6,
+      "norm_label": "11.5 audit ledger direction"
+    },
+    {
+      "label": "12. Evaluation Plan",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L984",
+      "id": "clawitup_clawitup_v0_2_refined_spec_12_evaluation_plan",
+      "community": 9,
+      "norm_label": "12. evaluation plan"
+    },
+    {
+      "label": "12.1 Demo/eval fixture",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L988",
+      "id": "clawitup_clawitup_v0_2_refined_spec_12_1_demo_eval_fixture",
+      "community": 9,
+      "norm_label": "12.1 demo/eval fixture"
+    },
+    {
+      "label": "code:txt (examples/vulnerable-demo-app/)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L992",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_36",
+      "community": 9,
+      "norm_label": "code:txt (examples/vulnerable-demo-app/)"
+    },
+    {
+      "label": "12.2 Eval dimensions",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1009",
+      "id": "clawitup_clawitup_v0_2_refined_spec_12_2_eval_dimensions",
+      "community": 9,
+      "norm_label": "12.2 eval dimensions"
+    },
+    {
+      "label": "12.3 Eval command",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1023",
+      "id": "clawitup_clawitup_v0_2_refined_spec_12_3_eval_command",
+      "community": 9,
+      "norm_label": "12.3 eval command"
+    },
+    {
+      "label": "code:bash (clawitup eval examples/evals/auth-boundary.yaml)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1025",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_37",
+      "community": 9,
+      "norm_label": "code:bash (clawitup eval examples/evals/auth-boundary.yaml)"
+    },
+    {
+      "label": "code:md (# ClawItUp Eval Report)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1031",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_38",
+      "community": 9,
+      "norm_label": "code:md (# clawitup eval report)"
+    },
+    {
+      "label": "12.4 What counts as success",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1051",
+      "id": "clawitup_clawitup_v0_2_refined_spec_12_4_what_counts_as_success",
+      "community": 9,
+      "norm_label": "12.4 what counts as success"
+    },
+    {
+      "label": "13. Demo Plan",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1067",
+      "id": "clawitup_clawitup_v0_2_refined_spec_13_demo_plan",
+      "community": 14,
+      "norm_label": "13. demo plan"
+    },
+    {
+      "label": "13.1 Demo features to ship for",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1069",
+      "id": "clawitup_clawitup_v0_2_refined_spec_13_1_demo_features_to_ship_for",
+      "community": 14,
+      "norm_label": "13.1 demo features to ship for"
+    },
+    {
+      "label": "13.2 Demo commands",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1085",
+      "id": "clawitup_clawitup_v0_2_refined_spec_13_2_demo_commands",
+      "community": 14,
+      "norm_label": "13.2 demo commands"
+    },
+    {
+      "label": "code:bash (clawitup init)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1087",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_39",
+      "community": 14,
+      "norm_label": "code:bash (clawitup init)"
+    },
+    {
+      "label": "13.3 Demo story",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1096",
+      "id": "clawitup_clawitup_v0_2_refined_spec_13_3_demo_story",
+      "community": 14,
+      "norm_label": "13.3 demo story"
+    },
+    {
+      "label": "13.4 The winning demo moment",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1111",
+      "id": "clawitup_clawitup_v0_2_refined_spec_13_4_the_winning_demo_moment",
+      "community": 14,
+      "norm_label": "13.4 the winning demo moment"
+    },
+    {
+      "label": "14. Build Phases",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1123",
+      "id": "clawitup_clawitup_v0_2_refined_spec_14_build_phases",
+      "community": 2,
+      "norm_label": "14. build phases"
+    },
+    {
+      "label": "Phase 0 \u2014 Foundation",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1125",
+      "id": "clawitup_clawitup_v0_2_refined_spec_phase_0_foundation",
+      "community": 2,
+      "norm_label": "phase 0 \u2014 foundation"
+    },
+    {
+      "label": "Phase 1 \u2014 Report-First Pipeline",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1142",
+      "id": "clawitup_clawitup_v0_2_refined_spec_phase_1_report_first_pipeline",
+      "community": 2,
+      "norm_label": "phase 1 \u2014 report-first pipeline"
+    },
+    {
+      "label": "Phase 2 \u2014 Real Verification",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1160",
+      "id": "clawitup_clawitup_v0_2_refined_spec_phase_2_real_verification",
+      "community": 2,
+      "norm_label": "phase 2 \u2014 real verification"
+    },
+    {
+      "label": "Phase 3 \u2014 Eval Harness",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1173",
+      "id": "clawitup_clawitup_v0_2_refined_spec_phase_3_eval_harness",
+      "community": 2,
+      "norm_label": "phase 3 \u2014 eval harness"
+    },
+    {
+      "label": "Phase 4 \u2014 Optional Patch Mode",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1185",
+      "id": "clawitup_clawitup_v0_2_refined_spec_phase_4_optional_patch_mode",
+      "community": 2,
+      "norm_label": "phase 4 \u2014 optional patch mode"
+    },
+    {
+      "label": "Phase 5 \u2014 Optional Integrations",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1198",
+      "id": "clawitup_clawitup_v0_2_refined_spec_phase_5_optional_integrations",
+      "community": 2,
+      "norm_label": "phase 5 \u2014 optional integrations"
+    },
+    {
+      "label": "15. Human and Agent Reading Guide",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1209",
+      "id": "clawitup_clawitup_v0_2_refined_spec_15_human_and_agent_reading_guide",
+      "community": 2,
+      "norm_label": "15. human and agent reading guide"
+    },
+    {
+      "label": "Humans should read first",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1211",
+      "id": "clawitup_clawitup_v0_2_refined_spec_humans_should_read_first",
+      "community": 2,
+      "norm_label": "humans should read first"
+    },
+    {
+      "label": "AI agents should read first",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1221",
+      "id": "clawitup_clawitup_v0_2_refined_spec_ai_agents_should_read_first",
+      "community": 2,
+      "norm_label": "ai agents should read first"
+    },
+    {
+      "label": "Required external docs for implementers",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1232",
+      "id": "clawitup_clawitup_v0_2_refined_spec_required_external_docs_for_implementers",
+      "community": 2,
+      "norm_label": "required external docs for implementers"
+    },
+    {
+      "label": "Key docs mapping",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1239",
+      "id": "clawitup_clawitup_v0_2_refined_spec_key_docs_mapping",
+      "community": 2,
+      "norm_label": "key docs mapping"
+    },
+    {
+      "label": "16. Out-of-Scope List",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1254",
+      "id": "clawitup_clawitup_v0_2_refined_spec_16_out_of_scope_list",
+      "community": 2,
+      "norm_label": "16. out-of-scope list"
+    },
+    {
+      "label": "17. Success Criteria",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1276",
+      "id": "clawitup_clawitup_v0_2_refined_spec_17_success_criteria",
+      "community": 2,
+      "norm_label": "17. success criteria"
+    },
+    {
+      "label": "Engineering success metrics",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1292",
+      "id": "clawitup_clawitup_v0_2_refined_spec_engineering_success_metrics",
+      "community": 2,
+      "norm_label": "engineering success metrics"
+    },
+    {
+      "label": "18. Final Product Identity",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1308",
+      "id": "clawitup_clawitup_v0_2_refined_spec_18_final_product_identity",
+      "community": 2,
+      "norm_label": "18. final product identity"
+    },
+    {
+      "label": "code:txt (Red Team attacks.)",
+      "file_type": "document",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1312",
+      "id": "clawitup_clawitup_v0_2_refined_spec_codeblock_40",
+      "community": 2,
+      "norm_label": "code:txt (red team attacks.)"
+    },
+    {
+      "label": "MEMORY.md",
+      "file_type": "document",
+      "source_file": "memory/MEMORY.md",
+      "source_location": "L1",
+      "id": "memory_memory_md",
+      "community": 24,
+      "norm_label": "memory.md"
+    },
+    {
+      "label": "Memory",
+      "file_type": "document",
+      "source_file": "memory/MEMORY.md",
+      "source_location": "L1",
+      "id": "memory_memory_memory",
+      "community": 24,
+      "norm_label": "memory"
+    },
+    {
+      "label": "2026-05-22-clawitup-audit-gate-design.md",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L1",
+      "id": "docs_plans_2026_05_22_clawitup_audit_gate_design_md",
+      "community": 3,
+      "norm_label": "2026-05-22-clawitup-audit-gate-design.md"
+    },
+    {
+      "label": "ClawItUp Audit Gate Design",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L1",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "community": 3,
+      "norm_label": "clawitup audit gate design"
+    },
+    {
+      "label": "Goal",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L7",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_goal",
+      "community": 3,
+      "norm_label": "goal"
+    },
+    {
+      "label": "Product Shape",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L20",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_product_shape",
+      "community": 3,
+      "norm_label": "product shape"
+    },
+    {
+      "label": "code:txt (Scope Builder)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L24",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_1",
+      "community": 3,
+      "norm_label": "code:txt (scope builder)"
+    },
+    {
+      "label": "code:bash (clawitup audit --scope auth)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L36",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_2",
+      "community": 3,
+      "norm_label": "code:bash (clawitup audit --scope auth)"
+    },
+    {
+      "label": "code:bash (clawitup audit --ci)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L42",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_3",
+      "community": 3,
+      "norm_label": "code:bash (clawitup audit --ci)"
+    },
+    {
+      "label": "Runtime Split",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L48",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_runtime_split",
+      "community": 3,
+      "norm_label": "runtime split"
+    },
+    {
+      "label": "code:txt (agent.yaml)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L54",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_4",
+      "community": 3,
+      "norm_label": "code:txt (agent.yaml)"
+    },
+    {
+      "label": "Pipeline",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L80",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_pipeline",
+      "community": 3,
+      "norm_label": "pipeline"
+    },
+    {
+      "label": "Scope Builder",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L82",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_scope_builder",
+      "community": 3,
+      "norm_label": "scope builder"
+    },
+    {
+      "label": "Orchestrator",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L93",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_orchestrator",
+      "community": 3,
+      "norm_label": "orchestrator"
+    },
+    {
+      "label": "Red Team",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L99",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_red_team",
+      "community": 3,
+      "norm_label": "red team"
+    },
+    {
+      "label": "Evidence Filter",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L109",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_evidence_filter",
+      "community": 3,
+      "norm_label": "evidence filter"
+    },
+    {
+      "label": "Blue Team Handoff",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L122",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_blue_team_handoff",
+      "community": 3,
+      "norm_label": "blue team handoff"
+    },
+    {
+      "label": "Policy Gate",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L128",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_policy_gate",
+      "community": 3,
+      "norm_label": "policy gate"
+    },
+    {
+      "label": "Context Control",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L142",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_context_control",
+      "community": 3,
+      "norm_label": "context control"
+    },
+    {
+      "label": "Graphify",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L167",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_graphify",
+      "community": 3,
+      "norm_label": "graphify"
+    },
+    {
+      "label": "Memory",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L180",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_memory",
+      "community": 3,
+      "norm_label": "memory"
+    },
+    {
+      "label": "code:txt (memory/)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L184",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_5",
+      "community": 3,
+      "norm_label": "code:txt (memory/)"
+    },
+    {
+      "label": "Audit Ledger Direction",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L212",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_audit_ledger_direction",
+      "community": 3,
+      "norm_label": "audit ledger direction"
+    },
+    {
+      "label": "Artifacts",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L221",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_artifacts",
+      "community": 3,
+      "norm_label": "artifacts"
+    },
+    {
+      "label": "Failure Handling",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L237",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_failure_handling",
+      "community": 3,
+      "norm_label": "failure handling"
+    },
+    {
+      "label": "Evaluation",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L249",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_evaluation",
+      "community": 3,
+      "norm_label": "evaluation"
+    },
+    {
+      "label": "Deferred Work",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L270",
+      "id": "plans_2026_05_22_clawitup_audit_gate_design_deferred_work",
+      "community": 3,
+      "norm_label": "deferred work"
+    },
+    {
+      "label": "2026-05-22-clawitup-audit-gate-implementation.md",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L1",
+      "id": "docs_plans_2026_05_22_clawitup_audit_gate_implementation_md",
+      "community": 1,
+      "norm_label": "2026-05-22-clawitup-audit-gate-implementation.md"
+    },
+    {
+      "label": "ClawItUp Audit Gate Implementation Plan",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L1",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_clawitup_audit_gate_implementation_plan",
+      "community": 1,
+      "norm_label": "clawitup audit gate implementation plan"
+    },
+    {
+      "label": "Planning Notes",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L13",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "community": 1,
+      "norm_label": "planning notes"
+    },
+    {
+      "label": "Task 1: Establish The TypeScript CLI Test Harness",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L21",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_1_establish_the_typescript_cli_test_harness",
+      "community": 11,
+      "norm_label": "task 1: establish the typescript cli test harness"
+    },
+    {
+      "label": "code:ts (// tests/cli/help.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L34",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_1",
+      "community": 11,
+      "norm_label": "code:ts (// tests/cli/help.test.ts)"
+    },
+    {
+      "label": "code:json ({)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L53",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_2",
+      "community": 11,
+      "norm_label": "code:json ({)"
+    },
+    {
+      "label": "code:ts (// src/cli.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L85",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_3",
+      "community": 11,
+      "norm_label": "code:ts (// src/cli.ts)"
+    },
+    {
+      "label": "code:ts (// src/index.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L103",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_4",
+      "community": 11,
+      "norm_label": "code:ts (// src/index.ts)"
+    },
+    {
+      "label": "code:bash (npm test)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L114",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_5",
+      "community": 11,
+      "norm_label": "code:bash (npm test)"
+    },
+    {
+      "label": "code:bash (clawitup init)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L125",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_6",
+      "community": 11,
+      "norm_label": "code:bash (clawitup init)"
+    },
+    {
+      "label": "code:bash (git add package.json tsconfig.json vitest.config.ts src test)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L134",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_7",
+      "community": 11,
+      "norm_label": "code:bash (git add package.json tsconfig.json vitest.config.ts src test)"
+    },
+    {
+      "label": "Task 2: Define Scope, Finding, Verification, Summary, And Policy Contracts",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L139",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_2_define_scope_finding_verification_summary_and_policy_contracts",
+      "community": 1,
+      "norm_label": "task 2: define scope, finding, verification, summary, and policy contracts"
+    },
+    {
+      "label": "code:ts (// tests/schemas/scope-contract.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L152",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_8",
+      "community": 1,
+      "norm_label": "code:ts (// tests/schemas/scope-contract.test.ts)"
+    },
+    {
+      "label": "code:ts (// tests/schemas/policy.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L178",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_9",
+      "community": 1,
+      "norm_label": "code:ts (// tests/schemas/policy.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/schemas/scope-contract.test.ts tests/schem)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L200",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_10",
+      "community": 1,
+      "norm_label": "code:bash (npm test -- tests/schemas/scope-contract.test.ts tests/schem)"
+    },
+    {
+      "label": "code:ts (// src/schemas/scope-contract.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L210",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_11",
+      "community": 1,
+      "norm_label": "code:ts (// src/schemas/scope-contract.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/schemas)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L241",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_12",
+      "community": 1,
+      "norm_label": "code:bash (npm test -- tests/schemas)"
+    },
+    {
+      "label": "code:bash (git add src/schemas tests/schemas)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L250",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_13",
+      "community": 1,
+      "norm_label": "code:bash (git add src/schemas tests/schemas)"
+    },
+    {
+      "label": "Task 3: Build Scope Creation And Deterministic Gate Budgets",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L255",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_3_build_scope_creation_and_deterministic_gate_budgets",
+      "community": 13,
+      "norm_label": "task 3: build scope creation and deterministic gate budgets"
+    },
+    {
+      "label": "code:ts (// tests/runtime/scope-builder.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L266",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_14",
+      "community": 13,
+      "norm_label": "code:ts (// tests/runtime/scope-builder.test.ts)"
+    },
+    {
+      "label": "code:ts (// tests/runtime/deterministic-gates.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L291",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_15",
+      "community": 13,
+      "norm_label": "code:ts (// tests/runtime/deterministic-gates.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/runtime/scope-builder.test.ts tests/runtim)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L308",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_16",
+      "community": 13,
+      "norm_label": "code:bash (npm test -- tests/runtime/scope-builder.test.ts tests/runtim)"
+    },
+    {
+      "label": "code:ts (// src/runtime/scope-builder.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L316",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_17",
+      "community": 13,
+      "norm_label": "code:ts (// src/runtime/scope-builder.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/runtime)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L363",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_18",
+      "community": 13,
+      "norm_label": "code:bash (npm test -- tests/runtime)"
+    },
+    {
+      "label": "code:bash (git add src/runtime tests/runtime)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L372",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_19",
+      "community": 13,
+      "norm_label": "code:bash (git add src/runtime tests/runtime)"
+    },
+    {
+      "label": "Task 4: Create Run Artifacts And Policy Decisions",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L377",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_4_create_run_artifacts_and_policy_decisions",
+      "community": 1,
+      "norm_label": "task 4: create run artifacts and policy decisions"
+    },
+    {
+      "label": "code:ts (// tests/runtime/artifact-store.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L387",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_20",
+      "community": 1,
+      "norm_label": "code:ts (// tests/runtime/artifact-store.test.ts)"
+    },
+    {
+      "label": "code:ts (// tests/runtime/policy-engine.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L403",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_21",
+      "community": 1,
+      "norm_label": "code:ts (// tests/runtime/policy-engine.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/runtime/artifact-store.test.ts tests/runti)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L435",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_22",
+      "community": 1,
+      "norm_label": "code:bash (npm test -- tests/runtime/artifact-store.test.ts tests/runti)"
+    },
+    {
+      "label": "code:ts (if (!input.filter_completed || !input.required_artifacts_val)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L457",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_23",
+      "community": 1,
+      "norm_label": "code:ts (if (!input.filter_completed || !input.required_artifacts_val)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/runtime/artifact-store.test.ts tests/runti)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L468",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_24",
+      "community": 1,
+      "norm_label": "code:bash (npm test -- tests/runtime/artifact-store.test.ts tests/runti)"
+    },
+    {
+      "label": "code:bash (git add src/runtime tests/runtime)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L477",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_25",
+      "community": 1,
+      "norm_label": "code:bash (git add src/runtime tests/runtime)"
+    },
+    {
+      "label": "Task 5: Initialize Git-Native Agent Files And Repo Memory",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L482",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_5_initialize_git_native_agent_files_and_repo_memory",
+      "community": 1,
+      "norm_label": "task 5: initialize git-native agent files and repo memory"
+    },
+    {
+      "label": "code:ts (// tests/commands/init.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L513",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_26",
+      "community": 1,
+      "norm_label": "code:ts (// tests/commands/init.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/commands/init.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L531",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_27",
+      "community": 1,
+      "norm_label": "code:bash (npm test -- tests/commands/init.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/commands/init.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L561",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_28",
+      "community": 1,
+      "norm_label": "code:bash (npm test -- tests/commands/init.test.ts)"
+    },
+    {
+      "label": "code:bash (git add src/commands src/runtime/templates.ts tests/commands)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L570",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_29",
+      "community": 1,
+      "norm_label": "code:bash (git add src/commands src/runtime/templates.ts tests/commands)"
+    },
+    {
+      "label": "Task 6: Orchestrate A Report-First Audit With An Injected Gitclaw Runner",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L575",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_6_orchestrate_a_report_first_audit_with_an_injected_gitclaw_runner",
+      "community": 17,
+      "norm_label": "task 6: orchestrate a report-first audit with an injected gitclaw runner"
+    },
+    {
+      "label": "code:ts (// tests/commands/audit.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L591",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_30",
+      "community": 17,
+      "norm_label": "code:ts (// tests/commands/audit.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/commands/audit.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L619",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_31",
+      "community": 17,
+      "norm_label": "code:bash (npm test -- tests/commands/audit.test.ts)"
+    },
+    {
+      "label": "code:bash (clawitup audit --scope auth)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L640",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_32",
+      "community": 17,
+      "norm_label": "code:bash (clawitup audit --scope auth)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/commands/audit.test.ts tests/runtime)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L651",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_33",
+      "community": 17,
+      "norm_label": "code:bash (npm test -- tests/commands/audit.test.ts tests/runtime)"
+    },
+    {
+      "label": "code:bash (git add src/commands/audit.ts src/runtime tests/commands src)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L660",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_34",
+      "community": 17,
+      "norm_label": "code:bash (git add src/commands/audit.ts src/runtime tests/commands src)"
+    },
+    {
+      "label": "Task 7: Add CI Diff Mode And GitHub Actions Policy Gating",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L665",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_7_add_ci_diff_mode_and_github_actions_policy_gating",
+      "community": 1,
+      "norm_label": "task 7: add ci diff mode and github actions policy gating"
+    },
+    {
+      "label": "code:ts (// tests/commands/audit-ci.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L677",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_35",
+      "community": 1,
+      "norm_label": "code:ts (// tests/commands/audit-ci.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/commands/audit-ci.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L697",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_36",
+      "community": 1,
+      "norm_label": "code:bash (npm test -- tests/commands/audit-ci.test.ts)"
+    },
+    {
+      "label": "code:yaml (name: ClawItUp Audit)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L717",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_37",
+      "community": 1,
+      "norm_label": "code:yaml (name: clawitup audit)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/commands/audit-ci.test.ts tests/runtime/po)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L750",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_38",
+      "community": 1,
+      "norm_label": "code:bash (npm test -- tests/commands/audit-ci.test.ts tests/runtime/po)"
+    },
+    {
+      "label": "code:bash (git add .github/workflows/clawitup-audit.yml src tests READM)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L760",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_39",
+      "community": 1,
+      "norm_label": "code:bash (git add .github/workflows/clawitup-audit.yml src tests readm)"
+    },
+    {
+      "label": "Task 8: Add Graphify, Search, And Memory Gate Integration",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L765",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_8_add_graphify_search_and_memory_gate_integration",
+      "community": 18,
+      "norm_label": "task 8: add graphify, search, and memory gate integration"
+    },
+    {
+      "label": "code:ts (// tests/runtime/memory-gate.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L781",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_40",
+      "community": 18,
+      "norm_label": "code:ts (// tests/runtime/memory-gate.test.ts)"
+    },
+    {
+      "label": "code:ts (// tests/runtime/graphify.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L794",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_41",
+      "community": 18,
+      "norm_label": "code:ts (// tests/runtime/graphify.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/runtime/memory-gate.test.ts tests/runtime/)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L810",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_42",
+      "community": 18,
+      "norm_label": "code:bash (npm test -- tests/runtime/memory-gate.test.ts tests/runtime/)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/runtime)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L839",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_43",
+      "community": 18,
+      "norm_label": "code:bash (npm test -- tests/runtime)"
+    },
+    {
+      "label": "code:bash (git add src/runtime tests/runtime tools skills/run-context-g)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L848",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_44",
+      "community": 18,
+      "norm_label": "code:bash (git add src/runtime tests/runtime tools skills/run-context-g)"
+    },
+    {
+      "label": "Task 9: Build The Seeded Eval Fixture And Eval Command",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L853",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_9_build_the_seeded_eval_fixture_and_eval_command",
+      "community": 19,
+      "norm_label": "task 9: build the seeded eval fixture and eval command"
+    },
+    {
+      "label": "code:ts (// tests/commands/eval.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L870",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_45",
+      "community": 19,
+      "norm_label": "code:ts (// tests/commands/eval.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/commands/eval.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L895",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_46",
+      "community": 19,
+      "norm_label": "code:bash (npm test -- tests/commands/eval.test.ts)"
+    },
+    {
+      "label": "code:bash (clawitup eval examples/evals/auth-boundary.yaml)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L927",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_47",
+      "community": 19,
+      "norm_label": "code:bash (clawitup eval examples/evals/auth-boundary.yaml)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/commands/eval.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L937",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_48",
+      "community": 19,
+      "norm_label": "code:bash (npm test -- tests/commands/eval.test.ts)"
+    },
+    {
+      "label": "code:bash (git add src/commands/eval.ts src/runtime/eval-runner.ts test)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L946",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_49",
+      "community": 19,
+      "norm_label": "code:bash (git add src/commands/eval.ts src/runtime/eval-runner.ts test)"
+    },
+    {
+      "label": "Task 10: Finish Reports, Docs, And Reproducible Demo Path",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L951",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_task_10_finish_reports_docs_and_reproducible_demo_path",
+      "community": 16,
+      "norm_label": "task 10: finish reports, docs, and reproducible demo path"
+    },
+    {
+      "label": "code:ts (// tests/commands/report.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L963",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_50",
+      "community": 16,
+      "norm_label": "code:ts (// tests/commands/report.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test -- tests/commands/report.test.ts)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L986",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_51",
+      "community": 16,
+      "norm_label": "code:bash (npm test -- tests/commands/report.test.ts)"
+    },
+    {
+      "label": "code:bash (npm test)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L1019",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_52",
+      "community": 16,
+      "norm_label": "code:bash (npm test)"
+    },
+    {
+      "label": "code:bash (graphify update .)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L1031",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_53",
+      "community": 16,
+      "norm_label": "code:bash (graphify update .)"
+    },
+    {
+      "label": "code:bash (git add src tests README.md CLAWITUP_V0_2_REFINED_SPEC.md gr)",
+      "file_type": "document",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L1039",
+      "id": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_54",
+      "community": 16,
+      "norm_label": "code:bash (git add src tests readme.md clawitup_v0_2_refined_spec.md gr)"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/cli.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_cli_ts",
+      "target": "src_cli_buildcli",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_index_ts",
+      "target": "src_cli_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/cli/help.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "tests_cli_help_test_ts",
+      "target": "src_cli_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_index_ts",
+      "target": "src_cli_buildcli",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/cli/help.test.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "tests_cli_help_test_ts",
+      "target": "src_cli_buildcli",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/cli/help.test.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "tests_cli_help_test_ts",
+      "target": "cli_help_test_cli",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/cli/help.test.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "tests_cli_help_test_ts",
+      "target": "cli_help_test_names",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "clawitup_readme_clawitup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "clawitup_readme_clawitup",
+      "target": "clawitup_readme_mvp_commands",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "clawitup_readme_clawitup",
+      "target": "clawitup_readme_what_this_repo_is_for",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "clawitup_readme_clawitup",
+      "target": "clawitup_readme_development",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "clawitup_readme_mvp_commands",
+      "target": "clawitup_readme_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "clawitup_readme_development",
+      "target": "clawitup_readme_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "brainstorm_md",
+      "target": "clawitup_brainstorm_brainstorming_clawitup_project_ideas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorming_clawitup_project_ideas",
+      "target": "clawitup_brainstorm_project_scope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorming_clawitup_project_ideas",
+      "target": "clawitup_brainstorm_brainstorm_categories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorming_clawitup_project_ideas",
+      "target": "clawitup_brainstorm_evaluation_criteria",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorming_clawitup_project_ideas",
+      "target": "clawitup_brainstorm_my_top_3_picks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L164",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorming_clawitup_project_ideas",
+      "target": "clawitup_brainstorm_questions_for_you",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorming_clawitup_project_ideas",
+      "target": "clawitup_brainstorm_next_phase_idea_selection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorm_categories",
+      "target": "clawitup_brainstorm_category_a_developer_productivity_tools",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorm_categories",
+      "target": "clawitup_brainstorm_category_b_team_collaboration_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorm_categories",
+      "target": "clawitup_brainstorm_category_c_ai_agent_infrastructure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorm_categories",
+      "target": "clawitup_brainstorm_category_d_knowledge_learning",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_brainstorm_categories",
+      "target": "clawitup_brainstorm_category_e_niche_creative_ideas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_a_developer_productivity_tools",
+      "target": "clawitup_brainstorm_idea_a1_git_commit_analyzer_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_a_developer_productivity_tools",
+      "target": "clawitup_brainstorm_idea_a2_code_quality_guardian_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_a_developer_productivity_tools",
+      "target": "clawitup_brainstorm_idea_a3_documentation_generator_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_b_team_collaboration_workflow",
+      "target": "clawitup_brainstorm_idea_b1_github_issue_triage_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_b_team_collaboration_workflow",
+      "target": "clawitup_brainstorm_idea_b2_meeting_notes_issue_generator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_b_team_collaboration_workflow",
+      "target": "clawitup_brainstorm_idea_b3_smart_pr_reviewer_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_c_ai_agent_infrastructure",
+      "target": "clawitup_brainstorm_idea_c1_gitagent_cli_wrapper_dashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_c_ai_agent_infrastructure",
+      "target": "clawitup_brainstorm_idea_c2_agent_skill_marketplace",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_c_ai_agent_infrastructure",
+      "target": "clawitup_brainstorm_idea_c3_agent_memory_state_visualizer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_d_knowledge_learning",
+      "target": "clawitup_brainstorm_idea_d1_codebase_onboarding_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_d_knowledge_learning",
+      "target": "clawitup_brainstorm_idea_d2_dependency_audit_update_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_d_knowledge_learning",
+      "target": "clawitup_brainstorm_idea_d3_test_data_generator_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_e_niche_creative_ideas",
+      "target": "clawitup_brainstorm_idea_e1_git_history_debugger",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_e_niche_creative_ideas",
+      "target": "clawitup_brainstorm_idea_e2_open_source_contribution_assistant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "BRAINSTORM.md",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "clawitup_brainstorm_category_e_niche_creative_ideas",
+      "target": "clawitup_brainstorm_idea_e3_technical_blog_post_generator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "agents_md",
+      "target": "clawitup_agents_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "SOUL.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "soul_md",
+      "target": "clawitup_soul_identity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "clawitup_v0_2_refined_spec_md",
+      "target": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_1_product_summary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_2_compatibility_direction_how_clawitup_aligns_with_gitagent_gitclaw",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_3_product_positioning",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_4_mvp_scope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L188",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_5_primary_user_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L284",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_6_recommended_repository_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L384",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_7_agent_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L516",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_8_artifact_contract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L661",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_9_graphify_workflow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L742",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_10_gitclaw_runtime_direction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L878",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_11_repo_level_memory_system",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L984",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_12_evaluation_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1067",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_13_demo_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1123",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_14_build_phases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1209",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_15_human_and_agent_reading_guide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1254",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_16_out_of_scope_list",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1276",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_17_success_criteria",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1308",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_clawitup_v0_2_git_native_red_team_filter_blue_team_audit_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_18_final_product_identity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_2_compatibility_direction_how_clawitup_aligns_with_gitagent_gitclaw",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_2_compatibility_direction_how_clawitup_aligns_with_gitagent_gitclaw",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_3_product_positioning",
+      "target": "clawitup_clawitup_v0_2_refined_spec_one_liner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_3_product_positioning",
+      "target": "clawitup_clawitup_v0_2_refined_spec_longer_pitch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_3_product_positioning",
+      "target": "clawitup_clawitup_v0_2_refined_spec_what_makes_it_different",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_what_makes_it_different",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_what_makes_it_different",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_4_mvp_scope",
+      "target": "clawitup_clawitup_v0_2_refined_spec_mvp_must_ship",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_4_mvp_scope",
+      "target": "clawitup_clawitup_v0_2_refined_spec_mvp_should_not_ship_yet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L176",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_4_mvp_scope",
+      "target": "clawitup_clawitup_v0_2_refined_spec_brutal_constraint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_brutal_constraint",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L190",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_primary_user_workflow",
+      "target": "clawitup_clawitup_v0_2_refined_spec_5_1_initialize_clawitup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L219",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_primary_user_workflow",
+      "target": "clawitup_clawitup_v0_2_refined_spec_5_2_run_a_focused_audit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L262",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_primary_user_workflow",
+      "target": "clawitup_clawitup_v0_2_refined_spec_5_3_run_a_change_aware_shipping_gate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L192",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_1_initialize_clawitup",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_6",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L210",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_1_initialize_clawitup",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_7",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L223",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_2_run_a_focused_audit",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_8",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L229",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_2_run_a_focused_audit",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_9",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L235",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_2_run_a_focused_audit",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_10",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L245",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_2_run_a_focused_audit",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_11",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L258",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_2_run_a_focused_audit",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_12",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L266",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_5_3_run_a_change_aware_shipping_gate",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_13",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L286",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_6_recommended_repository_structure",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_14",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L386",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_7_agent_architecture",
+      "target": "clawitup_clawitup_v0_2_refined_spec_7_1_orchestrator_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L410",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_7_agent_architecture",
+      "target": "clawitup_clawitup_v0_2_refined_spec_7_2_red_team_agents",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L432",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_7_agent_architecture",
+      "target": "clawitup_clawitup_v0_2_refined_spec_7_3_false_positive_filter_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L460",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_7_agent_architecture",
+      "target": "clawitup_clawitup_v0_2_refined_spec_7_4_blue_team_agents",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L480",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_7_agent_architecture",
+      "target": "clawitup_clawitup_v0_2_refined_spec_7_5_policy_gate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L501",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_7_agent_architecture",
+      "target": "clawitup_clawitup_v0_2_refined_spec_7_6_human_handoff_agent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L440",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_7_3_false_positive_filter_agent",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_15",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L520",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_8_artifact_contract",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_16",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L555",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_8_artifact_contract",
+      "target": "clawitup_clawitup_v0_2_refined_spec_8_1_red_team_finding_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L595",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_8_artifact_contract",
+      "target": "clawitup_clawitup_v0_2_refined_spec_8_2_verification_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L608",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_8_artifact_contract",
+      "target": "clawitup_clawitup_v0_2_refined_spec_8_3_final_summary_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L626",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_8_artifact_contract",
+      "target": "clawitup_clawitup_v0_2_refined_spec_8_4_scope_contract_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L559",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_8_1_red_team_finding_schema",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_17",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L597",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_8_2_verification_schema",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_18",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L610",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_8_3_final_summary_schema",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_19",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L630",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_8_4_scope_contract_schema",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_20",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L667",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_9_graphify_workflow",
+      "target": "clawitup_clawitup_v0_2_refined_spec_init_behavior",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L687",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_9_graphify_workflow",
+      "target": "clawitup_clawitup_v0_2_refined_spec_required_agent_rule",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L697",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_9_graphify_workflow",
+      "target": "clawitup_clawitup_v0_2_refined_spec_layer_specific_usage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L709",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_9_graphify_workflow",
+      "target": "clawitup_clawitup_v0_2_refined_spec_9_1_deterministic_context_and_verification_gates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L726",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_9_graphify_workflow",
+      "target": "clawitup_clawitup_v0_2_refined_spec_9_2_scope_expansion_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L671",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_init_behavior",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_21",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L679",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_init_behavior",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_22",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L691",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_required_agent_rule",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_23",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L744",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_gitclaw_runtime_direction",
+      "target": "clawitup_clawitup_v0_2_refined_spec_10_1_use_typescript_cli",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L757",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_gitclaw_runtime_direction",
+      "target": "clawitup_clawitup_v0_2_refined_spec_10_2_cli_commands_for_mvp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L770",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_gitclaw_runtime_direction",
+      "target": "clawitup_clawitup_v0_2_refined_spec_10_3_cli_commands_for_later",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L780",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_gitclaw_runtime_direction",
+      "target": "clawitup_clawitup_v0_2_refined_spec_10_4_sdk_runner_concept",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L812",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_gitclaw_runtime_direction",
+      "target": "clawitup_clawitup_v0_2_refined_spec_10_5_github_actions_runtime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L826",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_gitclaw_runtime_direction",
+      "target": "clawitup_clawitup_v0_2_refined_spec_10_6_safety_hooks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L861",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_gitclaw_runtime_direction",
+      "target": "clawitup_clawitup_v0_2_refined_spec_10_7_failure_handling",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L748",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_1_use_typescript_cli",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_24",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L759",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_2_cli_commands_for_mvp",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_25",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L772",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_3_cli_commands_for_later",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_26",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L794",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_4_sdk_runner_concept",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_27",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L816",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_5_github_actions_runtime",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_28",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L832",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_6_safety_hooks",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_29",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L846",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_10_6_safety_hooks",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_30",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L884",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_repo_level_memory_system",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_31",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L912",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_repo_level_memory_system",
+      "target": "clawitup_clawitup_v0_2_refined_spec_11_1_shared_repo_profile_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L937",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_repo_level_memory_system",
+      "target": "clawitup_clawitup_v0_2_refined_spec_11_2_shared_false_positive_patterns_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L948",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_repo_level_memory_system",
+      "target": "clawitup_clawitup_v0_2_refined_spec_11_3_shared_confirmed_bug_patterns_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L959",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_repo_level_memory_system",
+      "target": "clawitup_clawitup_v0_2_refined_spec_11_4_shared_remediation_playbook_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L973",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_repo_level_memory_system",
+      "target": "clawitup_clawitup_v0_2_refined_spec_11_5_audit_ledger_direction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L916",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_1_shared_repo_profile_md",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_32",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L941",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_2_shared_false_positive_patterns_md",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_33",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L952",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_3_shared_confirmed_bug_patterns_md",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_34",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L963",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_11_4_shared_remediation_playbook_md",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_35",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L988",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_12_evaluation_plan",
+      "target": "clawitup_clawitup_v0_2_refined_spec_12_1_demo_eval_fixture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1009",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_12_evaluation_plan",
+      "target": "clawitup_clawitup_v0_2_refined_spec_12_2_eval_dimensions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1023",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_12_evaluation_plan",
+      "target": "clawitup_clawitup_v0_2_refined_spec_12_3_eval_command",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1051",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_12_evaluation_plan",
+      "target": "clawitup_clawitup_v0_2_refined_spec_12_4_what_counts_as_success",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L992",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_12_1_demo_eval_fixture",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_36",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1025",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_12_3_eval_command",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_37",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1031",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_12_3_eval_command",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_38",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1069",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_13_demo_plan",
+      "target": "clawitup_clawitup_v0_2_refined_spec_13_1_demo_features_to_ship_for",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1085",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_13_demo_plan",
+      "target": "clawitup_clawitup_v0_2_refined_spec_13_2_demo_commands",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1096",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_13_demo_plan",
+      "target": "clawitup_clawitup_v0_2_refined_spec_13_3_demo_story",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1111",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_13_demo_plan",
+      "target": "clawitup_clawitup_v0_2_refined_spec_13_4_the_winning_demo_moment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1087",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_13_2_demo_commands",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_39",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1125",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_14_build_phases",
+      "target": "clawitup_clawitup_v0_2_refined_spec_phase_0_foundation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1142",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_14_build_phases",
+      "target": "clawitup_clawitup_v0_2_refined_spec_phase_1_report_first_pipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1160",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_14_build_phases",
+      "target": "clawitup_clawitup_v0_2_refined_spec_phase_2_real_verification",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1173",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_14_build_phases",
+      "target": "clawitup_clawitup_v0_2_refined_spec_phase_3_eval_harness",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1185",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_14_build_phases",
+      "target": "clawitup_clawitup_v0_2_refined_spec_phase_4_optional_patch_mode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1198",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_14_build_phases",
+      "target": "clawitup_clawitup_v0_2_refined_spec_phase_5_optional_integrations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1211",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_15_human_and_agent_reading_guide",
+      "target": "clawitup_clawitup_v0_2_refined_spec_humans_should_read_first",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1221",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_15_human_and_agent_reading_guide",
+      "target": "clawitup_clawitup_v0_2_refined_spec_ai_agents_should_read_first",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1232",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_15_human_and_agent_reading_guide",
+      "target": "clawitup_clawitup_v0_2_refined_spec_required_external_docs_for_implementers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1239",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_15_human_and_agent_reading_guide",
+      "target": "clawitup_clawitup_v0_2_refined_spec_key_docs_mapping",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1292",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_17_success_criteria",
+      "target": "clawitup_clawitup_v0_2_refined_spec_engineering_success_metrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAWITUP_V0_2_REFINED_SPEC.md",
+      "source_location": "L1312",
+      "weight": 1.0,
+      "source": "clawitup_clawitup_v0_2_refined_spec_18_final_product_identity",
+      "target": "clawitup_clawitup_v0_2_refined_spec_codeblock_40",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "memory/MEMORY.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "memory_memory_md",
+      "target": "memory_memory_memory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_plans_2026_05_22_clawitup_audit_gate_design_md",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_goal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_product_shape",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_runtime_split",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_pipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_context_control",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_memory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L212",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_audit_ledger_direction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L221",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_artifacts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L237",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_failure_handling",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L249",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_evaluation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L270",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_clawitup_audit_gate_design",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_deferred_work",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_product_shape",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_product_shape",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_product_shape",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_runtime_split",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_pipeline",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_scope_builder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_pipeline",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_orchestrator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_pipeline",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_red_team",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_pipeline",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_evidence_filter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_pipeline",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_blue_team_handoff",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_pipeline",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_policy_gate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-design.md",
+      "source_location": "L184",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_design_memory",
+      "target": "plans_2026_05_22_clawitup_audit_gate_design_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_plans_2026_05_22_clawitup_audit_gate_implementation_md",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_clawitup_audit_gate_implementation_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_clawitup_audit_gate_implementation_plan",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_1_establish_the_typescript_cli_test_harness",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_2_define_scope_finding_verification_summary_and_policy_contracts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L255",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_3_build_scope_creation_and_deterministic_gate_budgets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L377",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_4_create_run_artifacts_and_policy_decisions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L482",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_5_initialize_git_native_agent_files_and_repo_memory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L575",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_6_orchestrate_a_report_first_audit_with_an_injected_gitclaw_runner",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L665",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_7_add_ci_diff_mode_and_github_actions_policy_gating",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L765",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_8_add_graphify_search_and_memory_gate_integration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L853",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_9_build_the_seeded_eval_fixture_and_eval_command",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L951",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_planning_notes",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_task_10_finish_reports_docs_and_reproducible_demo_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_1_establish_the_typescript_cli_test_harness",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_1_establish_the_typescript_cli_test_harness",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_1_establish_the_typescript_cli_test_harness",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_1_establish_the_typescript_cli_test_harness",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_4",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_1_establish_the_typescript_cli_test_harness",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_5",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_1_establish_the_typescript_cli_test_harness",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_6",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_1_establish_the_typescript_cli_test_harness",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_7",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L152",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_2_define_scope_finding_verification_summary_and_policy_contracts",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_8",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L178",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_2_define_scope_finding_verification_summary_and_policy_contracts",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_9",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_2_define_scope_finding_verification_summary_and_policy_contracts",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_10",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L210",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_2_define_scope_finding_verification_summary_and_policy_contracts",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_11",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L241",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_2_define_scope_finding_verification_summary_and_policy_contracts",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_12",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L250",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_2_define_scope_finding_verification_summary_and_policy_contracts",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_13",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L266",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_3_build_scope_creation_and_deterministic_gate_budgets",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_14",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L291",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_3_build_scope_creation_and_deterministic_gate_budgets",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_15",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L308",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_3_build_scope_creation_and_deterministic_gate_budgets",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_16",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L316",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_3_build_scope_creation_and_deterministic_gate_budgets",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_17",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L363",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_3_build_scope_creation_and_deterministic_gate_budgets",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_18",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L372",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_3_build_scope_creation_and_deterministic_gate_budgets",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_19",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L387",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_4_create_run_artifacts_and_policy_decisions",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_20",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L403",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_4_create_run_artifacts_and_policy_decisions",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_21",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L435",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_4_create_run_artifacts_and_policy_decisions",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_22",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L457",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_4_create_run_artifacts_and_policy_decisions",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_23",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L468",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_4_create_run_artifacts_and_policy_decisions",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_24",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L477",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_4_create_run_artifacts_and_policy_decisions",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_25",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L513",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_5_initialize_git_native_agent_files_and_repo_memory",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_26",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L531",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_5_initialize_git_native_agent_files_and_repo_memory",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_27",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L561",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_5_initialize_git_native_agent_files_and_repo_memory",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_28",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L570",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_5_initialize_git_native_agent_files_and_repo_memory",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_29",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L591",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_6_orchestrate_a_report_first_audit_with_an_injected_gitclaw_runner",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_30",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L619",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_6_orchestrate_a_report_first_audit_with_an_injected_gitclaw_runner",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_31",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L640",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_6_orchestrate_a_report_first_audit_with_an_injected_gitclaw_runner",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_32",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L651",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_6_orchestrate_a_report_first_audit_with_an_injected_gitclaw_runner",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_33",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L660",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_6_orchestrate_a_report_first_audit_with_an_injected_gitclaw_runner",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_34",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L677",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_7_add_ci_diff_mode_and_github_actions_policy_gating",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_35",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L697",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_7_add_ci_diff_mode_and_github_actions_policy_gating",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_36",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L717",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_7_add_ci_diff_mode_and_github_actions_policy_gating",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_37",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L750",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_7_add_ci_diff_mode_and_github_actions_policy_gating",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_38",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L760",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_7_add_ci_diff_mode_and_github_actions_policy_gating",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_39",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L781",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_8_add_graphify_search_and_memory_gate_integration",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_40",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L794",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_8_add_graphify_search_and_memory_gate_integration",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_41",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L810",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_8_add_graphify_search_and_memory_gate_integration",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_42",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L839",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_8_add_graphify_search_and_memory_gate_integration",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_43",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L848",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_8_add_graphify_search_and_memory_gate_integration",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_44",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L870",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_9_build_the_seeded_eval_fixture_and_eval_command",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_45",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L895",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_9_build_the_seeded_eval_fixture_and_eval_command",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_46",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L927",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_9_build_the_seeded_eval_fixture_and_eval_command",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_47",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L937",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_9_build_the_seeded_eval_fixture_and_eval_command",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_48",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L946",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_9_build_the_seeded_eval_fixture_and_eval_command",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_49",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L963",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_10_finish_reports_docs_and_reproducible_demo_path",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_50",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L986",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_10_finish_reports_docs_and_reproducible_demo_path",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_51",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L1019",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_10_finish_reports_docs_and_reproducible_demo_path",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_52",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L1031",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_10_finish_reports_docs_and_reproducible_demo_path",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_53",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/plans/2026-05-22-clawitup-audit-gate-implementation.md",
+      "source_location": "L1039",
+      "weight": 1.0,
+      "source": "plans_2026_05_22_clawitup_audit_gate_implementation_task_10_finish_reports_docs_and_reproducible_demo_path",
+      "target": "plans_2026_05_22_clawitup_audit_gate_implementation_codeblock_54",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "f8b22f0f849bc3c890cd689b5fd1a7ed855bae6f"
+}

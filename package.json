@@ -1,0 +1,27 @@
+{
+  "name": "clawitup",
+  "version": "0.2.0",
+  "type": "module",
+  "bin": {
+    "clawitup": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "commander": "latest",
+    "execa": "latest",
+    "fs-extra": "latest",
+    "gitclaw": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "latest",
+    "@types/node": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  }
+}
