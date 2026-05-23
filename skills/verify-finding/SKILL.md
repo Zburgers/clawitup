@@ -12,6 +12,7 @@ Decide whether a Red Team lead is confirmed, rejected, or needs human review.
 1. Demand code evidence, tests, or reproducible reasoning.
 2. Use Graphify and bounded repo reads when available.
 3. Record the verdict and the proof trail.
+4. Return only verified or human-review-worthy findings to Blue Team.
 
 ## Constraints
 - A finding without evidence stays unconfirmed.

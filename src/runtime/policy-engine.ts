@@ -20,6 +20,10 @@ function needsHumanReview(finding: VerifiedFinding): boolean {
   return finding.status === "NEEDS_HUMAN_REVIEW";
 }
 
+function isConfirmedNonBlocking(finding: VerifiedFinding): boolean {
+  return finding.status === "CONFIRMED" && finding.severity !== "high" && finding.severity !== "critical";
+}
+
 export function evaluatePolicy(input: PolicyInput): PolicyResult {
   if (!input.filter_completed || !input.required_artifacts_valid) {
     return {
@@ -43,6 +47,15 @@ export function evaluatePolicy(input: PolicyInput): PolicyResult {
     return {
       result: "WARN",
       reasons: ["finding needs human review before shipping"],
+      blocking_finding_ids: []
+    };
+  }
+
+  const confirmedNonBlocking = input.verified_findings.find(isConfirmedNonBlocking);
+  if (confirmedNonBlocking) {
+    return {
+      result: "WARN",
+      reasons: ["confirmed non-blocking finding requires remediation follow-up"],
       blocking_finding_ids: []
     };
   }
