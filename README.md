@@ -1,78 +1,210 @@
 # ClawItUp
 
-ClawItUp is a **git-native audit gate** built on top of the **GitAgent/Gitclaw framework**. The MVP is a small TypeScript CLI that will grow into a report-first Red Team / Filter / Blue Team workflow.
+ClawItUp is a Git-native adversarial audit gate built on the GitAgent/Gitclaw runtime and SDK.
 
-> 🚀 **Built for the Lyzr.ai Hiring Challenge** — using the GitAgent protocol to create an autonomous agent framework for security audits.
+It is designed to run a report-first pipeline:
 
-## About GitAgent/Gitclaw
-
-This project uses **[GitAgent](https://github.com/open-gitagent/gitagent)** (now called **Gitclaw**), a git-native AI agent framework where:
-- Your agent lives inside a git repository
-- Identity, rules, memory, tools, and skills are version-controlled files
-- The agent's entire state is auditable and forkable
-- Perfect for building domain-specific agents (security, compliance, analysis)
-
-**Gitclaw** enables us to:
-✅ Version-control audit policies  
-✅ Fork audits for different domains  
-✅ Track agent decisions and reasoning  
-✅ Share reproducible audit workflows  
-
-See: https://github.com/open-gitagent/gitagent
-
----
-
-## Current MVP Shape
-
-The implementation is intentionally narrow:
-
-```bash
-clawitup init       # Initialize audit workspace
-clawitup audit      # Run audits on code
-clawitup status     # Show audit status
-clawitup report     # Generate audit reports
-clawitup memory     # Access agent memory
-clawitup eval       # Run evaluation fixtures
+```txt
+bounded scope -> orchestrator -> red team -> filter -> blue team -> ship report -> policy
 ```
 
-## MVP Commands
+The CLI orchestrates deterministic contracts and artifacts. Gitclaw provides the live agent runtime and tool execution.
 
+## Release
+
+- Current release: `v1.0.0`
+- Runtime target: Node.js `22+`
+- Upstream runtime reference: <https://github.com/open-gitagent/gitagent>
+
+## Runtime Shape
+
+`clawitup init` configures the current git repository with a repo-native agent layout:
+
+```txt
+agent.yaml
+SOUL.md
+RULES.md
+DUTIES.md
+skills/
+tools/
+hooks/
+workflows/
+memory/
+runs/
+.github/workflows/clawitup-audit.yml
+```
+
+## How ClawItUp Uses Gitclaw SDK
+
+ClawItUp uses SDK-level calls from `gitclaw` in the runtime layer:
+
+- `loadAgent(dir, model?, env?)` to resolve repo agent config and workflow/skill metadata.
+- `query(options)` to execute each audit stage with live streaming messages.
+
+Key implementation points:
+
+- [gitclaw-runner.ts](/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/gitclaw-runner.ts)
+- [audit-runner.ts](/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/audit-runner.ts)
+- [audit-status.ts](/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/audit-status.ts)
+
+The runtime streams and captures:
+
+- phase start/end
+- assistant deltas
+- tool calls/results
+- stage-level assistant output
+- explicit stage errors
+
+## Skills Used In The Audit Workflow
+
+Default stage-to-skill mapping:
+
+1. `orchestrator` -> `orchestrate-audit`
+2. `red-team` -> `red-team-audit`
+3. `filter` -> `verify-finding`
+4. `blue-team` -> `blue-team-remediation`
+5. `ship-report` -> `generate-ship-report`
+
+Workflow file:
+
+- [adversarial-audit.yaml](/home/naki/Desktop/itsthatnewshit/clawitup/workflows/adversarial-audit.yaml)
+
+## Install
+
+From this ClawItUp checkout:
+
+```bash
+./install.sh /absolute/path/to/target-git-repo
+```
+
+Installer behavior:
+
+1. Verifies target is a git repository.
+2. Installs dependencies and builds local CLI.
+3. Links `clawitup` locally.
+4. Runs `clawitup init` in the target repo.
+5. Prints next-step commands.
+
+Manual development install:
+
+```bash
+npm install
+npm run build
+npm link
+cd /absolute/path/to/target-git-repo
+clawitup init
+```
+
+## Model And Provider Configuration
+
+ClawItUp model routing is controlled by `agent.yaml` using `provider:model-id` strings.
+
+Example:
+
+```yaml
+model:
+  preferred: "openrouter:openai/gpt-oss-120b:free"
+  fallback:
+    - "openai:gpt-4o-mini"
+    - "anthropic:claude-sonnet-4-5-20250929"
+```
+
+Set the environment variable matching your selected provider:
+
+| Provider | Environment variable(s) |
+|---|---|
+| OpenAI | `OPENAI_API_KEY` |
+| OpenRouter | `OPENROUTER_API_KEY` |
+| Anthropic | `ANTHROPIC_API_KEY` or `ANTHROPIC_OAUTH_TOKEN` |
+| Google | `GOOGLE_API_KEY` |
+| Mistral | `MISTRAL_API_KEY` |
+| Groq | `GROQ_API_KEY` |
+| xAI | `XAI_API_KEY` |
+
+Notes:
+
+- If `model` is omitted at SDK call-site, ClawItUp defers model selection to `agent.yaml`.
+- If `model` is passed, ClawItUp forwards it unchanged.
+
+## Running The CLI
+
+Local scope audit:
+
+```bash
+clawitup audit --scope auth
+```
+
+Task-file scoped audit:
+
+```bash
+clawitup audit --task tasks/auth-audit.md
+```
+
+CI diff audit:
+
+```bash
+clawitup audit --ci
+```
+
+Status/report:
+
+```bash
+clawitup status
+clawitup report
+clawitup report --run <run-id>
+clawitup memory show
+```
+
+## Live TUI Output
+
+`clawitup audit` now prints live progress so runs do not appear hung.
+
+You will see:
+
+- run header (`repo`, `branch`, `commit`, `model`, mode/scope)
+- phase transitions
+- streaming assistant/tool activity per phase
+- final policy + artifact path summary
+
+## Output Artifacts
+
+Each run writes:
+
+```txt
+runs/<run-id>/
+  task-context.json
+  scope-contract.json
+  gate-logs.jsonl
+  red-team-findings.json
+  verification-output.json
+  blue-team-handoff.md
+  final-ship-report.md
+  policy-result.json
+  summary.json
+```
+
+Example real run in `mdview`:
+
+- [runs/20260523170801996](/home/naki/Desktop/itsthatnewshit/mdview/runs/20260523170801996)
+- [red-team-findings.json](/home/naki/Desktop/itsthatnewshit/mdview/runs/20260523170801996/red-team-findings.json)
+- [verification-output.json](/home/naki/Desktop/itsthatnewshit/mdview/runs/20260523170801996/verification-output.json)
+- [final-ship-report.md](/home/naki/Desktop/itsthatnewshit/mdview/runs/20260523170801996/final-ship-report.md)
+
+## Testing On Real Repositories
+
+Recommended flow:
+
+1. Initialize target repo:
 ```bash
 clawitup init
-clawitup audit --scope auth
-clawitup audit --ci
-clawitup eval examples/evals/auth-boundary.yaml
 ```
-
-## Project Structure
-
+2. Choose bounded area first:
+```bash
+clawitup audit --scope src/lib
 ```
-clawitup/
-├── .gitagent/           # GitAgent protocol files (agent identity)
-├── src/                 # TypeScript CLI implementation
-├── tools/               # Custom audit tools
-├── skills/              # Reusable audit patterns
-├── memory/              # Agent memory (version-controlled)
-├── examples/            # Audit examples and evals
-├── tests/               # Test suite
-├── docs/                # Documentation
-└── workflows/           # GitHub Actions workflows
-```
-
-## What This Repo Is For
-
-- A local CLI harness in TypeScript for running Gitclaw audits
-- Deterministic audit contracts and report artifacts
-- Scoped local and CI diff audits
-- Git-native memory and graph-aware context (roadmap)
-- Reusable audit patterns as Gitclaw skills
-- Version-controlled audit policies and SOD rules
-
-## Requirements
-
-- **Gitclaw/GitAgent** — Download from https://github.com/open-gitagent/gitagent
-- Node.js 18+
-- npm or yarn
+3. Inspect artifacts under `runs/<run-id>/`.
+4. Run `clawitup report --run <run-id>`.
+5. For CI validation, open a PR and let `.github/workflows/clawitup-audit.yml` run `clawitup audit --ci`.
 
 ## Development
 
@@ -83,15 +215,16 @@ npm run typecheck
 npm run build
 ```
 
-## Next Steps
+## Out Of Scope (v1.0.0)
 
-- [ ] Integrate with Gitclaw runtime
-- [ ] Build custom audit tools
-- [ ] Create evaluation evals
-- [ ] Document audit patterns
-- [ ] Set up CI/CD workflows
+The following are intentionally not shipped in `v1.0.0`:
 
----
+- automatic patch application as default behavior
+- automatic issue/PR creation
+- Slack/Discord integrations
+- dashboard UI
+- fully parallel multi-agent branch execution
+- database-backed memory system
+- whole-repo unbounded audit mode by default
+- production-grade vulnerability scanner claims
 
-**Status:** Work in progress for Lyzr.ai hiring challenge  
-**Framework:** [Gitclaw/GitAgent Protocol](https://github.com/open-gitagent/gitagent)

@@ -1,4 +1,4 @@
-# ClawItUp v0.2 - Git-Native Red Team / Filter / Blue Team Audit Gate
+# ClawItUp v1.0 - Git-Native Red Team / Filter / Blue Team Audit Gate
 
 **Status:** Build-ready MVP spec  
 **Primary goal:** Ship a focused GitAgent/GitClaw-compatible adversarial audit gate that runs locally and in GitHub Actions, not a giant autonomous security platform.  
@@ -155,7 +155,7 @@ The MVP is **report-first and scoped by default**, not auto-fix-first.
 
 ### MVP should not ship yet
 
-These are intentionally out of scope for v0.1/v0.2:
+These are intentionally out of scope for v1.0:
 
 - automatic PR creation,
 - automatic GitHub issue creation,
@@ -199,6 +199,7 @@ Expected behavior:
 - create ClawItUp/GitAgent-compatible directories if missing,
 - create baseline `agent.yaml`, `SOUL.md`, `RULES.md`, `DUTIES.md`, and `AGENTS.md`,
 - create `skills/`, `tools/`, `hooks/`, `workflows/`, `memory/`, and `runs/`,
+- create `.github/workflows/clawitup-audit.yml` in the target repository so CI uses the same CLI after repo configuration,
 - detect Graphify,
 - attempt to generate or refresh `graphify-out/`,
 - confirm whether `graphify-out/GRAPH_REPORT.md` and `graphify-out/graph.json` exist,
@@ -261,7 +262,7 @@ Audit my whole monorepo for everything.
 
 ### 5.3 Run a change-aware shipping gate
 
-The GitHub Actions path should invoke the same CLI rather than reimplement audit logic in workflow YAML.
+The GitHub Actions path should be configured into the target repository by the CLI and invoke the same CLI rather than reimplement audit logic in workflow YAML.
 
 ```bash
 clawitup audit --ci
@@ -821,7 +822,7 @@ GitHub PR or push
   -> surface policy result as the workflow result
 ```
 
-The workflow should be change-aware, not a broad whole-repo audit on every change. A later Action iteration may add a PR check summary or comment, but the first workflow should prove that the CLI can gate shipping from verified policy outcomes.
+The workflow should be installed in the target repository by the CLI configuration step and stay change-aware, not a broad whole-repo audit on every change. A later Action iteration may add a PR check summary or comment, but the first workflow should prove that the CLI can gate shipping from verified policy outcomes.
 
 ### 10.6 Safety hooks
 
