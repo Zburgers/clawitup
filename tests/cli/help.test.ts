@@ -10,4 +10,13 @@ describe("clawitup cli", () => {
       expect.arrayContaining(["init", "audit", "status", "report", "memory", "eval"])
     );
   });
+
+  it("exposes CI audit and report readers", () => {
+    const cli = buildCli();
+    const audit = cli.commands.find((command) => command.name() === "audit");
+    const memory = cli.commands.find((command) => command.name() === "memory");
+
+    expect(audit?.options.map((option) => option.long)).toContain("--ci");
+    expect(memory?.commands.map((command) => command.name())).toContain("show");
+  });
 });

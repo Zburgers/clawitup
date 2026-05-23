@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { scoreEval } from "../../src/runtime/eval-runner.js";
-import { runEval } from "../../src/runtime/eval-runner.js";
+import { runEval, scoreEval } from "../../src/runtime/eval-runner.js";
 
 describe("eval scoring", () => {
   it("requires a false-positive rejection and policy result", () => {

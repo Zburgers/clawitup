@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { INIT_TEMPLATE_FILES, type TemplateFile } from "../runtime/templates.js";
@@ -51,7 +52,7 @@ export async function runInit(cwd = process.cwd()): Promise<InitRunResult> {
       skipped.push(write.path);
       continue;
     } catch {
-      await fs.writeFile(write.path, write.content, "utf8");
+      await fs.writeFile(write.path, await readTemplateContent(write), "utf8");
       created.push(write.path);
     }
   }
@@ -63,6 +64,7 @@ export async function runInit(cwd = process.cwd()): Promise<InitRunResult> {
 
   console.log("[clawitup:init] Git repository detected");
   console.log("[clawitup:init] GitAgent/GitClaw structure initialized");
+  console.log("[clawitup:init] GitHub Actions audit workflow configured");
   console.log("[clawitup:init] Memory files initialized");
   console.log("[clawitup:init] Checking Graphify");
   console.log(
@@ -90,4 +92,26 @@ async function fileExists(filePath: string): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+async function readTemplateContent(write: TemplateFile): Promise<string> {
+  if (!write.sourceAsset) {
+    return write.content;
+  }
+
+  const initDir = path.dirname(fileURLToPath(import.meta.url));
+  const candidates = [
+    path.resolve(initDir, "../..", write.sourceAsset),
+    path.resolve(initDir, "../../..", write.sourceAsset)
+  ];
+
+  for (const candidate of candidates) {
+    try {
+      return await fs.readFile(candidate, "utf8");
+    } catch {
+      // Source and built package layouts use different roots.
+    }
+  }
+
+  throw new Error(`[clawitup:init] missing bundled asset ${write.sourceAsset}`);
 }

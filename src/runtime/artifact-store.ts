@@ -1,3 +1,4 @@
+import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 
 export type RunLayout = {
@@ -28,4 +29,19 @@ export function createRunLayout(baseDir: string, runId: string): RunLayout {
     policyResult: join(runRoot, "policy-result.json"),
     summary: join(runRoot, "summary.json")
   };
+}
+
+export async function latestRunId(baseDir: string): Promise<string> {
+  const entries = await readdir(join(baseDir, "runs"), { withFileTypes: true });
+  const runIds = entries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort()
+    .reverse();
+
+  if (!runIds[0]) {
+    throw new Error(`[clawitup:runs] no audit runs found under ${join(baseDir, "runs")}`);
+  }
+
+  return runIds[0];
 }

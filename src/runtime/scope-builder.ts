@@ -42,6 +42,18 @@ export function buildLocalScopeContract(scope: string): ScopeContract {
   };
 }
 
+export function buildTaskScopeContract(taskFile: string): ScopeContract {
+  const primaryScope = [taskFile];
+
+  return {
+    mode: "task_file",
+    primary_scope: primaryScope,
+    risk_lenses: inferRiskLenses(primaryScope),
+    allowed_context_expansion: { ...DEFAULT_EXPANSION_BUDGET },
+    explicitly_out_of_scope: ["scope not justified by task file"]
+  };
+}
+
 export function buildCiScopeContract(changedFiles: string[]): ScopeContract {
   const primaryScope = changedFiles.slice(0, 24);
   const outOfScope = ["whole-repo dependency audit"];

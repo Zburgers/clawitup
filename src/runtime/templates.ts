@@ -1,15 +1,21 @@
 export type TemplateFile = {
   relativePath: string;
   content: string;
+  sourceAsset?: string;
 };
 
 const agentYaml = `spec_version: "0.1.0"
 name: clawitup
-version: "0.2.0"
+version: "1.0.0"
 description: Git-native Red Team / Filter / Blue Team audit gate
+# Model entries use provider:model strings and can mix providers.
+# OpenAI models use OPENAI_API_KEY, OpenRouter uses OPENROUTER_API_KEY,
+# and Anthropic uses ANTHROPIC_API_KEY or ANTHROPIC_OAUTH_TOKEN.
 model:
   preferred: "openai:gpt-4o-mini"
-  fallback: []
+  fallback:
+    - "openrouter:anthropic/claude-sonnet-4.5"
+    - "anthropic:claude-sonnet-4-5-20250929"
 tools:
   - cli
   - read
@@ -19,6 +25,7 @@ runtime:
   max_turns: 50
 skills:
   - orchestrate-audit
+  - run-context-gates
   - red-team-audit
   - verify-finding
   - blue-team-remediation
@@ -69,6 +76,15 @@ const dutiesMd = `# Duties
 - Keep shared and team memory current and reviewable.
 - Produce clear ship reports with policy outcomes.
 - Preserve the repository as the source of truth.
+`;
+
+const agentsMd = `# ClawItUp Agents
+
+- Orchestrator owns scope control and the final run packet.
+- Red Team produces candidate findings but does not make ship decisions.
+- Filter verifies or rejects findings with evidence.
+- Blue Team reads verified findings and writes remediation guidance.
+- Shared memory is repo-level; team memory stays narrow and reviewable.
 `;
 
 const orchestrateSkill = `---
@@ -192,6 +208,36 @@ hooks:
   pre_tool_use: []
 `;
 
+const githubActionYaml = `name: ClawItUp Audit
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      GITHUB_BASE_SHA: \${{ github.event.pull_request.base.sha || github.event.before }}
+      GITHUB_SHA: \${{ github.sha }}
+      OPENAI_API_KEY: \${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npx --yes --package github:Zburgers/clawitup clawitup audit --ci
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: clawitup-runs
+          path: runs/
+`;
+
 const repoProfile = `# Repo Profile
 
 - Repository purpose: Git-native adversarial audit gate.
@@ -267,6 +313,7 @@ export const INIT_TEMPLATE_FILES: TemplateFile[] = [
   { relativePath: "SOUL.md", content: soulMd },
   { relativePath: "RULES.md", content: rulesMd },
   { relativePath: "DUTIES.md", content: dutiesMd },
+  { relativePath: "AGENTS.md", content: agentsMd },
   { relativePath: "skills/orchestrate-audit/SKILL.md", content: orchestrateSkill },
   { relativePath: "skills/red-team-audit/SKILL.md", content: redTeamSkill },
   { relativePath: "skills/verify-finding/SKILL.md", content: verifyFindingSkill },
@@ -274,6 +321,16 @@ export const INIT_TEMPLATE_FILES: TemplateFile[] = [
   { relativePath: "skills/generate-ship-report/SKILL.md", content: shipReportSkill },
   { relativePath: "workflows/adversarial-audit.yaml", content: workflowYaml },
   { relativePath: "hooks/hooks.yaml", content: hooksYaml },
+  { relativePath: "skills/run-context-gates/SKILL.md", content: "", sourceAsset: "skills/run-context-gates/SKILL.md" },
+  { relativePath: "tools/git-diff.yaml", content: "", sourceAsset: "tools/git-diff.yaml" },
+  { relativePath: "tools/git-diff.mjs", content: "", sourceAsset: "tools/git-diff.mjs" },
+  { relativePath: "tools/graphify.yaml", content: "", sourceAsset: "tools/graphify.yaml" },
+  { relativePath: "tools/graphify.mjs", content: "", sourceAsset: "tools/graphify.mjs" },
+  { relativePath: "tools/rg-search.yaml", content: "", sourceAsset: "tools/rg-search.yaml" },
+  { relativePath: "tools/rg-search.mjs", content: "", sourceAsset: "tools/rg-search.mjs" },
+  { relativePath: "tools/run-tests.yaml", content: "", sourceAsset: "tools/run-tests.yaml" },
+  { relativePath: "tools/run-tests.mjs", content: "", sourceAsset: "tools/run-tests.mjs" },
+  { relativePath: ".github/workflows/clawitup-audit.yml", content: githubActionYaml },
   { relativePath: "memory/shared/repo-profile.md", content: repoProfile },
   { relativePath: "memory/shared/risk-register.md", content: riskRegister },
   { relativePath: "memory/shared/false-positive-patterns.md", content: falsePositivePatterns },
@@ -283,5 +340,6 @@ export const INIT_TEMPLATE_FILES: TemplateFile[] = [
   { relativePath: "memory/shared/run-history.md", content: runHistory },
   { relativePath: "memory/teams/red-team.md", content: teamRed },
   { relativePath: "memory/teams/filter.md", content: teamFilter },
-  { relativePath: "memory/teams/blue-team.md", content: teamBlue }
+  { relativePath: "memory/teams/blue-team.md", content: teamBlue },
+  { relativePath: "runs/.gitkeep", content: "" }
 ];
