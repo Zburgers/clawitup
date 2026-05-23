@@ -1,12 +1,20 @@
 {
   "name": "clawitup",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "type": "module",
   "bin": {
-    "clawitup": "./dist/index.js"
+    "clawitup": "./dist/src/index.js"
   },
+  "files": [
+    "dist/src",
+    "README.md",
+    "install.sh",
+    "skills/run-context-gates",
+    "tools"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc -p tsconfig.json --noEmit"
