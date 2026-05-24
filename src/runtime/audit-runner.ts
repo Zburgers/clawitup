@@ -50,6 +50,7 @@ export type AuditStageInput = {
   task?: string;
   findingIds: string[];
   verifiedFindings: Verification[];
+  orchestratorOutput?: AuditStageOutput;
   redTeamReport?: string;
   filterReport?: string;
   redTeamOutput?: AuditStageOutput;
@@ -61,6 +62,8 @@ export type AuditStageOutput = {
   findingIds?: string[];
   verifiedFindingIds?: string[];
   verifiedFindings?: Verification[];
+  goal?: string;
+  hotAreas?: string[];
   report?: string;
   notes?: string;
   assistantOutput?: string;
@@ -121,6 +124,7 @@ export async function runAudit(input: AuditRunInput): Promise<AuditRunResult> {
 
   const runner = input.runner ?? createGitclawStageRunner();
   const stages: AuditStageRun[] = [];
+  let orchestratorOutput: AuditStageOutput | undefined;
   let candidateFindingIds: string[] = [];
   let verifiedFindingIds: string[] = [];
   let verifiedFindings: Verification[] = [];
@@ -141,6 +145,7 @@ export async function runAudit(input: AuditRunInput): Promise<AuditRunResult> {
         input.task,
         findingIds,
         verifiedFindings,
+        orchestratorOutput,
         redTeamOutput,
         filterOutput,
         blueTeamOutput
@@ -151,6 +156,7 @@ export async function runAudit(input: AuditRunInput): Promise<AuditRunResult> {
       task: input.task,
       findingIds,
       verifiedFindings,
+      orchestratorOutput,
       redTeamReport: redTeamOutput?.report,
       filterReport: filterOutput?.report,
       redTeamOutput,
@@ -177,6 +183,10 @@ export async function runAudit(input: AuditRunInput): Promise<AuditRunResult> {
       if (candidateFindingIds.length === 0) {
         candidateFindingIds = extractFindingIdsFromText(output.report ?? output.assistantOutput);
       }
+    }
+
+    if (name === "orchestrator") {
+      orchestratorOutput = output;
     }
 
     if (name === "filter") {
@@ -209,6 +219,7 @@ function buildStagePrompt(
   task: string | undefined,
   findingIds: string[],
   verifiedFindings: Verification[],
+  orchestratorOutput: AuditStageOutput | undefined,
   redTeamOutput: AuditStageOutput | undefined,
   filterOutput: AuditStageOutput | undefined,
   blueTeamOutput: AuditStageOutput | undefined
@@ -234,6 +245,9 @@ function buildStagePrompt(
   if (verifiedFindings.length > 0) {
     context.push(blockForPrompt("verified_findings_json", verifiedFindings, 5000));
   }
+  if (name !== "orchestrator" && orchestratorOutput) {
+    context.push(blockForPrompt("orchestrator_handoff_json", summarizeStageOutput(orchestratorOutput), 5000));
+  }
   if (name === "filter" && redTeamOutput) {
     context.push(blockForPrompt("red_team_handoff_json", summarizeStageOutput(redTeamOutput), 5000));
   }
@@ -246,10 +260,10 @@ function buildStagePrompt(
 
   switch (name) {
     case "orchestrator":
-      context.push("handoff: initialize the report-first pipeline");
+      context.push("handoff: explore the scope, identify hot areas, and produce the task/goal handoff for Red Team");
       return context.join("\n");
     case "red-team":
-      context.push("handoff: generate provisional findings for filter verification");
+      context.push("handoff: use the orchestrator task/goal/hot-area handoff to generate provisional findings for filter verification");
       return context.join("\n");
     case "filter":
       context.push("handoff: verify or reject red-team leads before Blue Team");
@@ -300,6 +314,8 @@ function summarizeStageOutput(output: AuditStageOutput): Record<string, unknown>
     findingIds: output.findingIds,
     verifiedFindingIds: output.verifiedFindingIds,
     verifiedFindings: output.verifiedFindings,
+    goal: output.goal,
+    hotAreas: output.hotAreas,
     report: output.report,
     notes: output.notes,
     assistantOutput: output.assistantOutput

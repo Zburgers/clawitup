@@ -41,6 +41,20 @@ describe("init command", () => {
     expect(workflow?.content).toContain("github:Zburgers/clawitup");
   });
 
+  it("plans guarded red-team and verification skills", () => {
+    const redTeamSkill = planInitWrites("/repo").find((write) =>
+      write.path.endsWith("skills/red-team-audit/SKILL.md")
+    );
+    const verifyFindingSkill = planInitWrites("/repo").find((write) =>
+      write.path.endsWith("skills/verify-finding/SKILL.md")
+    );
+
+    expect(redTeamSkill?.content).toContain("Verify referenced paths and symbols exist");
+    expect(redTeamSkill?.content).toContain("Never invent filenames, functions, line numbers, or code patterns");
+    expect(verifyFindingSkill?.content).toContain("including direct file reads when the claim names files or symbols");
+    expect(verifyFindingSkill?.content).toContain("reject the finding or escalate it to human review");
+  });
+
   it("plans bounded target repo context gates", () => {
     const writes = planInitWrites("/repo").map((write) => write.path);
 

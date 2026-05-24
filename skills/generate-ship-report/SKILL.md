@@ -15,4 +15,5 @@ Summarize the audit outcome in a clear policy-backed report.
 
 ## Constraints
 - The report should be readable without hidden state.
+- Call out whether any stage had to fall back to human review because code could not be directly observed.
 - Keep the ship decision explicit.

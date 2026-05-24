@@ -40,6 +40,8 @@ describe("gitclaw stage runner", () => {
         yield {
           type: "assistant",
           content: JSON.stringify({
+            goal: "Map the scope for audit",
+            hotAreas: ["src/runtime/audit-runner.ts", "src/runtime/gitclaw-runner.ts"],
             report: "Agent config selected from manifest"
           }),
           model: "openai:gpt-4o-mini",
@@ -82,6 +84,19 @@ describe("gitclaw stage runner", () => {
       },
       query: async function* (options) {
         queryModels.push(options.model);
+        yield {
+          type: "tool_use",
+          toolCallId: "call-1",
+          toolName: "read",
+          args: { file_path: "src/runtime/gitclaw-runner.ts" }
+        };
+        yield {
+          type: "tool_result",
+          toolCallId: "call-1",
+          toolName: "read",
+          content: "file contents",
+          isError: false
+        };
         yield {
           type: "assistant",
           content: JSON.stringify({
@@ -132,7 +147,10 @@ describe("gitclaw stage runner", () => {
               format: "yaml",
               type: "flow",
               steps: [
-                { skill: "red-team-audit", prompt: "Produce plausible findings for the scoped change surface with evidence and file references." }
+                {
+                  skill: "red-team-audit",
+                  prompt: "Start from the orchestrator goal and hot areas, then produce plausible findings for the scoped change surface with evidence, direct file observations, and file references that were verified in the repo."
+                }
               ]
             }
           ]
@@ -176,7 +194,7 @@ describe("gitclaw stage runner", () => {
           "skill: red-team-audit",
           "workflow: adversarial-audit",
           "report_first: true",
-          "handoff: generate provisional findings for filter verification"
+          "handoff: use the orchestrator task/goal/hot-area handoff to generate provisional findings for filter verification"
         ].join("\n"),
         scope: "auth"
       })
@@ -184,9 +202,11 @@ describe("gitclaw stage runner", () => {
 
     expect(seenPrompts[0]).toContain("stage: red-team");
     expect(seenPrompts[0]).toContain("skill: red-team-audit");
-    expect(seenPrompts[0]).toContain("handoff: generate provisional findings for filter verification");
+    expect(seenPrompts[0]).toContain("handoff: use the orchestrator task/goal/hot-area handoff to generate provisional findings for filter verification");
     expect(seenAllowedTools[0]).toEqual(["read", "git-diff", "graphify", "rg-search", "run-tests"]);
     expect(seenSuffixes[0]).toContain("Do not write files, save memory, create workspace artifacts, or modify the repository.");
+    expect(seenSuffixes[0]).toContain("Start from the orchestrator goal and hot areas");
+    expect(seenSuffixes[0]).toContain("direct file observations");
     expect(output.findingIds).toEqual(["RT-AUTH-001"]);
     expect(output.assistantOutput).toContain("RT-AUTH-001");
     expect(output.toolActivity).toEqual([
@@ -204,6 +224,109 @@ describe("gitclaw stage runner", () => {
         isError: false
       }
     ]);
+  });
+
+  it("injects file-read requirements into the filter stage prompt", async () => {
+    const seenSuffixes: Array<QueryOptions["systemPromptSuffix"]> = [];
+    const runner = createGitclawStageRunner({
+      dir: "/tmp/clawitup",
+      loadAgent: async () =>
+        ({
+          systemPrompt: "base system prompt",
+          manifest: {
+            tools: ["read", "write"],
+            runtime: { max_turns: 8 }
+          },
+          workflows: [
+            {
+              name: "adversarial-audit",
+              description: "Report-first Red Team / Filter / Blue Team pipeline",
+              filePath: "workflows/adversarial-audit.yaml",
+              format: "yaml",
+              type: "flow",
+              steps: [
+                {
+                  skill: "verify-finding",
+                  prompt: "Verify or reject each finding using code evidence, tests, or reproducible reasoning. If the claimed file or symbol was not directly observed, reject the finding or mark it for human review."
+                }
+              ]
+            }
+          ]
+        }) as never,
+      query: (async function* (options: QueryOptions) {
+        seenSuffixes.push(options.systemPromptSuffix);
+        yield {
+          type: "tool_use",
+          toolCallId: "call-1",
+          toolName: "read",
+          args: { file_path: "src/runtime/gitclaw-runner.ts" }
+        };
+        yield {
+          type: "assistant",
+          content: JSON.stringify({
+            verifiedFindings: [
+              {
+                id: "RT-AUTH-001",
+                status: "CONFIRMED",
+                severity: "medium",
+                reasons: ["direct observation"],
+                evidence: ["src/runtime/gitclaw-runner.ts"]
+              }
+            ],
+            report: "Verified finding"
+          }),
+          model: "openai:gpt-4o-mini",
+          provider: "openai",
+          stopReason: "stop"
+        };
+      }) as NonNullable<GitclawStageRunnerOptions["query"]>
+    });
+
+    await runner(
+      buildStageInput({
+        name: "filter",
+        prompt: "stage: filter\nhandoff: verify or reject red-team leads before Blue Team"
+      })
+    );
+
+    expect(seenSuffixes[0]).toContain("If the claimed file or symbol was not directly observed, reject the finding or mark it for human review.");
+    expect(seenSuffixes[0]).toContain("Return strict JSON only with verified findings");
+  });
+
+  it("rejects red-team findings that never read any files", async () => {
+    const runner = createGitclawStageRunner({
+      loadAgent: async () =>
+        ({
+          systemPrompt: "base system prompt",
+          manifest: {
+            tools: ["read"],
+            runtime: { max_turns: 8 }
+          },
+          workflows: []
+        }) as never,
+      query: (async function* () {
+        yield {
+          type: "assistant",
+          content: JSON.stringify({
+            findingIds: ["RT-AUTH-999"],
+            report: "Candidate finding without file reads"
+          }),
+          model: "openai:gpt-4o-mini",
+          provider: "openai",
+          stopReason: "stop"
+        };
+      }) as NonNullable<GitclawStageRunnerOptions["query"]>
+    });
+
+    const output = await runner(
+      buildStageInput({
+        name: "red-team",
+        prompt: "stage: red-team\nhandoff: use the orchestrator task/goal/hot-area handoff to generate provisional findings for filter verification"
+      })
+    );
+
+    expect(output.error?.kind).toBe("invalid_output");
+    expect(output.notes).toContain("produced candidate findings without reading any files");
   });
 
   it("surfaces an explicit stage error when the assistant response is truncated", async () => {
@@ -240,6 +363,50 @@ describe("gitclaw stage runner", () => {
     expect(output.error?.kind).toBe("incomplete_response");
     expect(output.notes).toContain("gitclaw_error:");
     expect(output.assistantOutput).toBe("partial response");
+  });
+
+  it("rejects filter findings that never read any files", async () => {
+    const runner = createGitclawStageRunner({
+      loadAgent: async () =>
+        ({
+          systemPrompt: "base system prompt",
+          manifest: {
+            tools: ["read"],
+            runtime: { max_turns: 8 }
+          },
+          workflows: []
+        }) as never,
+      query: (async function* () {
+        yield {
+          type: "assistant",
+          content: JSON.stringify({
+            verifiedFindings: [
+              {
+                id: "RT-AUTH-002",
+                status: "CONFIRMED",
+                severity: "medium",
+                reasons: ["needs review"],
+                evidence: ["src/runtime/gitclaw-runner.ts"]
+              }
+            ],
+            report: "Verified finding"
+          }),
+          model: "openai:gpt-4o-mini",
+          provider: "openai",
+          stopReason: "stop"
+        };
+      }) as NonNullable<GitclawStageRunnerOptions["query"]>
+    });
+
+    const output = await runner(
+      buildStageInput({
+        name: "filter",
+        prompt: "stage: filter\nhandoff: verify or reject red-team leads before Blue Team"
+      })
+    );
+
+    expect(output.error?.kind).toBe("invalid_output");
+    expect(output.notes).toContain("verified findings without reading any files");
   });
 
   it("normalizes lowercase verification statuses from model output", async () => {

@@ -114,12 +114,14 @@ Drive the report-first audit pipeline from scope to ship report.
 
 ## Steps
 1. Read the scope and keep it bounded.
-2. Invoke Red Team to generate candidate findings.
+2. Explore the scope, state the audit goal, and identify hot areas for Red Team.
 3. Pass each candidate to verification before Blue Team sees it.
 4. Produce a ship report with explicit policy outcome.
 
 ## Constraints
 - Raw Red Team output is not a ship-blocking signal.
+- Reject or downgrade any lead that cites files, functions, or lines the model did not directly observe.
+- Require file existence checks before a finding can be promoted.
 - Use repository evidence before asking for broader context.
 `;
 
@@ -134,12 +136,16 @@ description: Find plausible findings for a scoped audit
 Find plausible defects, vulnerabilities, regressions, and risky flows.
 
 ## Steps
-1. Inspect the scoped files and nearby context.
-2. Prefer concrete evidence over broad suspicion.
-3. Record each lead with files, lines, and why it matters.
+1. Start from the orchestrator goal and hot areas.
+2. Inspect the scoped files and nearby context.
+3. Verify referenced paths and symbols exist with direct file reads or diffs before naming a finding.
+4. Prefer concrete evidence over broad suspicion.
+5. Record each lead with files, lines, and why it matters.
 
 ## Constraints
 - Findings are provisional until verified.
+- Never invent filenames, functions, line numbers, or code patterns.
+- If a path cannot be verified, omit it or mark it for human review.
 - Do not claim CI failure from raw leads.
 `;
 
@@ -155,11 +161,13 @@ Decide whether a Red Team lead is confirmed, rejected, or needs human review.
 
 ## Steps
 1. Demand code evidence, tests, or reproducible reasoning.
-2. Use Graphify and bounded repo reads when available.
-3. Record the verdict and the proof trail.
+2. Confirm the lead is grounded in code you actually observed, including direct file reads when the claim names files or symbols.
+3. Use Graphify and bounded repo reads when available.
+4. Record the verdict and the proof trail.
 
 ## Constraints
 - A finding without evidence stays unconfirmed.
+- If the referenced code was not directly inspected, reject the finding or escalate it to human review.
 - Filter output decides what can reach Blue Team.
 `;
 
@@ -180,6 +188,7 @@ Turn verified findings into concrete remediation guidance.
 
 ## Constraints
 - Do not expand scope beyond the confirmed issue.
+- Do not restate unverified file paths or symbols as facts.
 - Stay report-first unless the user asks for patching.
 `;
 
@@ -200,6 +209,7 @@ Summarize the audit outcome in a clear policy-backed report.
 
 ## Constraints
 - The report should be readable without hidden state.
+- Call out whether any stage had to fall back to human review because code could not be directly observed.
 - Keep the ship decision explicit.
 `;
 
@@ -207,11 +217,11 @@ const workflowYaml = `name: adversarial-audit
 description: Report-first Red Team / Filter / Blue Team pipeline
 steps:
   - skill: orchestrate-audit
-    prompt: Keep the audit scope bounded, initialize the report-first flow, and choose the next skill.
+    prompt: Keep the audit scope bounded, explore the scope, define the audit goal, identify hot areas, and ensure every promoted lead is grounded in files or symbols that were directly observed.
   - skill: red-team-audit
-    prompt: Produce plausible findings for the scoped change surface with evidence and file references.
+    prompt: Start from the orchestrator goal and hot areas, then produce plausible findings for the scoped change surface with evidence, direct file observations, and file references that were verified in the repo.
   - skill: verify-finding
-    prompt: Verify or reject each finding using code evidence, tests, or reproducible reasoning.
+    prompt: Verify or reject each finding using code evidence, tests, or reproducible reasoning. If the claimed file or symbol was not directly observed, reject the finding or mark it for human review.
   - skill: blue-team-remediation
     prompt: Turn only verified or human-review-worthy findings into the smallest useful remediation guidance.
   - skill: generate-ship-report

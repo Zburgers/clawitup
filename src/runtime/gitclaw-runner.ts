@@ -177,6 +177,8 @@ function parseAuditStageOutput(stage: AuditStageInput, messages: GCMessage[]): A
     const record = parsed as Record<string, unknown>;
     const report = typeof record.report === "string" ? record.report : assistantOutput;
     const notes = typeof record.notes === "string" ? record.notes : undefined;
+    const goal = typeof record.goal === "string" ? record.goal : undefined;
+    const hotAreas = normalizeStringArray(record.hotAreas);
     const findingIds = normalizeFindingIds(record.findingIds);
     const verifiedFindingIds = normalizeFindingIds(record.verifiedFindingIds);
     const verifiedFindings = Array.isArray(record.verifiedFindings)
@@ -187,6 +189,8 @@ function parseAuditStageOutput(stage: AuditStageInput, messages: GCMessage[]): A
       findingIds,
       verifiedFindingIds,
       verifiedFindings,
+      goal,
+      hotAreas,
       report,
       notes,
       assistantOutput,
@@ -236,11 +240,11 @@ function buildStageInstructions(stageName: AuditStageInput["name"], workflowProm
 function stageOutputContract(stageName: AuditStageInput["name"]): string {
   switch (stageName) {
     case "orchestrator":
-      return "Output a concise report. Include notes if you need to explain the plan.";
+      return "Return strict JSON only: {\"goal\": string, \"hotAreas\": string[], \"report\": string, \"notes\"?: string}. Explore the scope, name the audit goal, and list the hot areas the Red Team should inspect next.";
     case "red-team":
-      return "Return strict JSON only: {\"findingIds\": string[], \"report\": string, \"notes\"?: string}. Keep candidate findings provisional and evidence-dense.";
+      return "Return strict JSON only: {\"findingIds\": string[], \"report\": string, \"notes\"?: string, \"observedFiles\"?: string[]}. Keep candidate findings provisional and evidence-dense. If you cannot verify a referenced path exists, omit the lead or mark it for human review.";
     case "filter":
-      return "Return strict JSON only with verified findings: {\"verifiedFindings\": [{\"id\": string, \"status\": string, \"severity\": string, \"reasons\"?: string[], \"evidence\"?: string[]}], \"verifiedFindingIds\"?: string[], \"report\": string, \"notes\"?: string}.";
+      return "Return strict JSON only with verified findings: {\"verifiedFindings\": [{\"id\": string, \"status\": string, \"severity\": string, \"reasons\"?: string[], \"evidence\"?: string[]}], \"verifiedFindingIds\"?: string[], \"report\": string, \"notes\"?: string, \"observedFiles\"?: string[]}. If you did not directly inspect the claimed code, reject the finding or escalate it to human review.";
     case "blue-team":
       return "Use only verified findings and return strict JSON: {\"report\": string, \"notes\"?: string}. Cite the verified evidence you are acting on.";
     case "ship-report":
@@ -321,6 +325,13 @@ function collectToolActivity(messages: GCMessage[]): AuditStageToolActivity[] | 
 function validateStageOutput(stageName: AuditStageInput["name"], output: AuditStageOutput): AuditStageError | undefined {
   switch (stageName) {
     case "orchestrator":
+      if (!hasText(output.report) || !hasText(output.goal) || !hasNonEmptyArray(output.hotAreas)) {
+        return {
+          stage: stageName,
+          kind: "invalid_output",
+          message: "orchestrator stage must return a goal, hot areas, and a report"
+        };
+      }
       return undefined;
     case "red-team":
       if (!hasText(output.report) && !hasNonEmptyArray(output.findingIds)) {
@@ -330,6 +341,13 @@ function validateStageOutput(stageName: AuditStageInput["name"], output: AuditSt
           message: "red-team stage returned no report or candidate finding ids"
         };
       }
+      if ((hasText(output.report) || hasNonEmptyArray(output.findingIds)) && !hasToolUse(output, "read")) {
+        return {
+          stage: stageName,
+          kind: "invalid_output",
+          message: "red-team stage produced candidate findings without reading any files"
+        };
+      }
       return undefined;
     case "filter":
       if (!hasText(output.report) && !hasNonEmptyArray(output.verifiedFindingIds) && !hasNonEmptyArray(output.verifiedFindings)) {
@@ -337,6 +355,13 @@ function validateStageOutput(stageName: AuditStageInput["name"], output: AuditSt
           stage: stageName,
           kind: "invalid_output",
           message: "filter stage returned no verified findings or report"
+        };
+      }
+      if ((hasText(output.report) || hasNonEmptyArray(output.verifiedFindingIds) || hasNonEmptyArray(output.verifiedFindings)) && !hasToolUse(output, "read")) {
+        return {
+          stage: stageName,
+          kind: "invalid_output",
+          message: "filter stage verified findings without reading any files"
         };
       }
       return undefined;
@@ -447,6 +472,15 @@ function normalizeFindingIds(value: unknown): string[] | undefined {
   return ids.length > 0 ? ids : undefined;
 }
 
+function normalizeStringArray(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  const values = value.filter((entry): entry is string => typeof entry === "string" && entry.trim().length > 0);
+  return values.length > 0 ? values : undefined;
+}
+
 function hasText(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
 }
@@ -457,4 +491,12 @@ function hasNonEmptyArray<T>(value: T[] | undefined): boolean {
 
 function joinNotes(existing: string | undefined, next: string): string {
   return existing && existing.trim().length > 0 ? `${existing}\n${next}` : next;
+}
+
+function hasToolUse(output: AuditStageOutput, toolName: string): boolean {
+  return Boolean(
+    output.toolActivity?.some(
+      (activity) => activity.type === "tool_use" && activity.toolName === toolName
+    )
+  );
 }
