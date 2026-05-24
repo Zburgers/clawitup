@@ -4,6 +4,18 @@ import { createGitclawStageRunner, type GitclawStageRunnerOptions } from "../../
 import type { AuditStageInput } from "../../src/runtime/audit-runner.js";
 import type { QueryOptions } from "gitclaw";
 
+function buildStageInput(overrides: Partial<AuditStageInput>): AuditStageInput {
+  return {
+    name: "orchestrator",
+    prompt: "stage: orchestrator",
+    index: 1,
+    total: 5,
+    findingIds: [],
+    verifiedFindings: [],
+    ...overrides
+  };
+}
+
 describe("gitclaw stage runner", () => {
   it("leaves model selection to agent.yaml when no override is passed", async () => {
     const loadAgentCalls: Array<{ dir: string; model: string | undefined; env: string | undefined }> = [];
@@ -37,11 +49,7 @@ describe("gitclaw stage runner", () => {
       }
     });
 
-    await runner({
-      name: "orchestrator",
-      prompt: "stage: orchestrator",
-      findingIds: []
-    } satisfies AuditStageInput);
+    await runner(buildStageInput({}));
 
     expect(loadAgentCalls).toEqual([
       {
@@ -86,11 +94,12 @@ describe("gitclaw stage runner", () => {
       }
     });
 
-    await runner({
-      name: "red-team",
-      prompt: "stage: red-team",
-      findingIds: []
-    } satisfies AuditStageInput);
+    await runner(
+      buildStageInput({
+        name: "red-team",
+        prompt: "stage: red-team"
+      })
+    );
 
     expect(loadAgentCalls).toEqual([
       {
@@ -104,6 +113,8 @@ describe("gitclaw stage runner", () => {
 
   it("captures assistant output and tool activity from the GitClaw stream", async () => {
     const seenPrompts: string[] = [];
+    const seenAllowedTools: Array<QueryOptions["allowedTools"]> = [];
+    const seenSuffixes: Array<QueryOptions["systemPromptSuffix"]> = [];
     const runner = createGitclawStageRunner({
       dir: "/tmp/clawitup",
       loadAgent: async () =>
@@ -128,6 +139,8 @@ describe("gitclaw stage runner", () => {
         }) as never,
       query: (async function* (options: QueryOptions) {
         seenPrompts.push(options.prompt as string);
+        seenAllowedTools.push(options.allowedTools);
+        seenSuffixes.push(options.systemPromptSuffix);
         yield {
           type: "tool_use",
           toolCallId: "call-1",
@@ -155,15 +168,25 @@ describe("gitclaw stage runner", () => {
       }) as NonNullable<GitclawStageRunnerOptions["query"]>
     });
 
-    const output = await runner({
-      name: "red-team",
-      prompt: "stage: red-team",
-      scope: "auth",
-      findingIds: []
-    } satisfies AuditStageInput);
+    const output = await runner(
+      buildStageInput({
+        name: "red-team",
+        prompt: [
+          "stage: red-team",
+          "skill: red-team-audit",
+          "workflow: adversarial-audit",
+          "report_first: true",
+          "handoff: generate provisional findings for filter verification"
+        ].join("\n"),
+        scope: "auth"
+      })
+    );
 
     expect(seenPrompts[0]).toContain("stage: red-team");
     expect(seenPrompts[0]).toContain("skill: red-team-audit");
+    expect(seenPrompts[0]).toContain("handoff: generate provisional findings for filter verification");
+    expect(seenAllowedTools[0]).toEqual(["read", "git-diff", "graphify", "rg-search", "run-tests"]);
+    expect(seenSuffixes[0]).toContain("Do not write files, save memory, create workspace artifacts, or modify the repository.");
     expect(output.findingIds).toEqual(["RT-AUTH-001"]);
     expect(output.assistantOutput).toContain("RT-AUTH-001");
     expect(output.toolActivity).toEqual([
@@ -206,15 +229,76 @@ describe("gitclaw stage runner", () => {
       }) as NonNullable<GitclawStageRunnerOptions["query"]>
     });
 
-    const output = await runner({
-      name: "ship-report",
-      prompt: "stage: ship-report",
-      scope: "auth",
-      findingIds: []
-    } satisfies AuditStageInput);
+    const output = await runner(
+      buildStageInput({
+        name: "ship-report",
+        prompt: "stage: ship-report",
+        scope: "auth"
+      })
+    );
 
     expect(output.error?.kind).toBe("incomplete_response");
     expect(output.notes).toContain("gitclaw_error:");
     expect(output.assistantOutput).toBe("partial response");
+  });
+
+  it("normalizes lowercase verification statuses from model output", async () => {
+    const runner = createGitclawStageRunner({
+      loadAgent: async () =>
+        ({
+          systemPrompt: "base system prompt",
+          manifest: {
+            tools: ["read"],
+            runtime: { max_turns: 8 }
+          },
+          workflows: []
+        }) as never,
+      query: (async function* () {
+        yield {
+          type: "assistant",
+          content: JSON.stringify({
+            verifiedFindings: [
+              {
+                id: "F003",
+                status: "confirmed",
+                severity: "medium"
+              },
+              {
+                id: "F001",
+                status: "rejected",
+                severity: "none"
+              }
+            ],
+            verifiedFindingIds: ["F003"],
+            report: "Filter complete"
+          }),
+          model: "openrouter:z-ai/glm-4.5-air:free",
+          provider: "openrouter",
+          stopReason: "stop"
+        };
+      }) as NonNullable<GitclawStageRunnerOptions["query"]>
+    });
+
+    const output = await runner(
+      buildStageInput({
+        name: "filter",
+        prompt: "stage: filter",
+        scope: "src/lib",
+        findingIds: ["F001", "F003"]
+      })
+    );
+
+    expect(output.verifiedFindings).toEqual([
+      {
+        id: "F003",
+        status: "CONFIRMED",
+        severity: "medium"
+      },
+      {
+        id: "F001",
+        status: "REJECTED_FALSE_POSITIVE",
+        severity: "low"
+      }
+    ]);
   });
 });

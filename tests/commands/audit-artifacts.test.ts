@@ -45,4 +45,75 @@ describe("audit command artifacts", () => {
     expect(summary.policy_result).toBe("WARN");
     expect(policy.result).toBe("WARN");
   });
+
+  it("warns when the filter confirms a finding with lowercase model enums", async () => {
+    const cwd = await fs.mkdtemp(path.join(os.tmpdir(), "clawitup-audit-"));
+    const result = await runAuditCommand(
+      {
+        ci: true,
+        cwd,
+        changedFiles: ["src/lib/highlight.ts"]
+      },
+      async (stage) => {
+        if (stage.name === "filter") {
+          return {
+            verifiedFindings: [
+              {
+                id: "F003",
+                status: "confirmed",
+                severity: "medium"
+              }
+            ] as any
+          };
+        }
+
+        if (stage.name === "ship-report") {
+          return { report: "# Ship Report\n\nConfirmed non-blocking finding." };
+        }
+
+        return {};
+      }
+    );
+
+    expect(result.policy.result).toBe("WARN");
+    expect(result.summary.confirmed).toBe(1);
+    expect(result.verifiedFindings).toEqual([
+      {
+        id: "F003",
+        status: "CONFIRMED",
+        severity: "medium"
+      }
+    ]);
+  });
+
+  it("writes a fallback ship report when the ship-report stage returns an empty string", async () => {
+    const cwd = await fs.mkdtemp(path.join(os.tmpdir(), "clawitup-audit-"));
+    const result = await runAuditCommand(
+      {
+        ci: true,
+        cwd,
+        changedFiles: ["src/lib/highlight.ts"]
+      },
+      async (stage) => {
+        if (stage.name === "ship-report") {
+          return {
+            report: "",
+            notes: "gitclaw_error: provider rate limited",
+            error: {
+              stage: "ship-report",
+              kind: "runner_error",
+              message: "provider rate limited"
+            }
+          };
+        }
+
+        return {};
+      }
+    );
+
+    const shipReport = await fs.readFile(result.layout.finalShipReport, "utf8");
+
+    expect(shipReport).toContain("# ClawItUp Ship Report");
+    expect(shipReport).toContain("provider rate limited");
+  });
 });

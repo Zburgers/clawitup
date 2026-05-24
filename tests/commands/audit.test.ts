@@ -3,19 +3,40 @@ import { runAudit, type AuditStageInput } from "../../src/runtime/audit-runner.j
 
 describe("audit runner", () => {
   it("passes only verified findings into the blue-team stage", async () => {
-    const stages: string[] = [];
+    const blueTeamStageInputs: AuditStageInput[] = [];
     const result = await runAudit({
       scope: "auth",
       runner: async (stage: AuditStageInput) => {
-        stages.push(stage.name);
+        if (stage.name === "blue-team") {
+          blueTeamStageInputs.push(stage);
+        }
+
         return stage.name === "filter"
-          ? { verifiedFindingIds: ["RT-AUTH-001"] }
+          ? {
+              verifiedFindingIds: ["RT-AUTH-001"],
+              verifiedFindings: [
+                {
+                  id: "RT-AUTH-001",
+                  status: "CONFIRMED",
+                  severity: "high",
+                  evidence: ["src/auth.ts:12"]
+                }
+              ],
+              report: "Confirmed auth failure"
+            }
           : {};
       }
     });
 
-    expect(stages).toEqual(["orchestrator", "red-team", "filter", "blue-team", "ship-report"]);
     expect(result.blueTeamInput.findingIds).toEqual(["RT-AUTH-001"]);
+    expect(blueTeamStageInputs[0]?.verifiedFindings).toEqual([
+      {
+        id: "RT-AUTH-001",
+        status: "CONFIRMED",
+        severity: "high",
+        evidence: ["src/auth.ts:12"]
+      }
+    ]);
   });
 
   it("records explicit stage errors when a stage runner throws", async () => {

@@ -1,46 +1,46 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { execFile } from "node:child_process";
-import { promisify } from "node:util";
-import { INIT_TEMPLATE_FILES, type TemplateFile } from "../runtime/templates.js";
-
-const execFileAsync = promisify(execFile);
+import { getInitTemplateFiles, type TemplateFile } from "../runtime/templates.js";
+import { getGitRepoRoot, type ClawitupLayoutMode } from "../runtime/layout.js";
 
 export type InitWritePlan = TemplateFile & {
   path: string;
 };
 
+export type InitOptions = {
+  layout?: ClawitupLayoutMode;
+  preferredModel?: string;
+  force?: boolean;
+};
+
 export type InitRunResult = {
   repoRoot: string;
+  layout: ClawitupLayoutMode;
   created: string[];
   skipped: string[];
   graphifyReportExists: boolean;
   graphifyGraphExists: boolean;
 };
 
-async function getGitRepoRoot(cwd: string): Promise<string> {
-  try {
-    const { stdout } = await execFileAsync("git", ["rev-parse", "--show-toplevel"], {
-      cwd
-    });
-
-    return stdout.trim();
-  } catch {
-    throw new Error(`[clawitup:init] ${cwd} is not a git repository`);
-  }
-}
-
-export function planInitWrites(repoRoot: string): InitWritePlan[] {
-  return INIT_TEMPLATE_FILES.map((file) => ({
+export function planInitWrites(
+  repoRoot: string,
+  layout: ClawitupLayoutMode = "repo",
+  preferredModel?: string
+): InitWritePlan[] {
+  return getInitTemplateFiles(layout, { preferredModel }).map((file) => ({
     ...file,
     path: path.join(repoRoot, file.relativePath)
   }));
 }
 
-export async function runInit(cwd = process.cwd()): Promise<InitRunResult> {
+export async function runInit(
+  cwd = process.cwd(),
+  options: InitOptions = {}
+): Promise<InitRunResult> {
+  const layout = options.layout ?? "repo";
   const repoRoot = await getGitRepoRoot(cwd);
-  const writes = planInitWrites(repoRoot);
+  const writes = planInitWrites(repoRoot, layout, options.preferredModel);
   const created: string[] = [];
   const skipped: string[] = [];
 
@@ -49,12 +49,16 @@ export async function runInit(cwd = process.cwd()): Promise<InitRunResult> {
 
     try {
       await fs.access(write.path);
-      skipped.push(write.path);
-      continue;
+      if (!options.force) {
+        skipped.push(write.path);
+        continue;
+      }
     } catch {
-      await fs.writeFile(write.path, await readTemplateContent(write), "utf8");
-      created.push(write.path);
+      // Fall through and create the file.
     }
+
+    await fs.writeFile(write.path, await readTemplateContent(write), "utf8");
+    created.push(write.path);
   }
 
   const graphifyReportPath = path.join(repoRoot, "graphify-out/GRAPH_REPORT.md");
@@ -63,7 +67,10 @@ export async function runInit(cwd = process.cwd()): Promise<InitRunResult> {
   const graphifyGraphExists = await fileExists(graphifyGraphPath);
 
   console.log("[clawitup:init] Git repository detected");
-  console.log("[clawitup:init] GitAgent/GitClaw structure initialized");
+  console.log(
+    `[clawitup:init] GitAgent/GitClaw structure initialized (${layout === "hidden" ? ".clawitup" : "repo-root"} layout)`
+  );
+  console.log(`[clawitup:init] scaffold files written=${created.length} skipped=${skipped.length}`);
   console.log("[clawitup:init] GitHub Actions audit workflow configured");
   console.log("[clawitup:init] Memory files initialized");
   console.log("[clawitup:init] Checking Graphify");
@@ -78,6 +85,7 @@ export async function runInit(cwd = process.cwd()): Promise<InitRunResult> {
 
   return {
     repoRoot,
+    layout,
     created,
     skipped,
     graphifyReportExists,

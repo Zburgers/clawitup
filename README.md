@@ -18,7 +18,12 @@ The CLI orchestrates deterministic contracts and artifacts. Gitclaw provides the
 
 ## Runtime Shape
 
-`clawitup init` configures the current git repository with a repo-native agent layout:
+`clawitup init` configures the current git repository with a repo-native agent layout. Use `--force` to overwrite existing ClawItUp-managed scaffold files, and `--model <provider:model-id>` to write the preferred `agent.yaml` model:
+
+```bash
+clawitup init --force
+clawitup init --model openrouter:openai/gpt-oss-120b:free
+```
 
 ```txt
 agent.yaml
@@ -98,6 +103,7 @@ clawitup init
 ## Model And Provider Configuration
 
 ClawItUp model routing is controlled by `agent.yaml` using `provider:model-id` strings.
+`agent.yaml` is the default source of truth for audits unless you pass `--model` on `clawitup audit` for a one-run override.
 
 Example:
 
@@ -123,6 +129,8 @@ Set the environment variable matching your selected provider:
 
 Notes:
 
+- `clawitup init --model <provider:model-id>` writes the preferred `agent.yaml` model.
+- `clawitup audit --model <provider:model-id>` overrides the preferred model for that run only.
 - If `model` is omitted at SDK call-site, ClawItUp defers model selection to `agent.yaml`.
 - If `model` is passed, ClawItUp forwards it unchanged.
 
@@ -155,20 +163,25 @@ clawitup report --run <run-id>
 clawitup memory show
 ```
 
+`status` prints the selected run, `artifacts: <run-root>`, and whether the ship report and policy artifact exist. `report` prints the same run and artifact root before the latest ship report body.
+
+`clawitup audit` is report-first and read-only: it produces audit artifacts and a final ship report, but does not patch the repo.
+
 ## Live TUI Output
 
-`clawitup audit` now prints live progress so runs do not appear hung.
+`clawitup audit` prints live progress so runs do not appear hung.
 
 You will see:
 
 - run header (`repo`, `branch`, `commit`, `model`, mode/scope)
+- numbered stage progress like `1/5 orchestrator`, `2/5 red-team`
 - phase transitions
 - streaming assistant/tool activity per phase
-- final policy + artifact path summary
+- final policy plus clearer artifact paths for `runs/<run-id>/`, `ship_report`, `verification`, and `summary`
 
 ## Output Artifacts
 
-Each run writes:
+Each run writes to `runs/<run-id>/`:
 
 ```txt
 runs/<run-id>/
@@ -196,7 +209,7 @@ Recommended flow:
 
 1. Initialize target repo:
 ```bash
-clawitup init
+clawitup init --force
 ```
 2. Choose bounded area first:
 ```bash
@@ -227,4 +240,3 @@ The following are intentionally not shipped in `v1.0.0`:
 - database-backed memory system
 - whole-repo unbounded audit mode by default
 - production-grade vulnerability scanner claims
-

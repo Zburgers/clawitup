@@ -1,5 +1,5 @@
 import { createGitclawStageRunner } from "./gitclaw-runner.js";
-import { VerificationSchema, type Verification } from "../schemas/verification.js";
+import { coerceVerificationList, type Verification } from "../schemas/verification.js";
 import type { GCMessage } from "gitclaw";
 
 export type AuditStageName = "orchestrator" | "red-team" | "filter" | "blue-team" | "ship-report";
@@ -44,11 +44,17 @@ export type AuditStageToolActivity = AuditStageToolUse | AuditStageToolResult;
 export type AuditStageInput = {
   name: AuditStageName;
   prompt: string;
+  index: number;
+  total: number;
   scope?: string;
   task?: string;
   findingIds: string[];
+  verifiedFindings: Verification[];
   redTeamReport?: string;
   filterReport?: string;
+  redTeamOutput?: AuditStageOutput;
+  filterOutput?: AuditStageOutput;
+  blueTeamOutput?: AuditStageOutput;
 };
 
 export type AuditStageOutput = {
@@ -120,6 +126,9 @@ export async function runAudit(input: AuditRunInput): Promise<AuditRunResult> {
   let verifiedFindings: Verification[] = [];
 
   for (const name of STAGE_ORDER) {
+    const redTeamOutput = stages.find((entry) => entry.name === "red-team")?.output;
+    const filterOutput = stages.find((entry) => entry.name === "filter")?.output;
+    const blueTeamOutput = stages.find((entry) => entry.name === "blue-team")?.output;
     const findingIds =
       name === "filter" ? candidateFindingIds : name === "blue-team" || name === "ship-report"
         ? verifiedFindingIds
@@ -131,14 +140,22 @@ export async function runAudit(input: AuditRunInput): Promise<AuditRunResult> {
         input.scope,
         input.task,
         findingIds,
-        stages.find((entry) => entry.name === "red-team")?.output.report,
-        stages.find((entry) => entry.name === "filter")?.output.report
+        verifiedFindings,
+        redTeamOutput,
+        filterOutput,
+        blueTeamOutput
       ),
+      index: STAGE_ORDER.indexOf(name) + 1,
+      total: STAGE_ORDER.length,
       scope: input.scope,
       task: input.task,
       findingIds,
-      redTeamReport: stages.find((entry) => entry.name === "red-team")?.output.report,
-      filterReport: stages.find((entry) => entry.name === "filter")?.output.report
+      verifiedFindings,
+      redTeamReport: redTeamOutput?.report,
+      filterReport: filterOutput?.report,
+      redTeamOutput,
+      filterOutput,
+      blueTeamOutput
     };
     input.events?.onStageStart?.(stage);
     let output: AuditStageOutput;
@@ -191,8 +208,10 @@ function buildStagePrompt(
   scope: string | undefined,
   task: string | undefined,
   findingIds: string[],
-  redTeamReport: string | undefined,
-  filterReport: string | undefined
+  verifiedFindings: Verification[],
+  redTeamOutput: AuditStageOutput | undefined,
+  filterOutput: AuditStageOutput | undefined,
+  blueTeamOutput: AuditStageOutput | undefined
 ): string {
   const context: string[] = [
     `stage: ${name}`,
@@ -212,11 +231,17 @@ function buildStagePrompt(
   if (findingIds.length > 0) {
     context.push(`finding_ids: ${findingIds.join(", ")}`);
   }
-  if (name === "filter" && redTeamReport) {
-    context.push(`red_team_report_excerpt: ${clipForPrompt(redTeamReport)}`);
+  if (verifiedFindings.length > 0) {
+    context.push(blockForPrompt("verified_findings_json", verifiedFindings, 5000));
   }
-  if ((name === "blue-team" || name === "ship-report") && filterReport) {
-    context.push(`filter_report_excerpt: ${clipForPrompt(filterReport)}`);
+  if (name === "filter" && redTeamOutput) {
+    context.push(blockForPrompt("red_team_handoff_json", summarizeStageOutput(redTeamOutput), 5000));
+  }
+  if ((name === "blue-team" || name === "ship-report") && filterOutput) {
+    context.push(blockForPrompt("filter_handoff_json", summarizeStageOutput(filterOutput), 5000));
+  }
+  if (name === "ship-report" && blueTeamOutput) {
+    context.push(blockForPrompt("blue_team_handoff_json", summarizeStageOutput(blueTeamOutput), 4000));
   }
 
   switch (name) {
@@ -258,12 +283,27 @@ function extractFindingIdsFromText(value: string | undefined): string[] {
 }
 
 function clipForPrompt(value: string, limit = 3000): string {
-  const compact = value.replace(/\s+/g, " ").trim();
-  if (compact.length <= limit) {
-    return compact;
+  const normalized = value.trim();
+  if (normalized.length <= limit) {
+    return normalized;
   }
 
-  return `${compact.slice(0, limit)}...`;
+  return `${normalized.slice(0, limit)}...`;
+}
+
+function blockForPrompt(label: string, value: unknown, limit: number): string {
+  return `${label}:\n${clipForPrompt(JSON.stringify(value, null, 2), limit)}`;
+}
+
+function summarizeStageOutput(output: AuditStageOutput): Record<string, unknown> {
+  return {
+    findingIds: output.findingIds,
+    verifiedFindingIds: output.verifiedFindingIds,
+    verifiedFindings: output.verifiedFindings,
+    report: output.report,
+    notes: output.notes,
+    assistantOutput: output.assistantOutput
+  };
 }
 
 function buildStageErrorOutput(name: AuditStageName, error: unknown): AuditStageOutput {
@@ -289,13 +329,5 @@ function normalizeFindingIds(value: unknown): string[] {
 }
 
 function normalizeVerifications(value: unknown): Verification[] {
-  if (!Array.isArray(value)) {
-    return [];
-  }
-
-  return value.flatMap((entry) => {
-    const parsed = VerificationSchema.safeParse(entry);
-
-    return parsed.success ? [parsed.data] : [];
-  });
+  return coerceVerificationList(value);
 }

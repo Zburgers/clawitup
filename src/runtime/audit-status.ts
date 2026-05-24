@@ -34,12 +34,15 @@ export type AuditRunLogger = {
   stageEnd(stage: AuditStageInput, output: AuditStageOutput): void;
 };
 
-export async function readAuditEnvironment(cwd: string): Promise<RepoMetadata & { modelSelection: AgentModelSelection }> {
+export async function readAuditEnvironment(
+  cwd: string,
+  modelOverride?: string
+): Promise<RepoMetadata & { modelSelection: AgentModelSelection }> {
   const repoRoot = await readGitRepoRoot(cwd);
   const [branch, commitSha, modelSelection] = await Promise.all([
     readGitValue(repoRoot, ["rev-parse", "--abbrev-ref", "HEAD"]),
     readGitValue(repoRoot, ["rev-parse", "HEAD"]),
-    readAgentModelSelection(repoRoot)
+    modelOverride ? Promise.resolve(parseModelSelection(modelOverride)) : readAgentModelSelection(repoRoot)
   ]);
 
   return {
@@ -52,13 +55,12 @@ export async function readAuditEnvironment(cwd: string): Promise<RepoMetadata & 
 
 export function formatAuditRunHeader(header: AuditRunHeader): string[] {
   const scopeText = header.scope.length > 0 ? header.scope.join(", ") : "(none)";
-  const modelText = `${header.modelSelection.provider}/${header.modelSelection.model}`;
   const taskText = header.task ? ` task=${header.task}` : "";
 
   return [
     `[clawitup:audit] repo=${header.repoRoot}`,
     `[clawitup:audit] git=${header.branch} @ ${header.commitSha}`,
-    `[clawitup:audit] model=${modelText} source=${header.modelSelection.raw}`,
+    `[clawitup:audit] model=${header.modelSelection.raw} provider=${header.modelSelection.provider}`,
     `[clawitup:audit] mode=${header.mode} scope=${scopeText}${taskText}`
   ];
 }
@@ -71,23 +73,33 @@ export function createAuditRunLogger(stream: Writable = process.stdout): AuditRu
       }
     },
     stageStart(stage: AuditStageInput) {
-      stream.write(`[clawitup:audit] ${stage.name}: start\n`);
+      stream.write(`[clawitup:audit] ${formatStageLabel(stage)}: start\n`);
     },
     stageMessage(stage: AuditStageInput, message: GCMessage) {
-      stream.write(`[clawitup:audit] ${stage.name}: ${formatMessage(message)}\n`);
+      const formatted = formatMessage(message);
+      if (formatted) {
+        stream.write(`[clawitup:audit] ${formatStageLabel(stage)}: ${formatted}\n`);
+      }
     },
     stageEnd(stage: AuditStageInput, output: AuditStageOutput) {
-      stream.write(`[clawitup:audit] ${stage.name}: ${formatStageEnd(output)}\n`);
+      stream.write(`[clawitup:audit] ${formatStageLabel(stage)}: ${formatStageEnd(output)}\n`);
     }
   };
 }
 
-export function formatMessage(message: GCMessage): string {
+function formatStageLabel(stage: AuditStageInput): string {
+  return `${stage.index}/${stage.total} ${stage.name}`;
+}
+
+export function formatMessage(message: GCMessage): string | undefined {
   switch (message.type) {
     case "delta":
+      if (message.deltaType === "thinking") {
+        return undefined;
+      }
       return `delta(${message.deltaType}) ${preview(message.content)}`;
     case "assistant":
-      return `assistant stop=${message.stopReason} ${preview(message.content)}${formatThinking(message.thinking)}${formatUsage(message.usage)}`;
+      return `assistant stop=${message.stopReason} ${preview(message.content)}${formatUsage(message.usage)}`;
     case "tool_use":
       return `tool_use ${message.toolName} ${preview(stableJson(message.args))}`;
     case "tool_result":
@@ -129,10 +141,6 @@ function formatUsage(
     | undefined
 ): string {
   return usage ? ` tokens=${usage.totalTokens}` : "";
-}
-
-function formatThinking(thinking: string | undefined): string {
-  return thinking ? ` thinking=${preview(thinking)}` : "";
 }
 
 function preview(value: string): string {
@@ -181,22 +189,7 @@ export async function readAgentModelSelection(repoRoot: string): Promise<AgentMo
   try {
     const contents = await fs.readFile(`${repoRoot}/agent.yaml`, "utf8");
     const preferredMatch = contents.match(/^\s*preferred:\s*["']?([^"'\n]+)["']?\s*$/m);
-    const raw = preferredMatch?.[1]?.trim() || "unknown";
-    const separator = raw.indexOf(":");
-
-    if (separator <= 0) {
-      return {
-        provider: "unknown",
-        model: raw,
-        raw
-      };
-    }
-
-    return {
-      provider: raw.slice(0, separator),
-      model: raw.slice(separator + 1),
-      raw
-    };
+    return parseModelSelection(preferredMatch?.[1]?.trim() || "unknown");
   } catch {
     return {
       provider: "unknown",
@@ -204,4 +197,22 @@ export async function readAgentModelSelection(repoRoot: string): Promise<AgentMo
       raw: "unknown"
     };
   }
+}
+
+function parseModelSelection(raw: string): AgentModelSelection {
+  const separator = raw.indexOf(":");
+
+  if (separator <= 0) {
+    return {
+      provider: "unknown",
+      model: raw,
+      raw
+    };
+  }
+
+  return {
+    provider: raw.slice(0, separator),
+    model: raw.slice(separator + 1),
+    raw
+  };
 }

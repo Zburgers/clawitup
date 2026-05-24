@@ -4,8 +4,8 @@
     "hash": "cee27075656c7eca86a16bd1828ea0a5"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/cli.ts": {
-    "mtime": 1779555206.1123934,
-    "hash": "cb85cdab1fdf8ccd2ea0a160d26b75ca"
+    "mtime": 1779622592.275782,
+    "hash": "7095f0929f19d9d4c2861bb0e3e98807"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/index.ts": {
     "mtime": 1779460783.4960532,
@@ -20,8 +20,8 @@
     "hash": "496b1a96a1f2b6cf87843e9d77272ecf"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/schemas/verification.ts": {
-    "mtime": 1779461109.772205,
-    "hash": "284034b01accc70e274e2b7833213429"
+    "mtime": 1779621049.7013712,
+    "hash": "9b6e3e7973ae9b055032a9731bbced05"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/schemas/policy.ts": {
     "mtime": 1779461091.9839787,
@@ -52,8 +52,8 @@
     "hash": "a239832f1364f70c8e1c5d0c01ed2f26"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/templates.ts": {
-    "mtime": 1779560454.3116522,
-    "hash": "6687f1e6b05fafbe40bfc2ffbdd4c189"
+    "mtime": 1779622221.311132,
+    "hash": "81d3c3c4890590ccfa535ea0ac2e791b"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/graphify.ts": {
     "mtime": 1779463160.675318,
@@ -68,28 +68,32 @@
     "hash": "953281e36cbf0c27432d15a2b02039ae"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/audit-runner.ts": {
-    "mtime": 1779555805.0827603,
-    "hash": "7ca164bdab5d5212c815aaaf569a8b43"
+    "mtime": 1779622299.4411156,
+    "hash": "70aeedcbc05d6eb3eebbbcdcf2bd98a8"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/audit-status.ts": {
-    "mtime": 1779555250.4639568,
-    "hash": "bbd769c19cd43a36915685e0ec1fc7e4"
+    "mtime": 1779622723.0554197,
+    "hash": "d27cc206486f0243dbd6de31c76f522e"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/gitclaw-runner.ts": {
-    "mtime": 1779555817.241353,
-    "hash": "ca93129c6aab58d8619b428cfd307bca"
+    "mtime": 1779622838.0568595,
+    "hash": "bfccfb9a9f68662cf1161cb065647ac9"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/layout.ts": {
+    "mtime": 1779620850.1238568,
+    "hash": "57d6c9fc6261057c2d25fa410b3bdfd5"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/commands/init.ts": {
-    "mtime": 1779478312.4135828,
-    "hash": "34fe76ec082168476390dbbaed676157"
+    "mtime": 1779622233.4852853,
+    "hash": "b79f83dd21cdad28110d4fc3c9e08853"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/commands/eval.ts": {
     "mtime": 1779463593.3978696,
     "hash": "191a6a0f07dc0f8b427451feaee0c878"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/commands/audit.ts": {
-    "mtime": 1779555336.8040538,
-    "hash": "57156b5d75fce3afde583aa3206b291f"
+    "mtime": 1779622942.6561692,
+    "hash": "e292acea6a187b3d7fbf526ba649b58e"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/commands/report.ts": {
     "mtime": 1779463666.3918061,
@@ -148,20 +152,20 @@
     "hash": "ceca9af3bacea152fb0d49819f27f84b"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/gitclaw-runner.test.ts": {
-    "mtime": 1779555400.6808653,
-    "hash": "a7dca70f57bc20dbb947a61357041ad8"
+    "mtime": 1779622744.7756915,
+    "hash": "6aab9f6b12fa9861541612c697c05a05"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/audit-runner.test.ts": {
     "mtime": 1779555229.3566887,
     "hash": "76bfa44f80ecca58075a3268821af9ee"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/audit-status.test.ts": {
-    "mtime": 1779555234.3067515,
-    "hash": "715bebc5e877bfa3b48b464efb04d5b7"
+    "mtime": 1779622735.3415735,
+    "hash": "e8620f21d69a68c11f7c6bbc5339c1dc"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/commands/init.test.ts": {
-    "mtime": 1779555163.7208548,
-    "hash": "7af48874175a8b338637e11c906105c6"
+    "mtime": 1779622367.7759712,
+    "hash": "2a958a5524b0f49ac891808e68a48e14"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/commands/audit-ci.test.ts": {
     "mtime": 1779463407.9014897,
@@ -172,16 +176,16 @@
     "hash": "70bee90b37ef94c439c5ee41cb558010"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/commands/audit.test.ts": {
-    "mtime": 1779555287.7584305,
-    "hash": "2286284b6f2ca9330cf83805353c65dc"
+    "mtime": 1779622377.110088,
+    "hash": "87c034cfdb52f7b5db35ecb470604386"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/commands/report.test.ts": {
     "mtime": 1779463618.7061942,
     "hash": "32a13a6fd6a1926924e7a958fce3cb00"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/commands/audit-artifacts.test.ts": {
-    "mtime": 1779477768.1404986,
-    "hash": "d7064cc94e8e5b310e6ca14d985a842d"
+    "mtime": 1779622951.4062788,
+    "hash": "0278329cc9bc302922fd873da1f7e6c2"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tools/graphify.mjs": {
     "mtime": 1779463299.965105,
@@ -240,8 +244,8 @@
     "hash": "afb04149ddf69ed559174ccda09078b6"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/README.md": {
-    "mtime": 1779560419.3159401,
-    "hash": "588014b9124e1458ca7e65f3d0042aef"
+    "mtime": 1779622971.0115242,
+    "hash": "3759ab15e0dc4b6f36462661154d4b4d"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/MEMORY.md": {
     "mtime": 1779445555.6228201,

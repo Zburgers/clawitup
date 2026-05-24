@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { runAudit, type AuditRunResult, type AuditRunInput } from "../runtime/audit-runner.js";
 import { createRunLayout, type RunLayout } from "../runtime/artifact-store.js";
 import { createGitDiffReader } from "../runtime/git.js";
+import { createGitclawStageRunner } from "../runtime/gitclaw-runner.js";
 import { readAuditEnvironment, type AuditRunLogger } from "../runtime/audit-status.js";
 import { evaluatePolicy } from "../runtime/policy-engine.js";
 import {
@@ -9,6 +10,7 @@ import {
   buildLocalScopeContract,
   buildTaskScopeContract
 } from "../runtime/scope-builder.js";
+import { resolveClawitupLayout } from "../runtime/layout.js";
 import type { PolicyResult } from "../schemas/policy.js";
 import type { ScopeContract } from "../schemas/scope-contract.js";
 import type { Summary } from "../schemas/summary.js";
@@ -18,6 +20,7 @@ export type AuditCommandOptions = {
   scope?: string;
   task?: string;
   ci?: boolean;
+  model?: string;
   cwd?: string;
   changedFiles?: string[];
   logger?: AuditRunLogger;
@@ -43,6 +46,7 @@ export async function runAuditCommand(
   const task = options.task ? await readFile(options.task, "utf8") : undefined;
   const scopeContract = await buildScopeContract(options, cwd);
   const scope = options.scope ?? scopeContract.primary_scope.join(", ");
+  const effectiveRunner = runner ?? (options.model ? createGitclawStageRunner({ dir: cwd, model: options.model }) : undefined);
   const logger = options.logger;
   const auditEvents = logger
     ? {
@@ -59,7 +63,7 @@ export async function runAuditCommand(
     : undefined;
 
   if (logger) {
-    const environment = await readAuditEnvironment(cwd);
+    const environment = await readAuditEnvironment(cwd, options.model);
 
     logger.start({
       ...environment,
@@ -72,7 +76,7 @@ export async function runAuditCommand(
   const run = await runAudit({
     scope,
     task,
-    runner,
+    runner: effectiveRunner,
     events: auditEvents
   });
   const requiredArtifactsValid = hasRequiredStageOutputs(run);
@@ -83,7 +87,8 @@ export async function runAuditCommand(
   });
   const summary = summarizeRun(run, policy);
   const runId = createRunId();
-  const layout = createRunLayout(cwd, runId);
+  const clawitupRoot = await resolveAuditArtifactRoot(cwd);
+  const layout = createRunLayout(clawitupRoot, runId);
 
   await writeRunArtifacts(layout, scopeContract, run, policy, summary, options);
 
@@ -196,13 +201,15 @@ async function writeRunArtifacts(
   const stageErrors = run.stages
     .filter((entry) => entry.output.error)
     .map((entry) => `${entry.name}: ${entry.output.error?.message}`);
-  const shipReport =
-    stage("ship-report")?.output.report ??
-    formatFallbackShipReport(scopeContract, summary, policy, stageErrors);
-  const blueTeamHandoff =
-    stage("blue-team")?.output.report ??
-    stage("blue-team")?.output.notes ??
-    "No Blue Team remediation handoff was emitted.";
+  const shipReport = firstNonEmptyText(
+    stage("ship-report")?.output.report,
+    formatFallbackShipReport(scopeContract, summary, policy, stageErrors)
+  );
+  const blueTeamHandoff = firstNonEmptyText(
+    stage("blue-team")?.output.report,
+    stage("blue-team")?.output.notes,
+    "No Blue Team remediation handoff was emitted."
+  );
 
   await mkdir(layout.runRoot, { recursive: true });
   await Promise.all([
@@ -243,6 +250,15 @@ async function writeJson(filePath: string, value: unknown): Promise<void> {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
+async function resolveAuditArtifactRoot(cwd: string): Promise<string> {
+  try {
+    const { clawitupRoot } = await resolveClawitupLayout(cwd);
+    return clawitupRoot;
+  } catch {
+    return cwd;
+  }
+}
+
 function formatFallbackShipReport(
   scope: ScopeContract,
   summary: Summary,
@@ -267,4 +283,14 @@ function formatFallbackShipReport(
   }
 
   return lines.join("\n");
+}
+
+function firstNonEmptyText(...values: Array<string | undefined>): string {
+  for (const value of values) {
+    if (typeof value === "string" && value.trim().length > 0) {
+      return value;
+    }
+  }
+
+  return "";
 }

@@ -4,7 +4,7 @@ import path from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-import { formatAuditRunHeader, readAgentModelSelection } from "../../src/runtime/audit-status.js";
+import { formatAuditRunHeader, formatMessage, readAgentModelSelection } from "../../src/runtime/audit-status.js";
 
 describe("audit status formatting", () => {
   it("parses the selected model and provider from agent.yaml", async () => {
@@ -46,8 +46,18 @@ describe("audit status formatting", () => {
     ).toEqual([
       "[clawitup:audit] repo=/repo",
       "[clawitup:audit] git=main @ abc123",
-      "[clawitup:audit] model=openai/gpt-4o-mini source=openai:gpt-4o-mini",
+      "[clawitup:audit] model=openai:gpt-4o-mini provider=openai",
       "[clawitup:audit] mode=ci_diff scope=src/auth.ts, src/roles.ts task=tasks/auth.md"
     ]);
+  });
+
+  it("suppresses raw thinking deltas from the live logger", () => {
+    expect(
+      formatMessage({
+        type: "delta",
+        deltaType: "thinking",
+        content: "internal reasoning"
+      } as never)
+    ).toBeUndefined();
   });
 });

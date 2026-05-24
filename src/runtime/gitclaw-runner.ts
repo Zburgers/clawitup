@@ -1,5 +1,8 @@
+import { readFile } from "node:fs/promises";
+
 import { loadAgent, query } from "gitclaw";
 import type { GCMessage, QueryOptions } from "gitclaw";
+import { coerceVerificationList } from "../schemas/verification.js";
 import type {
   AuditStageError,
   AuditStageInput,
@@ -23,6 +26,10 @@ export type GitclawStageRunnerHooks = {
   onMessage?: (message: GCMessage) => void;
 };
 
+const READ_ONLY_AUDIT_TOOLS = ["read", "git-diff", "graphify", "rg-search", "run-tests"] as const;
+const ORCHESTRATOR_AUDIT_TOOLS: string[] = [];
+const REPORT_AUDIT_TOOLS = ["read"] as const;
+
 const STAGE_SKILLS: Record<AuditStageInput["name"], string> = {
   orchestrator: "orchestrate-audit",
   "red-team": "red-team-audit",
@@ -36,30 +43,37 @@ export function createGitclawStageRunner(options: GitclawStageRunnerOptions = {}
 
   return async (stage: AuditStageInput, hooks?: GitclawStageRunnerHooks): Promise<AuditStageOutput> => {
     let loadedAgent;
+    let effectiveModel = model;
     try {
-      loadedAgent = await loadAgentFactory(runnerOptions.dir ?? process.cwd(), model, runnerOptions.env);
+      const loaded = await loadAgentWithFallback(
+        loadAgentFactory,
+        runnerOptions.dir ?? process.cwd(),
+        model,
+        runnerOptions.env
+      );
+      loadedAgent = loaded.agent;
+      effectiveModel = loaded.model;
     } catch (error) {
       return buildRunnerErrorOutput(stage.name, error);
     }
 
-    const stageContext = buildStageContext(stage);
     const workflowStep = resolveWorkflowStep(loadedAgent.workflows, stage.name);
     const stageInstructions = buildStageInstructions(stage.name, workflowStep?.prompt);
-    const systemPrompt = runnerOptions.systemPrompt ?? loadedAgent.systemPrompt;
+    const systemPrompt = runnerOptions.systemPrompt ?? buildAuditSystemPrompt();
     const systemPromptSuffix = joinPromptSections(runnerOptions.systemPromptSuffix, stageInstructions);
     const queryOptions: QueryOptions = {
       dir: runnerOptions.dir ?? process.cwd(),
       env: runnerOptions.env,
       systemPrompt,
       systemPromptSuffix,
-      allowedTools: runnerOptions.allowedTools ?? loadedAgent.manifest.tools,
+      allowedTools: runnerOptions.allowedTools ?? defaultAllowedTools(stage.name),
       disallowedTools: runnerOptions.disallowedTools,
       maxTurns: runnerOptions.maxTurns ?? loadedAgent.manifest.runtime.max_turns,
-      prompt: stageContext
+      prompt: stage.prompt
     };
 
-    if (model !== undefined) {
-      queryOptions.model = model;
+    if (effectiveModel !== undefined) {
+      queryOptions.model = effectiveModel;
     }
 
     const messages: GCMessage[] = [];
@@ -75,6 +89,59 @@ export function createGitclawStageRunner(options: GitclawStageRunnerOptions = {}
 
     return parseAuditStageOutput(stage, messages);
   };
+}
+
+async function loadAgentWithFallback(
+  loadAgentFactory: LoadAgentFactory,
+  dir: string,
+  model: string | undefined,
+  env: string | undefined
+): Promise<{ agent: Awaited<ReturnType<LoadAgentFactory>>; model: string | undefined }> {
+  try {
+    return {
+      agent: await loadAgentFactory(dir, model, env),
+      model
+    };
+  } catch (error) {
+    const fallbackModel = await resolveFallbackModel(dir, model, error);
+    if (!fallbackModel) {
+      throw error;
+    }
+
+    return {
+      agent: await loadAgentFactory(dir, fallbackModel, env),
+      model: fallbackModel
+    };
+  }
+}
+
+async function resolveFallbackModel(
+  dir: string,
+  model: string | undefined,
+  error: unknown
+): Promise<string | undefined> {
+  const message = error instanceof Error ? error.message : String(error);
+  if (!message.includes("baseUrl")) {
+    return undefined;
+  }
+
+  const configuredModel = model ?? (await readPreferredModel(dir));
+  if (!configuredModel || configuredModel.includes("@")) {
+    return undefined;
+  }
+
+  return configuredModel.startsWith("openrouter:")
+    ? `${configuredModel}@https://openrouter.ai/api/v1`
+    : undefined;
+}
+
+async function readPreferredModel(dir: string): Promise<string | undefined> {
+  try {
+    const contents = await readFile(`${dir}/agent.yaml`, "utf8");
+    return contents.match(/^\s*preferred:\s*["']?([^"'\n]+)["']?\s*$/m)?.[1]?.trim();
+  } catch {
+    return undefined;
+  }
 }
 
 function parseAuditStageOutput(stage: AuditStageInput, messages: GCMessage[]): AuditStageOutput {
@@ -150,39 +217,15 @@ function parseAuditStageOutput(stage: AuditStageInput, messages: GCMessage[]): A
   return output;
 }
 
-function buildStageContext(stage: AuditStageInput): string {
-  const lines = [
-    `stage: ${stage.name}`,
-    `skill: ${STAGE_SKILLS[stage.name]}`,
-    "workflow: adversarial-audit",
-    "report_first: true"
-  ];
-
-  if (stage.scope) {
-    lines.push(`scope: ${stage.scope}`);
-  }
-
-  if (stage.task) {
-    lines.push(`task: ${stage.task}`);
-  }
-
-  if (stage.findingIds.length > 0) {
-    lines.push(`finding_ids: ${stage.findingIds.join(", ")}`);
-  }
-  if (stage.redTeamReport) {
-    lines.push(`red_team_report_excerpt: ${clipForPrompt(stage.redTeamReport)}`);
-  }
-  if (stage.filterReport) {
-    lines.push(`filter_report_excerpt: ${clipForPrompt(stage.filterReport)}`);
-  }
-
-  return lines.join("\n");
-}
-
 function buildStageInstructions(stageName: AuditStageInput["name"], workflowPrompt?: string): string {
   const workflowSections = [
-    `You are executing the ${stageName} stage of the adversarial-audit workflow.`,
-    `Follow the ${STAGE_SKILLS[stageName]} skill and the workflow notes from agent.yaml.`,
+    `Execute only the ${stageName} stage of the adversarial-audit workflow.`,
+    "Treat the user prompt as the authoritative handoff state for this stage.",
+    `Follow the ${STAGE_SKILLS[stageName]} skill and preserve the evidence trail passed in.`,
+    "Do not write files, save memory, create workspace artifacts, or modify the repository. ClawItUp writes the official run artifacts itself.",
+    "Ignore generic task-tracking or skill-learning instructions when they conflict with this audit stage.",
+    "Do not try to invoke other stages, skills, or helper names as tools. ClawItUp runs the workflow stages automatically.",
+    "If a helper is described in the prompt but is not an actual available tool, continue without it and use the available tools directly.",
     workflowPrompt ? `Workflow step prompt: ${workflowPrompt}` : undefined,
     stageOutputContract(stageName)
   ].filter((section): section is string => Boolean(section));
@@ -195,28 +238,43 @@ function stageOutputContract(stageName: AuditStageInput["name"]): string {
     case "orchestrator":
       return "Output a concise report. Include notes if you need to explain the plan.";
     case "red-team":
-      return "Return strict JSON only: {\"findingIds\": string[], \"report\": string, \"notes\"?: string}. Keep candidate findings provisional.";
+      return "Return strict JSON only: {\"findingIds\": string[], \"report\": string, \"notes\"?: string}. Keep candidate findings provisional and evidence-dense.";
     case "filter":
       return "Return strict JSON only with verified findings: {\"verifiedFindings\": [{\"id\": string, \"status\": string, \"severity\": string, \"reasons\"?: string[], \"evidence\"?: string[]}], \"verifiedFindingIds\"?: string[], \"report\": string, \"notes\"?: string}.";
     case "blue-team":
-      return "Use only verified findings and return strict JSON: {\"report\": string, \"notes\"?: string}.";
+      return "Use only verified findings and return strict JSON: {\"report\": string, \"notes\"?: string}. Cite the verified evidence you are acting on.";
     case "ship-report":
-      return "Return strict JSON: {\"report\": string, \"notes\"?: string}. The report must state PASS, WARN, or FAIL explicitly.";
+      return "Return strict JSON: {\"report\": string, \"notes\"?: string}. The report must state PASS, WARN, or FAIL explicitly and explain it from the verified evidence.";
   }
-}
-
-function clipForPrompt(value: string, limit = 3000): string {
-  const compact = value.replace(/\s+/g, " ").trim();
-  if (compact.length <= limit) {
-    return compact;
-  }
-
-  return `${compact.slice(0, limit)}...`;
 }
 
 function joinPromptSections(...sections: Array<string | undefined>): string | undefined {
   const values = sections.filter((section): section is string => Boolean(section));
   return values.length > 0 ? values.join("\n\n") : undefined;
+}
+
+function buildAuditSystemPrompt(): string {
+  return [
+    "You are ClawItUp's audit-stage model.",
+    "Work only on the current stage.",
+    "Stay inside the supplied scope and evidence handoff.",
+    "Be concise, evidence-first, and report-first.",
+    "Use only the available tools when they materially help.",
+    "Never create files, save memory, or mutate the repository."
+  ].join("\n");
+}
+
+function defaultAllowedTools(stageName: AuditStageInput["name"]): string[] {
+  switch (stageName) {
+    case "orchestrator":
+      return [...ORCHESTRATOR_AUDIT_TOOLS];
+    case "blue-team":
+    case "ship-report":
+      return [...REPORT_AUDIT_TOOLS];
+    case "red-team":
+    case "filter":
+      return [...READ_ONLY_AUDIT_TOOLS];
+  }
 }
 
 function resolveWorkflowStep(
@@ -350,35 +408,7 @@ function extractAssistantContent(messages: GCMessage[]): string | undefined {
 }
 
 function normalizeVerifications(value: unknown[]): AuditStageOutput["verifiedFindings"] {
-  return value.flatMap((entry) => {
-    if (!entry || typeof entry !== "object") {
-      return [];
-    }
-
-    const candidate = entry as Record<string, unknown>;
-    const id = typeof candidate.id === "string" ? candidate.id : undefined;
-    const status = typeof candidate.status === "string" ? candidate.status : undefined;
-    const severity = typeof candidate.severity === "string" ? candidate.severity : undefined;
-
-    if (!id || !status || !severity) {
-      return [];
-    }
-
-    return [
-      {
-        id,
-        status: status as NonNullable<AuditStageOutput["verifiedFindings"]>[number]["status"],
-        severity: severity as NonNullable<AuditStageOutput["verifiedFindings"]>[number]["severity"],
-        reasons: Array.isArray(candidate.reasons)
-          ? candidate.reasons.filter((reason): reason is string => typeof reason === "string" && reason.length > 0)
-          : undefined,
-        evidence: Array.isArray(candidate.evidence)
-          ? candidate.evidence.filter((item): item is string => typeof item === "string" && item.length > 0)
-          : undefined,
-        verifier: typeof candidate.verifier === "string" ? candidate.verifier : undefined
-      }
-    ];
-  });
+  return coerceVerificationList(value);
 }
 
 function safeParseJson(value: string): unknown {

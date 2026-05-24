@@ -1,10 +1,24 @@
+import type { ClawitupLayoutMode } from "./layout.js";
+
 export type TemplateFile = {
   relativePath: string;
   content: string;
   sourceAsset?: string;
 };
 
-const agentYaml = `spec_version: "0.1.0"
+export type InitTemplateOptions = {
+  preferredModel?: string;
+};
+
+function layoutPath(mode: ClawitupLayoutMode, relativePath: string): string {
+  return mode === "hidden" ? `.clawitup/${relativePath}` : relativePath;
+}
+
+function buildAgentYaml(
+  mode: ClawitupLayoutMode,
+  preferredModel = "openai:gpt-4o-mini"
+): string {
+  return `spec_version: "0.1.0"
 name: clawitup
 version: "1.0.0"
 description: Git-native Red Team / Filter / Blue Team audit gate
@@ -12,7 +26,7 @@ description: Git-native Red Team / Filter / Blue Team audit gate
 # OpenAI models use OPENAI_API_KEY, OpenRouter uses OPENROUTER_API_KEY,
 # and Anthropic uses ANTHROPIC_API_KEY or ANTHROPIC_OAUTH_TOKEN.
 model:
-  preferred: "openai:gpt-4o-mini"
+  preferred: "${preferredModel}"
   fallback:
     - "openrouter:anthropic/claude-sonnet-4.5"
     - "anthropic:claude-sonnet-4-5-20250929"
@@ -31,16 +45,17 @@ skills:
   - blue-team-remediation
   - generate-ship-report
 workflows:
-  - workflows/adversarial-audit.yaml
+  - ${layoutPath(mode, "workflows/adversarial-audit.yaml")}
 hooks:
-  - hooks/hooks.yaml
+  - ${layoutPath(mode, "hooks/hooks.yaml")}
 memory:
-  shared: memory/shared
-  teams: memory/teams
+  shared: ${layoutPath(mode, "memory/shared")}
+  teams: ${layoutPath(mode, "memory/teams")}
 compliance:
   report_first: true
   raw_red_team_findings_do_not_fail_ci: true
 `;
+}
 
 const soulMd = `# ClawItUp
 
@@ -208,7 +223,8 @@ hooks:
   pre_tool_use: []
 `;
 
-const githubActionYaml = `name: ClawItUp Audit
+function buildGithubActionYaml(mode: ClawitupLayoutMode): string {
+  return `name: ClawItUp Audit
 
 on:
   pull_request:
@@ -235,8 +251,9 @@ jobs:
         if: always()
         with:
           name: clawitup-runs
-          path: runs/
+          path: ${layoutPath(mode, "runs/")}
 `;
+}
 
 const repoProfile = `# Repo Profile
 
@@ -308,38 +325,54 @@ const teamBlue = `# Blue Team
 - Stay within the verified scope.
 `;
 
-export const INIT_TEMPLATE_FILES: TemplateFile[] = [
-  { relativePath: "agent.yaml", content: agentYaml },
-  { relativePath: "SOUL.md", content: soulMd },
-  { relativePath: "RULES.md", content: rulesMd },
-  { relativePath: "DUTIES.md", content: dutiesMd },
-  { relativePath: "AGENTS.md", content: agentsMd },
-  { relativePath: "skills/orchestrate-audit/SKILL.md", content: orchestrateSkill },
-  { relativePath: "skills/red-team-audit/SKILL.md", content: redTeamSkill },
-  { relativePath: "skills/verify-finding/SKILL.md", content: verifyFindingSkill },
-  { relativePath: "skills/blue-team-remediation/SKILL.md", content: blueTeamSkill },
-  { relativePath: "skills/generate-ship-report/SKILL.md", content: shipReportSkill },
-  { relativePath: "workflows/adversarial-audit.yaml", content: workflowYaml },
-  { relativePath: "hooks/hooks.yaml", content: hooksYaml },
-  { relativePath: "skills/run-context-gates/SKILL.md", content: "", sourceAsset: "skills/run-context-gates/SKILL.md" },
-  { relativePath: "tools/git-diff.yaml", content: "", sourceAsset: "tools/git-diff.yaml" },
-  { relativePath: "tools/git-diff.mjs", content: "", sourceAsset: "tools/git-diff.mjs" },
-  { relativePath: "tools/graphify.yaml", content: "", sourceAsset: "tools/graphify.yaml" },
-  { relativePath: "tools/graphify.mjs", content: "", sourceAsset: "tools/graphify.mjs" },
-  { relativePath: "tools/rg-search.yaml", content: "", sourceAsset: "tools/rg-search.yaml" },
-  { relativePath: "tools/rg-search.mjs", content: "", sourceAsset: "tools/rg-search.mjs" },
-  { relativePath: "tools/run-tests.yaml", content: "", sourceAsset: "tools/run-tests.yaml" },
-  { relativePath: "tools/run-tests.mjs", content: "", sourceAsset: "tools/run-tests.mjs" },
-  { relativePath: ".github/workflows/clawitup-audit.yml", content: githubActionYaml },
-  { relativePath: "memory/shared/repo-profile.md", content: repoProfile },
-  { relativePath: "memory/shared/risk-register.md", content: riskRegister },
-  { relativePath: "memory/shared/false-positive-patterns.md", content: falsePositivePatterns },
-  { relativePath: "memory/shared/confirmed-bug-patterns.md", content: confirmedBugPatterns },
-  { relativePath: "memory/shared/remediation-playbook.md", content: remediationPlaybook },
-  { relativePath: "memory/shared/graphify-notes.md", content: graphifyNotes },
-  { relativePath: "memory/shared/run-history.md", content: runHistory },
-  { relativePath: "memory/teams/red-team.md", content: teamRed },
-  { relativePath: "memory/teams/filter.md", content: teamFilter },
-  { relativePath: "memory/teams/blue-team.md", content: teamBlue },
-  { relativePath: "runs/.gitkeep", content: "" }
-];
+function hiddenLayoutConfig(): string {
+  return `${JSON.stringify({ layout: "hidden" }, null, 2)}\n`;
+}
+
+export function getInitTemplateFiles(
+  mode: ClawitupLayoutMode = "repo",
+  options: InitTemplateOptions = {}
+): TemplateFile[] {
+  const preferredModel = options.preferredModel ?? "openai:gpt-4o-mini";
+  const files: TemplateFile[] = [
+    { relativePath: "agent.yaml", content: buildAgentYaml(mode, preferredModel) },
+    { relativePath: "SOUL.md", content: soulMd },
+    { relativePath: "RULES.md", content: rulesMd },
+    { relativePath: "DUTIES.md", content: dutiesMd },
+    { relativePath: "AGENTS.md", content: agentsMd },
+    { relativePath: "skills/orchestrate-audit/SKILL.md", content: orchestrateSkill },
+    { relativePath: "skills/red-team-audit/SKILL.md", content: redTeamSkill },
+    { relativePath: "skills/verify-finding/SKILL.md", content: verifyFindingSkill },
+    { relativePath: "skills/blue-team-remediation/SKILL.md", content: blueTeamSkill },
+    { relativePath: "skills/generate-ship-report/SKILL.md", content: shipReportSkill },
+    { relativePath: layoutPath(mode, "workflows/adversarial-audit.yaml"), content: workflowYaml },
+    { relativePath: layoutPath(mode, "hooks/hooks.yaml"), content: hooksYaml },
+    { relativePath: "skills/run-context-gates/SKILL.md", content: "", sourceAsset: "skills/run-context-gates/SKILL.md" },
+    { relativePath: "tools/git-diff.yaml", content: "", sourceAsset: "tools/git-diff.yaml" },
+    { relativePath: "tools/git-diff.mjs", content: "", sourceAsset: "tools/git-diff.mjs" },
+    { relativePath: "tools/graphify.yaml", content: "", sourceAsset: "tools/graphify.yaml" },
+    { relativePath: "tools/graphify.mjs", content: "", sourceAsset: "tools/graphify.mjs" },
+    { relativePath: "tools/rg-search.yaml", content: "", sourceAsset: "tools/rg-search.yaml" },
+    { relativePath: "tools/rg-search.mjs", content: "", sourceAsset: "tools/rg-search.mjs" },
+    { relativePath: "tools/run-tests.yaml", content: "", sourceAsset: "tools/run-tests.yaml" },
+    { relativePath: "tools/run-tests.mjs", content: "", sourceAsset: "tools/run-tests.mjs" },
+    { relativePath: ".github/workflows/clawitup-audit.yml", content: buildGithubActionYaml(mode) },
+    { relativePath: layoutPath(mode, "memory/shared/repo-profile.md"), content: repoProfile },
+    { relativePath: layoutPath(mode, "memory/shared/risk-register.md"), content: riskRegister },
+    { relativePath: layoutPath(mode, "memory/shared/false-positive-patterns.md"), content: falsePositivePatterns },
+    { relativePath: layoutPath(mode, "memory/shared/confirmed-bug-patterns.md"), content: confirmedBugPatterns },
+    { relativePath: layoutPath(mode, "memory/shared/remediation-playbook.md"), content: remediationPlaybook },
+    { relativePath: layoutPath(mode, "memory/shared/graphify-notes.md"), content: graphifyNotes },
+    { relativePath: layoutPath(mode, "memory/shared/run-history.md"), content: runHistory },
+    { relativePath: layoutPath(mode, "memory/teams/red-team.md"), content: teamRed },
+    { relativePath: layoutPath(mode, "memory/teams/filter.md"), content: teamFilter },
+    { relativePath: layoutPath(mode, "memory/teams/blue-team.md"), content: teamBlue },
+    { relativePath: layoutPath(mode, "runs/.gitkeep"), content: "" }
+  ];
+
+  if (mode === "hidden") {
+    files.push({ relativePath: ".clawitup/config.json", content: hiddenLayoutConfig() });
+  }
+
+  return files;
+}
