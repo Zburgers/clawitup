@@ -174,9 +174,10 @@ clawitup memory show
 You will see:
 
 - run header (`repo`, `branch`, `commit`, `model`, mode/scope)
-- numbered stage progress like `1/5 orchestrator`, `2/5 red-team`
+- colored numbered stage progress like `◐ 1/5 orchestrator`, `✓ 2/5 red-team`
 - phase transitions
-- streaming assistant/tool activity per phase
+- readable live assistant text streamed as a single stage block instead of token-per-line log spam
+- colored tool/system activity per phase
 - final policy plus clearer artifact paths for `runs/<run-id>/`, `ship_report`, `verification`, and `summary`
 
 ## Output Artifacts

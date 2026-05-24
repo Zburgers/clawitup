@@ -1,10 +1,16 @@
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
+import { PassThrough } from "node:stream";
 
 import { describe, expect, it } from "vitest";
 
-import { formatAuditRunHeader, formatMessage, readAgentModelSelection } from "../../src/runtime/audit-status.js";
+import {
+  createAuditRunLogger,
+  formatAuditRunHeader,
+  formatMessage,
+  readAgentModelSelection
+} from "../../src/runtime/audit-status.js";
 
 describe("audit status formatting", () => {
   it("parses the selected model and provider from agent.yaml", async () => {
@@ -59,5 +65,51 @@ describe("audit status formatting", () => {
         content: "internal reasoning"
       } as never)
     ).toBeUndefined();
+  });
+
+  it("streams text deltas on one readable line instead of prefixing every token", () => {
+    const stream = new PassThrough();
+    let output = "";
+    stream.on("data", (chunk) => {
+      output += chunk.toString("utf8");
+    });
+
+    const logger = createAuditRunLogger(stream);
+    const stage = {
+      name: "orchestrator",
+      prompt: "stage: orchestrator",
+      index: 1,
+      total: 5,
+      findingIds: [],
+      verifiedFindings: []
+    } as never;
+
+    logger.stageStart(stage);
+    logger.stageMessage(stage, {
+      type: "delta",
+      deltaType: "text",
+      content: "Hello"
+    } as never);
+    logger.stageMessage(stage, {
+      type: "delta",
+      deltaType: "text",
+      content: " world"
+    } as never);
+    logger.stageMessage(stage, {
+      type: "assistant",
+      content: "Hello world",
+      stopReason: "stop",
+      usage: {
+        totalTokens: 12
+      }
+    } as never);
+    logger.stageEnd(stage, {
+      report: "Hello world"
+    });
+
+    expect(output).toContain("[clawitup:audit] │ 1/5 orchestrator Hello world\n");
+    expect(output).toContain("[clawitup:audit] 1/5 orchestrator assistant stop=stop tokens=12\n");
+    expect(output).not.toContain("delta(text) Hello");
+    expect(output).not.toContain("delta(text) world");
   });
 });

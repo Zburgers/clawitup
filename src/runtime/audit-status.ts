@@ -66,23 +66,63 @@ export function formatAuditRunHeader(header: AuditRunHeader): string[] {
 }
 
 export function createAuditRunLogger(stream: Writable = process.stdout): AuditRunLogger {
+  const theme = createTerminalTheme(stream);
+  const stageState = new Map<
+    string,
+    {
+      textStreamOpen: boolean;
+      sawTextDelta: boolean;
+    }
+  >();
+
   return {
     start(header: AuditRunHeader) {
       for (const line of formatAuditRunHeader(header)) {
-        stream.write(`${line}\n`);
+        stream.write(`${theme.header(line)}\n`);
       }
     },
     stageStart(stage: AuditStageInput) {
-      stream.write(`[clawitup:audit] ${formatStageLabel(stage)}: start\n`);
+      stageState.set(stage.name, {
+        textStreamOpen: false,
+        sawTextDelta: false
+      });
+      stream.write(`${theme.stageStart(formatStageLabel(stage))}\n`);
     },
     stageMessage(stage: AuditStageInput, message: GCMessage) {
-      const formatted = formatMessage(message);
+      const state = stageState.get(stage.name) ?? {
+        textStreamOpen: false,
+        sawTextDelta: false
+      };
+
+      if (message.type === "delta" && message.deltaType === "text") {
+        if (!state.textStreamOpen) {
+          stream.write(theme.streamPrefix(formatStageLabel(stage)));
+          state.textStreamOpen = true;
+        }
+        state.sawTextDelta = true;
+        stream.write(message.content);
+        stageState.set(stage.name, state);
+        return;
+      }
+
+      if (state.textStreamOpen) {
+        stream.write("\n");
+        state.textStreamOpen = false;
+        stageState.set(stage.name, state);
+      }
+
+      const formatted = formatMessage(message, state.sawTextDelta);
       if (formatted) {
-        stream.write(`[clawitup:audit] ${formatStageLabel(stage)}: ${formatted}\n`);
+        stream.write(`${theme.eventLine(formatStageLabel(stage), message, formatted)}\n`);
       }
     },
     stageEnd(stage: AuditStageInput, output: AuditStageOutput) {
-      stream.write(`[clawitup:audit] ${formatStageLabel(stage)}: ${formatStageEnd(output)}\n`);
+      const state = stageState.get(stage.name);
+      if (state?.textStreamOpen) {
+        stream.write("\n");
+      }
+      stageState.delete(stage.name);
+      stream.write(`${theme.stageEnd(formatStageLabel(stage), output)}\n`);
     }
   };
 }
@@ -91,7 +131,7 @@ function formatStageLabel(stage: AuditStageInput): string {
   return `${stage.index}/${stage.total} ${stage.name}`;
 }
 
-export function formatMessage(message: GCMessage): string | undefined {
+export function formatMessage(message: GCMessage, suppressAssistantPreview = false): string | undefined {
   switch (message.type) {
     case "delta":
       if (message.deltaType === "thinking") {
@@ -99,7 +139,9 @@ export function formatMessage(message: GCMessage): string | undefined {
       }
       return `delta(${message.deltaType}) ${preview(message.content)}`;
     case "assistant":
-      return `assistant stop=${message.stopReason} ${preview(message.content)}${formatUsage(message.usage)}`;
+      return suppressAssistantPreview
+        ? `assistant stop=${message.stopReason}${formatUsage(message.usage)}`
+        : `assistant stop=${message.stopReason} ${preview(message.content)}${formatUsage(message.usage)}`;
     case "tool_use":
       return `tool_use ${message.toolName} ${preview(stableJson(message.args))}`;
     case "tool_result":
@@ -159,6 +201,62 @@ function stableJson(value: unknown): string {
   } catch {
     return "[unserializable]";
   }
+}
+
+function createTerminalTheme(stream: Writable) {
+  const supportsColor = "isTTY" in stream ? Boolean((stream as Writable & { isTTY?: boolean }).isTTY) : false;
+  const color = (code: number, value: string) => (supportsColor ? `\x1b[${code}m${value}\x1b[0m` : value);
+  const bold = (value: string) => color(1, value);
+  const dim = (value: string) => color(2, value);
+  const cyan = (value: string) => color(36, value);
+  const blue = (value: string) => color(34, value);
+  const green = (value: string) => color(32, value);
+  const yellow = (value: string) => color(33, value);
+  const red = (value: string) => color(31, value);
+  const magenta = (value: string) => color(35, value);
+
+  const prefix = dim("[clawitup:audit]");
+
+  return {
+    header(line: string) {
+      return line.replace("[clawitup:audit]", prefix);
+    },
+    stageStart(label: string) {
+      return `${prefix} ${cyan(`◐ ${bold(label)}`)} ${dim("start")}`;
+    },
+    streamPrefix(label: string) {
+      return `${prefix} ${blue(`│ ${bold(label)}`)} `;
+    },
+    eventLine(label: string, message: GCMessage, formatted: string) {
+      const eventText = (() => {
+        switch (message.type) {
+          case "assistant":
+            return green(`assistant ${formatted.replace(/^assistant\s*/, "")}`);
+          case "tool_use":
+            return blue(`tool ${formatted.replace(/^tool_use\s*/, "")}`);
+          case "tool_result":
+            return message.isError
+              ? red(`tool ${formatted.replace(/^tool_result\s*/, "")}`)
+              : dim(`tool ${formatted.replace(/^tool_result\s*/, "")}`);
+          case "system":
+            return message.subtype === "error"
+              ? red(`system ${formatted.replace(/^system\s*/, "")}`)
+              : yellow(`system ${formatted.replace(/^system\s*/, "")}`);
+          case "user":
+            return magenta(formatted);
+          default:
+            return formatted;
+        }
+      })();
+
+      return `${prefix} ${dim(label)} ${eventText}`;
+    },
+    stageEnd(label: string, output: AuditStageOutput) {
+      const text = formatStageEnd(output);
+      const coloredText = output.error ? red(text) : green(text);
+      return `${prefix} ${output.error ? red(`✗ ${bold(label)}`) : green(`✓ ${bold(label)}`)} ${coloredText}`;
+    }
+  };
 }
 
 async function readGitRepoRoot(cwd: string): Promise<string> {
