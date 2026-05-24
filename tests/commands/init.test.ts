@@ -17,6 +17,8 @@ describe("init command", () => {
     expect(agentYaml?.content).toContain('anthropic:claude-sonnet-4-5-20250929');
     expect(agentYaml?.content).toContain('OPENROUTER_API_KEY');
     expect(agentYaml?.content).toContain('ANTHROPIC_API_KEY');
+    expect(agentYaml?.content).toContain('  - read-file');
+    expect(agentYaml?.content).toContain('  - list-files');
   });
 
   it("can plan a custom preferred model in agent.yaml", () => {

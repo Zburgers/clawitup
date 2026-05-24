@@ -33,8 +33,10 @@ model:
 tools:
   - cli
   - read
+  - read-file
   - write
   - memory
+  - list-files
 runtime:
   max_turns: 50
 skills:
@@ -113,7 +115,7 @@ description: Orchestrate the report-first audit pipeline
 Drive the report-first audit pipeline from scope to ship report.
 
 ## Steps
-1. Read the scope and keep it bounded.
+1. Read the scope and inspect the repository structure first.
 2. Explore the scope, state the audit goal, and identify hot areas for Red Team.
 3. Pass each candidate to verification before Blue Team sees it.
 4. Produce a ship report with explicit policy outcome.
@@ -136,7 +138,7 @@ description: Find plausible findings for a scoped audit
 Find plausible defects, vulnerabilities, regressions, and risky flows.
 
 ## Steps
-1. Start from the orchestrator goal and hot areas.
+1. Start from the orchestrator goal, explored paths, and hot areas.
 2. Inspect the scoped files and nearby context.
 3. Verify referenced paths and symbols exist with direct file reads or diffs before naming a finding.
 4. Prefer concrete evidence over broad suspicion.
@@ -217,9 +219,9 @@ const workflowYaml = `name: adversarial-audit
 description: Report-first Red Team / Filter / Blue Team pipeline
 steps:
   - skill: orchestrate-audit
-    prompt: Keep the audit scope bounded, explore the scope, define the audit goal, identify hot areas, and ensure every promoted lead is grounded in files or symbols that were directly observed.
+    prompt: Keep the audit scope bounded, inspect the repository structure first, define the audit goal, identify hot areas, and ensure every promoted lead is grounded in files or symbols that were directly observed.
   - skill: red-team-audit
-    prompt: Start from the orchestrator goal and hot areas, then produce plausible findings for the scoped change surface with evidence, direct file observations, and file references that were verified in the repo.
+    prompt: Start from the orchestrator goal, explored paths, and hot areas, then produce plausible findings for the scoped change surface with evidence, direct file observations, and file references that were verified in the repo.
   - skill: verify-finding
     prompt: Verify or reject each finding using code evidence, tests, or reproducible reasoning. If the claimed file or symbol was not directly observed, reject the finding or mark it for human review.
   - skill: blue-team-remediation

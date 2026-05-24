@@ -38,9 +38,23 @@ describe("gitclaw stage runner", () => {
       query: async function* (options) {
         queryModels.push(options.model);
         yield {
+          type: "tool_use",
+          toolCallId: "call-1",
+          toolName: "list-files",
+          args: { path: "." }
+        };
+        yield {
+          type: "tool_result",
+          toolCallId: "call-1",
+          toolName: "list-files",
+          content: JSON.stringify(["src", "src-tauri", "tests"]),
+          isError: false
+        };
+        yield {
           type: "assistant",
           content: JSON.stringify({
             goal: "Map the scope for audit",
+            exploredPaths: ["src", "src-tauri", "tests"],
             hotAreas: ["src/runtime/audit-runner.ts", "src/runtime/gitclaw-runner.ts"],
             report: "Agent config selected from manifest"
           }),
@@ -149,7 +163,7 @@ describe("gitclaw stage runner", () => {
               steps: [
                 {
                   skill: "red-team-audit",
-                  prompt: "Start from the orchestrator goal and hot areas, then produce plausible findings for the scoped change surface with evidence, direct file observations, and file references that were verified in the repo."
+                  prompt: "Start from the orchestrator goal, explored paths, and hot areas, then produce plausible findings for the scoped change surface with evidence, direct file observations, and file references that were verified in the repo."
                 }
               ]
             }
@@ -194,7 +208,7 @@ describe("gitclaw stage runner", () => {
           "skill: red-team-audit",
           "workflow: adversarial-audit",
           "report_first: true",
-          "handoff: use the orchestrator task/goal/hot-area handoff to generate provisional findings for filter verification"
+          "handoff: use the orchestrator task/goal/explored-path/hot-area handoff to generate provisional findings for filter verification"
         ].join("\n"),
         scope: "auth"
       })
@@ -202,10 +216,18 @@ describe("gitclaw stage runner", () => {
 
     expect(seenPrompts[0]).toContain("stage: red-team");
     expect(seenPrompts[0]).toContain("skill: red-team-audit");
-    expect(seenPrompts[0]).toContain("handoff: use the orchestrator task/goal/hot-area handoff to generate provisional findings for filter verification");
-    expect(seenAllowedTools[0]).toEqual(["read", "git-diff", "graphify", "rg-search", "run-tests"]);
+    expect(seenPrompts[0]).toContain("handoff: use the orchestrator task/goal/explored-path/hot-area handoff to generate provisional findings for filter verification");
+    expect(seenAllowedTools[0]).toEqual([
+      "read",
+      "read-file",
+      "list-files",
+      "git-diff",
+      "graphify",
+      "rg-search",
+      "run-tests"
+    ]);
     expect(seenSuffixes[0]).toContain("Do not write files, save memory, create workspace artifacts, or modify the repository.");
-    expect(seenSuffixes[0]).toContain("Start from the orchestrator goal and hot areas");
+    expect(seenSuffixes[0]).toContain("Start from the orchestrator goal, explored paths, and hot areas");
     expect(seenSuffixes[0]).toContain("direct file observations");
     expect(output.findingIds).toEqual(["RT-AUTH-001"]);
     expect(output.assistantOutput).toContain("RT-AUTH-001");
@@ -321,7 +343,7 @@ describe("gitclaw stage runner", () => {
     const output = await runner(
       buildStageInput({
         name: "red-team",
-        prompt: "stage: red-team\nhandoff: use the orchestrator task/goal/hot-area handoff to generate provisional findings for filter verification"
+        prompt: "stage: red-team\nhandoff: use the orchestrator task/goal/explored-path/hot-area handoff to generate provisional findings for filter verification"
       })
     );
 

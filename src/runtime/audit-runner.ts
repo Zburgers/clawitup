@@ -63,6 +63,7 @@ export type AuditStageOutput = {
   verifiedFindingIds?: string[];
   verifiedFindings?: Verification[];
   goal?: string;
+  exploredPaths?: string[];
   hotAreas?: string[];
   report?: string;
   notes?: string;
@@ -260,10 +261,10 @@ function buildStagePrompt(
 
   switch (name) {
     case "orchestrator":
-      context.push("handoff: explore the scope, identify hot areas, and produce the task/goal handoff for Red Team");
+      context.push("handoff: inspect the repository structure first, identify hot areas, and produce the task/goal handoff for Red Team");
       return context.join("\n");
     case "red-team":
-      context.push("handoff: use the orchestrator task/goal/hot-area handoff to generate provisional findings for filter verification");
+      context.push("handoff: use the orchestrator task/goal/explored-path/hot-area handoff to generate provisional findings for filter verification");
       return context.join("\n");
     case "filter":
       context.push("handoff: verify or reject red-team leads before Blue Team");
@@ -315,6 +316,7 @@ function summarizeStageOutput(output: AuditStageOutput): Record<string, unknown>
     verifiedFindingIds: output.verifiedFindingIds,
     verifiedFindings: output.verifiedFindings,
     goal: output.goal,
+    exploredPaths: output.exploredPaths,
     hotAreas: output.hotAreas,
     report: output.report,
     notes: output.notes,

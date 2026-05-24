@@ -26,8 +26,24 @@ export type GitclawStageRunnerHooks = {
   onMessage?: (message: GCMessage) => void;
 };
 
-const READ_ONLY_AUDIT_TOOLS = ["read", "git-diff", "graphify", "rg-search", "run-tests"] as const;
-const ORCHESTRATOR_AUDIT_TOOLS: string[] = [];
+const READ_ONLY_AUDIT_TOOLS = [
+  "read",
+  "read-file",
+  "list-files",
+  "git-diff",
+  "graphify",
+  "rg-search",
+  "run-tests"
+] as const;
+const ORCHESTRATOR_AUDIT_TOOLS = [
+  "read",
+  "read-file",
+  "list-files",
+  "git-diff",
+  "graphify",
+  "rg-search",
+  "run-tests"
+] as const;
 const REPORT_AUDIT_TOOLS = ["read"] as const;
 
 const STAGE_SKILLS: Record<AuditStageInput["name"], string> = {
@@ -178,6 +194,7 @@ function parseAuditStageOutput(stage: AuditStageInput, messages: GCMessage[]): A
     const report = typeof record.report === "string" ? record.report : assistantOutput;
     const notes = typeof record.notes === "string" ? record.notes : undefined;
     const goal = typeof record.goal === "string" ? record.goal : undefined;
+    const exploredPaths = normalizeStringArray(record.exploredPaths);
     const hotAreas = normalizeStringArray(record.hotAreas);
     const findingIds = normalizeFindingIds(record.findingIds);
     const verifiedFindingIds = normalizeFindingIds(record.verifiedFindingIds);
@@ -190,6 +207,7 @@ function parseAuditStageOutput(stage: AuditStageInput, messages: GCMessage[]): A
       verifiedFindingIds,
       verifiedFindings,
       goal,
+      exploredPaths,
       hotAreas,
       report,
       notes,
@@ -240,7 +258,7 @@ function buildStageInstructions(stageName: AuditStageInput["name"], workflowProm
 function stageOutputContract(stageName: AuditStageInput["name"]): string {
   switch (stageName) {
     case "orchestrator":
-      return "Return strict JSON only: {\"goal\": string, \"hotAreas\": string[], \"report\": string, \"notes\"?: string}. Explore the scope, name the audit goal, and list the hot areas the Red Team should inspect next.";
+      return "Return strict JSON only: {\"goal\": string, \"exploredPaths\": string[], \"hotAreas\": string[], \"report\": string, \"notes\"?: string}. Inspect the repository structure first, then name the audit goal and list the hot areas the Red Team should inspect next.";
     case "red-team":
       return "Return strict JSON only: {\"findingIds\": string[], \"report\": string, \"notes\"?: string, \"observedFiles\"?: string[]}. Keep candidate findings provisional and evidence-dense. If you cannot verify a referenced path exists, omit the lead or mark it for human review.";
     case "filter":
@@ -262,6 +280,7 @@ function buildAuditSystemPrompt(): string {
     "You are ClawItUp's audit-stage model.",
     "Work only on the current stage.",
     "Stay inside the supplied scope and evidence handoff.",
+    "The orchestrator must inspect repository structure before naming hot areas.",
     "Be concise, evidence-first, and report-first.",
     "Use only the available tools when they materially help.",
     "Never create files, save memory, or mutate the repository."
@@ -325,11 +344,26 @@ function collectToolActivity(messages: GCMessage[]): AuditStageToolActivity[] | 
 function validateStageOutput(stageName: AuditStageInput["name"], output: AuditStageOutput): AuditStageError | undefined {
   switch (stageName) {
     case "orchestrator":
-      if (!hasText(output.report) || !hasText(output.goal) || !hasNonEmptyArray(output.hotAreas)) {
+      if (
+        !hasText(output.report) ||
+        !hasText(output.goal) ||
+        !hasNonEmptyArray(output.exploredPaths) ||
+        !hasNonEmptyArray(output.hotAreas)
+      ) {
         return {
           stage: stageName,
           kind: "invalid_output",
-          message: "orchestrator stage must return a goal, hot areas, and a report"
+          message: "orchestrator stage must return a goal, explored paths, hot areas, and a report"
+        };
+      }
+      if (
+        (hasText(output.report) || hasText(output.goal) || hasNonEmptyArray(output.hotAreas)) &&
+        !hasAnyToolUse(output, ["list-files", "read-file", "read"])
+      ) {
+        return {
+          stage: stageName,
+          kind: "invalid_output",
+          message: "orchestrator stage produced a plan without inspecting the repository structure"
         };
       }
       return undefined;
@@ -341,7 +375,10 @@ function validateStageOutput(stageName: AuditStageInput["name"], output: AuditSt
           message: "red-team stage returned no report or candidate finding ids"
         };
       }
-      if ((hasText(output.report) || hasNonEmptyArray(output.findingIds)) && !hasToolUse(output, "read")) {
+      if (
+        (hasText(output.report) || hasNonEmptyArray(output.findingIds)) &&
+        !hasAnyToolUse(output, ["read", "read-file"])
+      ) {
         return {
           stage: stageName,
           kind: "invalid_output",
@@ -357,7 +394,10 @@ function validateStageOutput(stageName: AuditStageInput["name"], output: AuditSt
           message: "filter stage returned no verified findings or report"
         };
       }
-      if ((hasText(output.report) || hasNonEmptyArray(output.verifiedFindingIds) || hasNonEmptyArray(output.verifiedFindings)) && !hasToolUse(output, "read")) {
+      if (
+        (hasText(output.report) || hasNonEmptyArray(output.verifiedFindingIds) || hasNonEmptyArray(output.verifiedFindings)) &&
+        !hasAnyToolUse(output, ["read", "read-file"])
+      ) {
         return {
           stage: stageName,
           kind: "invalid_output",
@@ -493,10 +533,10 @@ function joinNotes(existing: string | undefined, next: string): string {
   return existing && existing.trim().length > 0 ? `${existing}\n${next}` : next;
 }
 
-function hasToolUse(output: AuditStageOutput, toolName: string): boolean {
+function hasAnyToolUse(output: AuditStageOutput, toolNames: readonly string[]): boolean {
   return Boolean(
     output.toolActivity?.some(
-      (activity) => activity.type === "tool_use" && activity.toolName === toolName
+      (activity) => activity.type === "tool_use" && toolNames.includes(activity.toolName)
     )
   );
 }

@@ -17,7 +17,7 @@ npm link
 
 cd "$target_repo"
 printf '[clawitup:install] initializing target repo\n'
-clawitup init
+clawitup init --force
 
 printf '[clawitup:install] local CLI linked from %s\n' "$clawitup_repo"
 printf '[clawitup:install] target repo configured at %s\n' "$(git rev-parse --show-toplevel)"
