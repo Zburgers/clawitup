@@ -51,6 +51,19 @@ describe("gitclaw stage runner", () => {
           isError: false
         };
         yield {
+          type: "tool_use",
+          toolCallId: "call-2",
+          toolName: "graphify",
+          args: { refresh: true }
+        };
+        yield {
+          type: "tool_result",
+          toolCallId: "call-2",
+          toolName: "graphify",
+          content: "Graph report",
+          isError: false
+        };
+        yield {
           type: "assistant",
           content: JSON.stringify({
             goal: "Map the scope for audit",
@@ -143,6 +156,7 @@ describe("gitclaw stage runner", () => {
   it("captures assistant output and tool activity from the GitClaw stream", async () => {
     const seenPrompts: string[] = [];
     const seenAllowedTools: Array<QueryOptions["allowedTools"]> = [];
+    const seenDisallowedTools: Array<QueryOptions["disallowedTools"]> = [];
     const seenSuffixes: Array<QueryOptions["systemPromptSuffix"]> = [];
     const runner = createGitclawStageRunner({
       dir: "/tmp/clawitup",
@@ -172,6 +186,7 @@ describe("gitclaw stage runner", () => {
       query: (async function* (options: QueryOptions) {
         seenPrompts.push(options.prompt as string);
         seenAllowedTools.push(options.allowedTools);
+        seenDisallowedTools.push(options.disallowedTools);
         seenSuffixes.push(options.systemPromptSuffix);
         yield {
           type: "tool_use",
@@ -190,6 +205,7 @@ describe("gitclaw stage runner", () => {
           type: "assistant",
           content: JSON.stringify({
             findingIds: ["RT-AUTH-001"],
+            observedFiles: ["src/runtime/audit-runner.ts"],
             report: "Candidate finding",
             notes: "needs verification"
           }),
@@ -219,12 +235,20 @@ describe("gitclaw stage runner", () => {
     expect(seenPrompts[0]).toContain("handoff: use the orchestrator task/goal/explored-path/hot-area handoff to generate provisional findings for filter verification");
     expect(seenAllowedTools[0]).toEqual([
       "read",
-      "read-file",
       "list-files",
       "git-diff",
       "graphify",
       "rg-search",
       "run-tests"
+    ]);
+    expect(seenDisallowedTools[0]).toEqual([
+      "cli",
+      "write",
+      "memory",
+      "capture_photo",
+      "task_tracker",
+      "skill_learner",
+      "read-file"
     ]);
     expect(seenSuffixes[0]).toContain("Do not write files, save memory, create workspace artifacts, or modify the repository.");
     expect(seenSuffixes[0]).toContain("Start from the orchestrator goal, explored paths, and hot areas");
@@ -284,6 +308,13 @@ describe("gitclaw stage runner", () => {
           args: { file_path: "src/runtime/gitclaw-runner.ts" }
         };
         yield {
+          type: "tool_result",
+          toolCallId: "call-1",
+          toolName: "read",
+          content: "file contents",
+          isError: false
+        };
+        yield {
           type: "assistant",
           content: JSON.stringify({
             verifiedFindings: [
@@ -295,6 +326,7 @@ describe("gitclaw stage runner", () => {
                 evidence: ["src/runtime/gitclaw-runner.ts"]
               }
             ],
+            observedFiles: ["src/runtime/gitclaw-runner.ts"],
             report: "Verified finding"
           }),
           model: "openai:gpt-4o-mini",
@@ -348,7 +380,105 @@ describe("gitclaw stage runner", () => {
     );
 
     expect(output.error?.kind).toBe("invalid_output");
-    expect(output.notes).toContain("produced candidate findings without reading any files");
+    expect(output.notes).toContain("produced candidate findings without successfully reading any files");
+  });
+
+  it("rejects red-team findings when file read tool result fails", async () => {
+    const runner = createGitclawStageRunner({
+      loadAgent: async () =>
+        ({
+          systemPrompt: "base system prompt",
+          manifest: {
+            tools: ["read"],
+            runtime: { max_turns: 8 }
+          },
+          workflows: []
+        }) as never,
+      query: async function* () {
+        yield {
+          type: "tool_use",
+          toolCallId: "call-1",
+          toolName: "read",
+          args: { file_path: "src/auth/session.ts" }
+        };
+        yield {
+          type: "tool_result",
+          toolCallId: "call-1",
+          toolName: "read",
+          content: "file not found",
+          isError: true
+        };
+        yield {
+          type: "assistant",
+          content: JSON.stringify({
+            findingIds: ["RT-AUTH-001"],
+            report: "Candidate finding based on failed read"
+          }),
+          model: "openai:gpt-4o-mini",
+          provider: "openai",
+          stopReason: "stop"
+        };
+      }
+    });
+
+    const output = await runner(
+      buildStageInput({
+        name: "red-team",
+        prompt: "stage: red-team"
+      })
+    );
+
+    expect(output.error?.kind).toBe("invalid_output");
+    expect(output.notes).toContain("without successfully reading any files");
+  });
+
+  it("rejects red-team findings when file read tool result is empty", async () => {
+    const runner = createGitclawStageRunner({
+      loadAgent: async () =>
+        ({
+          systemPrompt: "base system prompt",
+          manifest: {
+            tools: ["read"],
+            runtime: { max_turns: 8 }
+          },
+          workflows: []
+        }) as never,
+      query: async function* () {
+        yield {
+          type: "tool_use",
+          toolCallId: "call-1",
+          toolName: "read",
+          args: { file_path: "src/auth/session.ts" }
+        };
+        yield {
+          type: "tool_result",
+          toolCallId: "call-1",
+          toolName: "read",
+          content: "   ",
+          isError: false
+        };
+        yield {
+          type: "assistant",
+          content: JSON.stringify({
+            findingIds: ["RT-AUTH-002"],
+            report: "Candidate finding based on empty read"
+          }),
+          model: "openai:gpt-4o-mini",
+          provider: "openai",
+          stopReason: "stop"
+        };
+      }
+    });
+
+    const output = await runner(
+      buildStageInput({
+        name: "red-team",
+        prompt: "stage: red-team"
+      })
+    );
+
+    expect(output.error?.kind).toBe("invalid_output");
+    expect(output.notes).toContain("without successfully reading any files");
   });
 
   it("surfaces an explicit stage error when the assistant response is truncated", async () => {
@@ -428,7 +558,117 @@ describe("gitclaw stage runner", () => {
     );
 
     expect(output.error?.kind).toBe("invalid_output");
-    expect(output.notes).toContain("verified findings without reading any files");
+    expect(output.notes).toContain("verified findings without successfully reading any files");
+  });
+
+  it("rejects filter findings when file read tool result fails", async () => {
+    const runner = createGitclawStageRunner({
+      loadAgent: async () =>
+        ({
+          systemPrompt: "base system prompt",
+          manifest: {
+            tools: ["read"],
+            runtime: { max_turns: 8 }
+          },
+          workflows: []
+        }) as never,
+      query: async function* () {
+        yield {
+          type: "tool_use",
+          toolCallId: "call-1",
+          toolName: "read",
+          args: { file_path: "src/auth/session.ts" }
+        };
+        yield {
+          type: "tool_result",
+          toolCallId: "call-1",
+          toolName: "read",
+          content: "permission denied",
+          isError: true
+        };
+        yield {
+          type: "assistant",
+          content: JSON.stringify({
+            verifiedFindings: [
+              {
+                id: "RT-AUTH-003",
+                status: "CONFIRMED",
+                severity: "medium"
+              }
+            ],
+            report: "Verified finding based on failed read"
+          }),
+          model: "openai:gpt-4o-mini",
+          provider: "openai",
+          stopReason: "stop"
+        };
+      }
+    });
+
+    const output = await runner(
+      buildStageInput({
+        name: "filter",
+        prompt: "stage: filter"
+      })
+    );
+
+    expect(output.error?.kind).toBe("invalid_output");
+    expect(output.notes).toContain("without successfully reading any files");
+  });
+
+  it("rejects filter findings when file read tool result is empty", async () => {
+    const runner = createGitclawStageRunner({
+      loadAgent: async () =>
+        ({
+          systemPrompt: "base system prompt",
+          manifest: {
+            tools: ["read"],
+            runtime: { max_turns: 8 }
+          },
+          workflows: []
+        }) as never,
+      query: async function* () {
+        yield {
+          type: "tool_use",
+          toolCallId: "call-1",
+          toolName: "read",
+          args: { file_path: "src/auth/session.ts" }
+        };
+        yield {
+          type: "tool_result",
+          toolCallId: "call-1",
+          toolName: "read",
+          content: "",
+          isError: false
+        };
+        yield {
+          type: "assistant",
+          content: JSON.stringify({
+            verifiedFindings: [
+              {
+                id: "RT-AUTH-004",
+                status: "CONFIRMED",
+                severity: "low"
+              }
+            ],
+            report: "Verified finding based on empty read"
+          }),
+          model: "openai:gpt-4o-mini",
+          provider: "openai",
+          stopReason: "stop"
+        };
+      }
+    });
+
+    const output = await runner(
+      buildStageInput({
+        name: "filter",
+        prompt: "stage: filter"
+      })
+    );
+
+    expect(output.error?.kind).toBe("invalid_output");
+    expect(output.notes).toContain("without successfully reading any files");
   });
 
   it("normalizes lowercase verification statuses from model output", async () => {

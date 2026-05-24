@@ -1,0 +1,17 @@
+name: list-files
+description: List files under a path using an optional glob pattern with safe limits.
+input_schema:
+  properties:
+    path:
+      type: string
+      description: Optional repo-relative path to list.
+    pattern:
+      type: string
+      description: Optional glob pattern (e.g., "**/*.ts").
+    limit:
+      type: number
+      description: Optional maximum number of lines to return (default 200).
+  required: []
+implementation:
+  script: list-files.mjs
+  runtime: node

@@ -1,8 +1,15 @@
-## graphify
+# graphify
+- **graphify** (`~/.Codex/skills/graphify/SKILL.md`) - any input to knowledge graph. Trigger: `/graphify`
+When the user types `/graphify`, invoke the Skill tool with `skill: "graphify"` before doing anything else.
 
-This project has a graphify knowledge graph at graphify-out/.
+--- project-doc ---
 
-Rules:
-- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
-- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
-- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
+# ClawItUp Agents
+
+- Orchestrator owns scope control and the hot-area handoff only.
+- ClawItUp runs stages sequentially; no model stage actively drives the rest of the workflow.
+- Red Team produces candidate findings but does not make ship decisions.
+- Filter verifies or rejects findings with evidence.
+- Blue Team reads verified findings and writes remediation guidance.
+- Red Team and Filter must return observedFiles backed by successful read tool results when promoting or verifying findings.
+- Shared memory is repo-level; team memory stays narrow and reviewable.

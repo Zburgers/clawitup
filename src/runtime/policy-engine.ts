@@ -33,12 +33,12 @@ export function evaluatePolicy(input: PolicyInput): PolicyResult {
     };
   }
 
-  const blockingFinding = input.verified_findings.find(isBlockingFinding);
-  if (blockingFinding) {
+  const blockingFindings = input.verified_findings.filter(isBlockingFinding);
+  if (blockingFindings.length > 0) {
     return {
       result: "FAIL",
       reasons: ["confirmed high-risk finding blocks the gate"],
-      blocking_finding_ids: [blockingFinding.id]
+      blocking_finding_ids: blockingFindings.map((finding) => finding.id)
     };
   }
 

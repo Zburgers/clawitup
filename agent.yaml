@@ -1,19 +1,27 @@
 spec_version: "0.1.0"
 name: clawitup
-version: "1.0.0"
+version: "1.0.1"
 description: Git-native Red Team / Filter / Blue Team audit gate
+# Model entries use provider:model strings and can mix providers.
+# OpenAI models use OPENAI_API_KEY, OpenRouter uses OPENROUTER_API_KEY,
+# and Anthropic uses ANTHROPIC_API_KEY or ANTHROPIC_OAUTH_TOKEN.
 model:
-  preferred: "openai:gpt-4o-mini"
-  fallback: []
+  preferred: "openrouter:openai/gpt-oss-120b:free"
+  fallback:
+    - "openrouter:anthropic/claude-sonnet-4.5"
+    - "anthropic:claude-sonnet-4-5-20250929"
 tools:
-  - cli
   - read
-  - write
-  - memory
+  - list-files
+  - git-diff
+  - graphify
+  - rg-search
+  - run-tests
 runtime:
   max_turns: 50
 skills:
   - orchestrate-audit
+  - run-context-gates
   - red-team-audit
   - verify-finding
   - blue-team-remediation

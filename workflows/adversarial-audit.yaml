@@ -2,11 +2,11 @@ name: adversarial-audit
 description: Report-first Red Team / Filter / Blue Team pipeline
 steps:
   - skill: orchestrate-audit
-    prompt: Keep the audit scope bounded, initialize the report-first flow, and only hand off verified findings.
+    prompt: Keep the audit scope bounded, list files within the scoped paths first, run Graphify next, then use rg-search only within the same paths. Define the audit goal and hot areas only; the CLI runs the later stages sequentially.
   - skill: red-team-audit
-    prompt: Produce plausible findings for the scoped change surface with evidence and file references.
+    prompt: Start from the orchestrator goal, explored paths, and hot areas, then produce plausible findings for the scoped change surface with evidence, observedFiles, direct file observations, and file references that were verified in the repo.
   - skill: verify-finding
-    prompt: Verify or reject each finding using code evidence, tests, or reproducible reasoning before Blue Team sees it.
+    prompt: Verify or reject each finding using code evidence, tests, observedFiles, or reproducible reasoning. If the claimed file or symbol was not directly observed, reject the finding or mark it for human review.
   - skill: blue-team-remediation
     prompt: Turn only verified or human-review-worthy findings into the smallest useful remediation guidance.
   - skill: generate-ship-report

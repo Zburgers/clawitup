@@ -13,6 +13,7 @@ export const VerificationSchema = z.object({
 export type Verification = z.infer<typeof VerificationSchema>;
 
 const STATUS_ALIASES: Record<string, Verification["status"]> = {
+  verified: "CONFIRMED",
   confirmed: "CONFIRMED",
   rejected: "REJECTED_FALSE_POSITIVE",
   rejected_false_positive: "REJECTED_FALSE_POSITIVE",

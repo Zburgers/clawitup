@@ -1,13 +1,12 @@
 import { spawn } from "node:child_process";
 
 const input = await readInput();
-const query = typeof input.query === "string" ? input.query : "";
-
-if (!query) throw new Error("query is required");
-
 const searchPath = safePath(input.path);
-const output = await runRg([
-  "--line-number",
+const pattern = typeof input.pattern === "string" && input.pattern.trim().length > 0 ? input.pattern : undefined;
+const limit = normalizeLimit(input.limit);
+
+const args = [
+  "--files",
   "--hidden",
   "--glob",
   "!node_modules",
@@ -17,16 +16,18 @@ const output = await runRg([
   "!runs",
   "--glob",
   "!graphify-out",
-  "--max-columns",
-  "200",
-  "--max-columns-preview",
-  "--max-count",
-  "20",
-  query,
-  ...(searchPath ? [searchPath] : ["."])
-]);
+  "--glob",
+  "!dist"
+];
 
-writeText(limitLines(output, 120));
+if (pattern) {
+  args.push("--glob", pattern);
+}
+
+args.push(searchPath ?? ".");
+
+const output = await runRg(args);
+writeText(limitLines(output, limit));
 
 async function readInput() {
   const chunks = [];
@@ -38,6 +39,11 @@ async function readInput() {
 function safePath(value) {
   if (typeof value !== "string" || value.startsWith("/") || value.includes("..")) return undefined;
   return value;
+}
+
+function normalizeLimit(value) {
+  if (typeof value !== "number" || !Number.isFinite(value)) return 200;
+  return Math.max(1, Math.min(500, Math.floor(value)));
 }
 
 function runRg(args) {

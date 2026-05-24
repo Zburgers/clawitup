@@ -20,7 +20,7 @@ function buildAgentYaml(
 ): string {
   return `spec_version: "0.1.0"
 name: clawitup
-version: "1.0.0"
+version: "1.0.1"
 description: Git-native Red Team / Filter / Blue Team audit gate
 # Model entries use provider:model strings and can mix providers.
 # OpenAI models use OPENAI_API_KEY, OpenRouter uses OPENROUTER_API_KEY,
@@ -31,12 +31,12 @@ model:
     - "openrouter:anthropic/claude-sonnet-4.5"
     - "anthropic:claude-sonnet-4-5-20250929"
 tools:
-  - cli
   - read
-  - read-file
-  - write
-  - memory
   - list-files
+  - git-diff
+  - graphify
+  - rg-search
+  - run-tests
 runtime:
   max_turns: 50
 skills:
@@ -112,19 +112,21 @@ description: Orchestrate the report-first audit pipeline
 # Orchestrate Audit
 
 ## Purpose
-Drive the report-first audit pipeline from scope to ship report.
+Prepare the scoped handoff for the sequential report-first audit pipeline.
 
 ## Steps
-1. Read the scope and inspect the repository structure first.
-2. Explore the scope, state the audit goal, and identify hot areas for Red Team.
-3. Pass each candidate to verification before Blue Team sees it.
-4. Produce a ship report with explicit policy outcome.
+1. Read the scope and list files within the scoped paths first.
+2. Run Graphify after listing files to understand relationships.
+3. Use rg-search only after Graphify and only within the scoped paths.
+4. State the audit goal and identify hot areas for Red Team.
+5. Return the scoped handoff; the CLI runs Red Team, Filter, Blue Team, and Ship Report after this stage.
 
 ## Constraints
 - Raw Red Team output is not a ship-blocking signal.
 - Reject or downgrade any lead that cites files, functions, or lines the model did not directly observe.
 - Require file existence checks before a finding can be promoted.
 - Use repository evidence before asking for broader context.
+- Do not claim to run later stages; ClawItUp executes stages sequentially outside the model.
 `;
 
 const redTeamSkill = `---
@@ -142,13 +144,14 @@ Find plausible defects, vulnerabilities, regressions, and risky flows.
 2. Inspect the scoped files and nearby context.
 3. Verify referenced paths and symbols exist with direct file reads or diffs before naming a finding.
 4. Prefer concrete evidence over broad suspicion.
-5. Record each lead with files, lines, and why it matters.
+5. Return observedFiles for the files read in this stage, then record each lead with files, lines, and why it matters.
 
 ## Constraints
 - Findings are provisional until verified.
 - Never invent filenames, functions, line numbers, or code patterns.
 - If a path cannot be verified, omit it or mark it for human review.
 - Do not claim CI failure from raw leads.
+- Do not cite files outside observedFiles unless they came from the orchestrator handoff as hot areas that still need verification.
 `;
 
 const verifyFindingSkill = `---
@@ -165,12 +168,13 @@ Decide whether a Red Team lead is confirmed, rejected, or needs human review.
 1. Demand code evidence, tests, or reproducible reasoning.
 2. Confirm the lead is grounded in code you actually observed, including direct file reads when the claim names files or symbols.
 3. Use Graphify and bounded repo reads when available.
-4. Record the verdict and the proof trail.
+4. Return observedFiles for the files read in this stage, then record the verdict and proof trail.
 
 ## Constraints
 - A finding without evidence stays unconfirmed.
 - If the referenced code was not directly inspected, reject the finding or escalate it to human review.
 - Filter output decides what can reach Blue Team.
+- Do not confirm a finding unless observedFiles is backed by direct reads in this stage.
 `;
 
 const blueTeamSkill = `---
@@ -219,11 +223,11 @@ const workflowYaml = `name: adversarial-audit
 description: Report-first Red Team / Filter / Blue Team pipeline
 steps:
   - skill: orchestrate-audit
-    prompt: Keep the audit scope bounded, inspect the repository structure first, define the audit goal, identify hot areas, and ensure every promoted lead is grounded in files or symbols that were directly observed.
+    prompt: Keep the audit scope bounded, list files within the scoped paths first, run Graphify next, then use rg-search only within the same paths. Define the audit goal and hot areas only; the CLI runs the later stages sequentially.
   - skill: red-team-audit
-    prompt: Start from the orchestrator goal, explored paths, and hot areas, then produce plausible findings for the scoped change surface with evidence, direct file observations, and file references that were verified in the repo.
+    prompt: Start from the orchestrator goal, explored paths, and hot areas, then produce plausible findings for the scoped change surface with evidence, observedFiles, direct file observations, and file references that were verified in the repo.
   - skill: verify-finding
-    prompt: Verify or reject each finding using code evidence, tests, or reproducible reasoning. If the claimed file or symbol was not directly observed, reject the finding or mark it for human review.
+    prompt: Verify or reject each finding using code evidence, tests, observedFiles, or reproducible reasoning. If the claimed file or symbol was not directly observed, reject the finding or mark it for human review.
   - skill: blue-team-remediation
     prompt: Turn only verified or human-review-worthy findings into the smallest useful remediation guidance.
   - skill: generate-ship-report
@@ -362,6 +366,8 @@ export function getInitTemplateFiles(
     { relativePath: "skills/run-context-gates/SKILL.md", content: "", sourceAsset: "skills/run-context-gates/SKILL.md" },
     { relativePath: "tools/git-diff.yaml", content: "", sourceAsset: "tools/git-diff.yaml" },
     { relativePath: "tools/git-diff.mjs", content: "", sourceAsset: "tools/git-diff.mjs" },
+    { relativePath: "tools/list-files.yaml", content: "", sourceAsset: "tools/list-files.yaml" },
+    { relativePath: "tools/list-files.mjs", content: "", sourceAsset: "tools/list-files.mjs" },
     { relativePath: "tools/graphify.yaml", content: "", sourceAsset: "tools/graphify.yaml" },
     { relativePath: "tools/graphify.mjs", content: "", sourceAsset: "tools/graphify.mjs" },
     { relativePath: "tools/rg-search.yaml", content: "", sourceAsset: "tools/rg-search.yaml" },

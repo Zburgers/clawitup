@@ -20,8 +20,8 @@
     "hash": "496b1a96a1f2b6cf87843e9d77272ecf"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/schemas/verification.ts": {
-    "mtime": 1779621049.7013712,
-    "hash": "9b6e3e7973ae9b055032a9731bbced05"
+    "mtime": 1779636734.9905176,
+    "hash": "0a9a93e660b127f95ebc683a22ac5083"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/schemas/policy.ts": {
     "mtime": 1779461091.9839787,
@@ -48,12 +48,12 @@
     "hash": "045fabe9d428e9bf047d38bbd3cca05f"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/policy-engine.ts": {
-    "mtime": 1779556092.8703694,
-    "hash": "a239832f1364f70c8e1c5d0c01ed2f26"
+    "mtime": 1779640053.9657302,
+    "hash": "cdcc749b4ff13638d6701a6642680fb9"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/templates.ts": {
-    "mtime": 1779622221.311132,
-    "hash": "81d3c3c4890590ccfa535ea0ac2e791b"
+    "mtime": 1779639560.9314816,
+    "hash": "76f4e49d34cf0d13764a9bc69873f188"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/graphify.ts": {
     "mtime": 1779463160.675318,
@@ -68,16 +68,16 @@
     "hash": "953281e36cbf0c27432d15a2b02039ae"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/audit-runner.ts": {
-    "mtime": 1779622299.4411156,
-    "hash": "70aeedcbc05d6eb3eebbbcdcf2bd98a8"
+    "mtime": 1779639395.2803946,
+    "hash": "337638840ede557d64f1a537584f4869"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/audit-status.ts": {
-    "mtime": 1779622723.0554197,
-    "hash": "d27cc206486f0243dbd6de31c76f522e"
+    "mtime": 1779627518.6050928,
+    "hash": "9f0df9da1b1285498f37103b21cfa84d"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/gitclaw-runner.ts": {
-    "mtime": 1779622838.0568595,
-    "hash": "bfccfb9a9f68662cf1161cb065647ac9"
+    "mtime": 1779639623.1292653,
+    "hash": "c1fe25bc27e5e2f031df8ffebd3bfb28"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/layout.ts": {
     "mtime": 1779620850.1238568,
@@ -92,8 +92,8 @@
     "hash": "191a6a0f07dc0f8b427451feaee0c878"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/commands/audit.ts": {
-    "mtime": 1779622942.6561692,
-    "hash": "e292acea6a187b3d7fbf526ba649b58e"
+    "mtime": 1779635120.3059664,
+    "hash": "026c1f1807b35bc7f2ebc864414e8343"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/src/commands/report.ts": {
     "mtime": 1779463666.3918061,
@@ -132,8 +132,8 @@
     "hash": "37b5587d84017fe77f96e465ac9e363b"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/policy-engine.test.ts": {
-    "mtime": 1779463022.9675512,
-    "hash": "5aca1088303571a07a6f126068e123dd"
+    "mtime": 1779640054.2917345,
+    "hash": "0628ae3cf356a263fedd76cd27d20bf3"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/memory-gate.test.ts": {
     "mtime": 1779463081.3603005,
@@ -144,28 +144,28 @@
     "hash": "e5d9171dd7dfa5ffb630ddc641e54966"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/gitclaw-tool-manifests.test.ts": {
-    "mtime": 1779463237.1012986,
-    "hash": "dbdd3a961613baf540441bea4b51e2e0"
+    "mtime": 1779637263.5702665,
+    "hash": "07b50034c555860b7d7c105651f52306"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/git.test.ts": {
     "mtime": 1779463408.0914922,
     "hash": "ceca9af3bacea152fb0d49819f27f84b"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/gitclaw-runner.test.ts": {
-    "mtime": 1779622744.7756915,
-    "hash": "6aab9f6b12fa9861541612c697c05a05"
+    "mtime": 1779639538.0461934,
+    "hash": "4d769321331a77b828c32aa756504109"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/audit-runner.test.ts": {
     "mtime": 1779555229.3566887,
     "hash": "76bfa44f80ecca58075a3268821af9ee"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/runtime/audit-status.test.ts": {
-    "mtime": 1779622735.3415735,
-    "hash": "e8620f21d69a68c11f7c6bbc5339c1dc"
+    "mtime": 1779627526.8401988,
+    "hash": "a2ce12d068aa42d3a58ea7e288c8b3c1"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/commands/init.test.ts": {
-    "mtime": 1779622367.7759712,
-    "hash": "2a958a5524b0f49ac891808e68a48e14"
+    "mtime": 1779639537.7881901,
+    "hash": "ddc1a75f31f4e7695300a68d151c2b22"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/commands/audit-ci.test.ts": {
     "mtime": 1779463407.9014897,
@@ -184,24 +184,32 @@
     "hash": "32a13a6fd6a1926924e7a958fce3cb00"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tests/commands/audit-artifacts.test.ts": {
-    "mtime": 1779622951.4062788,
-    "hash": "0278329cc9bc302922fd873da1f7e6c2"
+    "mtime": 1779636746.0806592,
+    "hash": "a4f71cbdab00c72e867fff2c307c8baa"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/tests/commands/audit-runner.test.ts": {
+    "mtime": 1779635195.4709184,
+    "hash": "0e0f0a275a7feadeca5aa30a2aa4ed36"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tools/graphify.mjs": {
-    "mtime": 1779463299.965105,
+    "mtime": 1779637399.1619978,
     "hash": "f646e1ae65e4d55444969f7140e5fad5"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tools/git-diff.mjs": {
-    "mtime": 1779463300.1301072,
+    "mtime": 1779637399.1599977,
     "hash": "6bbb165ccf02c86d7f3532ad8628a4ae"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tools/rg-search.mjs": {
-    "mtime": 1779463300.3011093,
-    "hash": "e6a855351b09816c9afc137997380d1e"
+    "mtime": 1779637399.162998,
+    "hash": "6d49141fad6b3eced647c0eff83a0a58"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tools/run-tests.mjs": {
-    "mtime": 1779463300.4761117,
+    "mtime": 1779637399.162998,
     "hash": "1fb21244bb59c1a8101d966e3f2c5a5d"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/tools/list-files.mjs": {
+    "mtime": 1779637399.1609979,
+    "hash": "a214194ff5c5dfbe1d77f47e979eebc2"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/examples/vulnerable-demo-app/src/auth.ts": {
     "mtime": 1779463598.3769336,
@@ -220,23 +228,23 @@
     "hash": "44ca321c65ddf3c3a93ba996415eb4bc"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/AGENTS.md": {
-    "mtime": 1779445374.9719324,
-    "hash": "f07b9404a71a45b783c9ebe550db4459"
+    "mtime": 1779640249.1462371,
+    "hash": "0c796679aa4d8d96d75900af7265704d"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/agent.yaml": {
-    "mtime": 1779560451.1496122,
-    "hash": "2c78fd97810750103988acf3d5b82877"
+    "mtime": 1779639560.7444794,
+    "hash": "487406d48026cb5371d0f3ae29f69bf1"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/SOUL.md": {
-    "mtime": 1779463137.596022,
+    "mtime": 1779637399.1539977,
     "hash": "fb63043c72800492aebcdf2fc35bf934"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/RULES.md": {
-    "mtime": 1779463137.7740242,
+    "mtime": 1779637399.1539977,
     "hash": "7abc7a125d6938bc066c23fb39433026"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/DUTIES.md": {
-    "mtime": 1779463137.9650266,
+    "mtime": 1779637399.1539977,
     "hash": "a88747d57b3715df1ab096e01cd20854"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/CLAWITUP_V0_2_REFINED_SPEC.md": {
@@ -244,51 +252,51 @@
     "hash": "afb04149ddf69ed559174ccda09078b6"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/README.md": {
-    "mtime": 1779622971.0115242,
-    "hash": "3759ab15e0dc4b6f36462661154d4b4d"
+    "mtime": 1779639584.7957823,
+    "hash": "6ef908f41995a7524e8eb26d7eb03aef"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/MEMORY.md": {
     "mtime": 1779445555.6228201,
     "hash": "8d3816121352b9ad0908ee3f82779f97"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/shared/repo-profile.md": {
-    "mtime": 1779463153.1592216,
+    "mtime": 1779637399.163998,
     "hash": "556e6c2a25487ecbee77df55d0c27c51"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/shared/risk-register.md": {
-    "mtime": 1779463153.3292236,
+    "mtime": 1779637399.163998,
     "hash": "00af99fb8cf9c28863fe97f759ba363b"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/shared/false-positive-patterns.md": {
-    "mtime": 1779463153.509226,
+    "mtime": 1779637399.1649978,
     "hash": "f3a76b42038410bfbcd8fa16c1293e22"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/shared/confirmed-bug-patterns.md": {
-    "mtime": 1779463153.6762283,
+    "mtime": 1779637399.1649978,
     "hash": "8402c2680a4686d5606a3e7e6dcf21e0"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/shared/remediation-playbook.md": {
-    "mtime": 1779463153.8582306,
+    "mtime": 1779637399.1649978,
     "hash": "0558727c3be75e4da70ec5960e3f664e"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/shared/graphify-notes.md": {
-    "mtime": 1779463154.0362327,
+    "mtime": 1779637399.165998,
     "hash": "401a5e14d7e7af38065ee3e9ad943adf"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/shared/run-history.md": {
-    "mtime": 1779463154.2192352,
+    "mtime": 1779637399.165998,
     "hash": "1d067b360f939b10bb2df2dacaea1897"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/teams/red-team.md": {
-    "mtime": 1779463154.521239,
+    "mtime": 1779637399.165998,
     "hash": "6b4fde4d861959d48f86b35c8d35910b"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/teams/filter.md": {
-    "mtime": 1779463154.6992414,
+    "mtime": 1779637399.165998,
     "hash": "44f0d70ab653a00b93f9f1eeb06f4ef2"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/memory/teams/blue-team.md": {
-    "mtime": 1779463154.8762436,
+    "mtime": 1779637399.165998,
     "hash": "86759dce66adf52b38499d8000825cb7"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/docs/plans/2026-05-22-clawitup-audit-gate-design.md": {
@@ -303,53 +311,61 @@
     "mtime": 1779560419.4342098,
     "hash": "617e39a1c5c9f5be64161a3adf8ed825"
   },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/docs/releases/v1.0.1.md": {
+    "mtime": 1779639591.177863,
+    "hash": "0fc126d0f173474fb10623dac26bbb55"
+  },
   "/home/naki/Desktop/itsthatnewshit/clawitup/skills/orchestrate-audit/SKILL.md": {
-    "mtime": 1779463632.177436,
-    "hash": "806a938dde18d64219e138cf66bcd43c"
+    "mtime": 1779639479.129451,
+    "hash": "fbf7b1e83b017722b4a249a834589812"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/skills/red-team-audit/SKILL.md": {
-    "mtime": 1779463632.3493693,
-    "hash": "9df0ecefef948854bf84cd6c2105081c"
+    "mtime": 1779639479.3154533,
+    "hash": "dfb77f9a1f032ff0a21e82930ac6dc96"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/skills/verify-finding/SKILL.md": {
-    "mtime": 1779463632.5200562,
-    "hash": "6fc1bf35f009f17d0804565ad7f3c4d2"
+    "mtime": 1779639479.5014558,
+    "hash": "177c6c67bc7d6e04d7a16fdc65594990"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/skills/blue-team-remediation/SKILL.md": {
-    "mtime": 1779463632.6903737,
-    "hash": "ed374bb1b820ae98c0a4cef17a5c5255"
+    "mtime": 1779637399.1559978,
+    "hash": "9282d5942efd96811fd7422f94a9b543"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/skills/generate-ship-report/SKILL.md": {
-    "mtime": 1779463269.2327108,
-    "hash": "ed078de4ea8dceb9392aeee02db04383"
+    "mtime": 1779637399.1569977,
+    "hash": "56b3251c8920f85e088f8d28b2c69ed7"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/skills/run-context-gates/SKILL.md": {
-    "mtime": 1779463162.315339,
+    "mtime": 1779637399.1589978,
     "hash": "ba541da52330c40a5da3924b318c1bcc"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/workflows/adversarial-audit.yaml": {
-    "mtime": 1779463632.863376,
-    "hash": "0df386c374978afcdeaa46d88d79903c"
+    "mtime": 1779639479.687458,
+    "hash": "b313bf2b640b0d6cd49724dabd32b188"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/hooks/hooks.yaml": {
-    "mtime": 1779463269.6177156,
-    "hash": "9925c51bb8d42574fa2b476bffa4681f"
+    "mtime": 1779637399.1569977,
+    "hash": "6cf102a281a8843622570b0646e9fb46"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tools/graphify.yaml": {
-    "mtime": 1779463299.2320957,
+    "mtime": 1779637399.1609979,
     "hash": "479dd3e876d066110803b211b475fc54"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tools/git-diff.yaml": {
-    "mtime": 1779463299.4280982,
+    "mtime": 1779637399.1589978,
     "hash": "7290c0bd5cb2ec55fe4e7b35c262dbd5"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tools/rg-search.yaml": {
-    "mtime": 1779463299.6021004,
+    "mtime": 1779637399.1619978,
     "hash": "97093020018ebd0327f983d5bd1f1e18"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/tools/run-tests.yaml": {
-    "mtime": 1779463299.7791026,
+    "mtime": 1779637399.162998,
     "hash": "484ac5dd4a664bcd24a3a908e913e751"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/tools/list-files.yaml": {
+    "mtime": 1779637399.1599977,
+    "hash": "6f103ae9b1fd1ad8e8aaf30c2aaa6b4e"
   },
   "/home/naki/Desktop/itsthatnewshit/clawitup/examples/vulnerable-demo-app/README.md": {
     "mtime": 1779463595.8809013,
@@ -362,5 +378,13 @@
   "/home/naki/Desktop/itsthatnewshit/clawitup/examples/evals/auth-boundary.yaml": {
     "mtime": 1779463619.9012096,
     "hash": "15f647d83af768a8590faa0b1cc02cda"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/runs/20260524130455266/blue-team-handoff.md": {
+    "mtime": 1779627895.2729406,
+    "hash": "5144bbe8bca85e28117f767b62c67db4"
+  },
+  "/home/naki/Desktop/itsthatnewshit/clawitup/runs/20260524130455266/final-ship-report.md": {
+    "mtime": 1779627895.2729406,
+    "hash": "9e24feb856d2e62ed2fa7984fec2fa4b"
   }
 }

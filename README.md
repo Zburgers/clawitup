@@ -12,9 +12,23 @@ The CLI orchestrates deterministic contracts and artifacts. Gitclaw provides the
 
 ## Release
 
-- Current release: `v1.0.0`
+- Current release: `v1.0.1`
 - Runtime target: Node.js `22+`
 - Upstream runtime reference: <https://github.com/open-gitagent/gitagent>
+
+## Quickstart
+
+```bash
+npm install
+npm run build
+npm link
+
+cd /path/to/target/repo
+clawitup init --force
+clawitup audit --scope src
+clawitup status
+clawitup report
+```
 
 ## Runtime Shape
 
@@ -48,9 +62,9 @@ ClawItUp uses SDK-level calls from `gitclaw` in the runtime layer:
 
 Key implementation points:
 
-- [gitclaw-runner.ts](/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/gitclaw-runner.ts)
-- [audit-runner.ts](/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/audit-runner.ts)
-- [audit-status.ts](/home/naki/Desktop/itsthatnewshit/clawitup/src/runtime/audit-status.ts)
+- [gitclaw-runner.ts](src/runtime/gitclaw-runner.ts)
+- [audit-runner.ts](src/runtime/audit-runner.ts)
+- [audit-status.ts](src/runtime/audit-status.ts)
 
 The runtime streams and captures:
 
@@ -72,7 +86,7 @@ Default stage-to-skill mapping:
 
 Workflow file:
 
-- [adversarial-audit.yaml](/home/naki/Desktop/itsthatnewshit/clawitup/workflows/adversarial-audit.yaml)
+- [adversarial-audit.yaml](workflows/adversarial-audit.yaml)
 
 ## Install
 
@@ -80,6 +94,7 @@ From this ClawItUp checkout:
 
 ```bash
 ./install.sh /absolute/path/to/target-git-repo
+./install.sh /absolute/path/to/target-git-repo openrouter:openai/gpt-oss-120b:free
 ```
 
 Installer behavior:
@@ -87,7 +102,7 @@ Installer behavior:
 1. Verifies target is a git repository.
 2. Installs dependencies and builds local CLI.
 3. Links `clawitup` locally.
-4. Runs `clawitup init` in the target repo.
+4. Runs `clawitup init --force` in the target repo, with an optional second arg or `CLAWITUP_MODEL` env var for the generated preferred model.
 5. Prints next-step commands.
 
 Manual development install:
@@ -134,6 +149,23 @@ Notes:
 - If `model` is omitted at SDK call-site, ClawItUp defers model selection to `agent.yaml`.
 - If `model` is passed, ClawItUp forwards it unchanged.
 
+Example CLI overrides:
+
+```bash
+clawitup init --model openrouter:openai/gpt-oss-120b:free
+clawitup audit --model openai:gpt-4o-mini --scope src
+```
+
+## Evidence Model
+
+ClawItUp does not treat raw model claims as verified findings.
+
+Red Team and Filter stages must inspect repository files before producing or verifying findings. Findings without successful file evidence are rejected by the stage validator and cause the run policy to fail.
+
+`observedFiles` is machine-checked against successful `read` tool results for Red Team and Filter outputs. Prompt-only file references are not enough to promote or verify a finding.
+
+The pipeline is sequential. The orchestrator only prepares scope, goal, and hot-area handoff; the CLI invokes Red Team, Filter, Blue Team, and Ship Report as separate stages.
+
 ## Running The CLI
 
 Local scope audit:
@@ -165,7 +197,7 @@ clawitup memory show
 
 `status` prints the selected run, `artifacts: <run-root>`, and whether the ship report and policy artifact exist. `report` prints the same run and artifact root before the latest ship report body.
 
-`clawitup audit` is report-first and read-only: it produces audit artifacts and a final ship report, but does not patch the repo.
+`clawitup audit` is report-first and read-only: it produces audit artifacts and a final ship report, but does not patch the repo by default.
 
 ## Live TUI Output
 
@@ -197,12 +229,21 @@ runs/<run-id>/
   summary.json
 ```
 
-Example real run in `mdview`:
+## Demo Run
 
-- [runs/20260523170801996](/home/naki/Desktop/itsthatnewshit/mdview/runs/20260523170801996)
-- [red-team-findings.json](/home/naki/Desktop/itsthatnewshit/mdview/runs/20260523170801996/red-team-findings.json)
-- [verification-output.json](/home/naki/Desktop/itsthatnewshit/mdview/runs/20260523170801996/verification-output.json)
-- [final-ship-report.md](/home/naki/Desktop/itsthatnewshit/mdview/runs/20260523170801996/final-ship-report.md)
+A real audit run writes artifacts under:
+
+```txt
+runs/<run-id>/
+```
+
+For demo purposes, run:
+
+```bash
+clawitup audit --scope src/runtime
+clawitup status
+clawitup report
+```
 
 ## Testing On Real Repositories
 
@@ -229,9 +270,9 @@ npm run typecheck
 npm run build
 ```
 
-## Out Of Scope (v1.0.0)
+## Out Of Scope (v1.0.1)
 
-The following are intentionally not shipped in `v1.0.0`:
+The following are intentionally not shipped in `v1.0.1`:
 
 - automatic patch application as default behavior
 - automatic issue/PR creation

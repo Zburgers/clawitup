@@ -46,7 +46,7 @@ export async function runAuditCommand(
   const task = options.task ? await readFile(options.task, "utf8") : undefined;
   const scopeContract = await buildScopeContract(options, cwd);
   const scope = options.scope ?? scopeContract.primary_scope.join(", ");
-  const effectiveRunner = runner ?? (options.model ? createGitclawStageRunner({ dir: cwd, model: options.model }) : undefined);
+  const effectiveRunner = runner ?? createGitclawStageRunner({ dir: cwd, model: options.model });
   const logger = options.logger;
   const auditEvents = logger
     ? {
@@ -201,15 +201,17 @@ async function writeRunArtifacts(
   const stageErrors = run.stages
     .filter((entry) => entry.output.error)
     .map((entry) => `${entry.name}: ${entry.output.error?.message}`);
-  const shipReport = firstNonEmptyText(
+  const shipReportBody = firstNonEmptyText(
     stage("ship-report")?.output.report,
-    formatFallbackShipReport(scopeContract, summary, policy, stageErrors)
+    formatFallbackShipReportBody(scopeContract, summary, policy, stageErrors)
   );
+  const shipReport = formatShipReportWithPolicy(policy, shipReportBody);
   const blueTeamHandoff = firstNonEmptyText(
     stage("blue-team")?.output.report,
     stage("blue-team")?.output.notes,
     "No Blue Team remediation handoff was emitted."
   );
+  const gateLogEntries = buildGateLogEntries(run, scopeContract, options);
 
   await mkdir(layout.runRoot, { recursive: true });
   await Promise.all([
@@ -220,15 +222,7 @@ async function writeRunArtifacts(
       stages: run.stages.map((entry) => entry.name)
     }),
     writeJson(layout.scopeContract, scopeContract),
-    writeFile(
-      layout.gateLogs,
-      `${JSON.stringify({
-        gate: options.ci ? "ci_diff" : "scope",
-        primary_scope_count: scopeContract.primary_scope.length,
-        bounded: true
-      })}\n`,
-      "utf8"
-    ),
+    writeFile(layout.gateLogs, gateLogEntries.map((entry) => `${JSON.stringify(entry)}\n`).join(""), "utf8"),
     writeJson(layout.redTeamFindings, stage("red-team")?.output ?? {}),
     writeJson(layout.verificationOutput, {
       verifiedFindingIds: run.verifiedFindingIds,
@@ -259,16 +253,13 @@ async function resolveAuditArtifactRoot(cwd: string): Promise<string> {
   }
 }
 
-function formatFallbackShipReport(
+function formatFallbackShipReportBody(
   scope: ScopeContract,
   summary: Summary,
   policy: PolicyResult,
   stageErrors: string[]
 ): string {
   const lines = [
-    "# ClawItUp Ship Report",
-    "",
-    `Policy: ${policy.result}`,
     `Scope mode: ${scope.mode}`,
     `Primary scope: ${scope.primary_scope.join(", ")}`,
     `Confirmed findings: ${summary.confirmed}`,
@@ -285,6 +276,29 @@ function formatFallbackShipReport(
   return lines.join("\n");
 }
 
+function formatShipReportWithPolicy(policy: PolicyResult, report: string): string {
+  const trimmedReport = report.trim();
+  const policyHeader = formatPolicyHeader(policy);
+  if (!trimmedReport) {
+    return policyHeader;
+  }
+
+  return `${policyHeader}\n\n---\n\n${trimmedReport}`;
+}
+
+function formatPolicyHeader(policy: PolicyResult): string {
+  const lines = [
+    "# ClawItUp Ship Report",
+    "",
+    `Policy: ${policy.result}`,
+    "",
+    "Policy reasons:",
+    ...policy.reasons.map((reason) => `- ${reason}`)
+  ];
+
+  return lines.join("\n");
+}
+
 function firstNonEmptyText(...values: Array<string | undefined>): string {
   for (const value of values) {
     if (typeof value === "string" && value.trim().length > 0) {
@@ -293,4 +307,61 @@ function firstNonEmptyText(...values: Array<string | undefined>): string {
   }
 
   return "";
+}
+
+function buildGateLogEntries(
+  run: AuditRunResult,
+  scopeContract: ScopeContract,
+  options: AuditCommandOptions
+): Array<Record<string, unknown>> {
+  const entries: Array<Record<string, unknown>> = [];
+  const timestamp = () => new Date().toISOString();
+
+  entries.push({
+    event: "gate",
+    gate: options.ci ? "ci_diff" : "scope",
+    primary_scope_count: scopeContract.primary_scope.length,
+    bounded: true,
+    timestamp: timestamp()
+  });
+
+  for (const stage of run.stages) {
+    entries.push({
+      event: "stage_start",
+      stage: stage.name,
+      timestamp: timestamp()
+    });
+
+    for (const activity of stage.output.toolActivity ?? []) {
+      if (activity.type === "tool_use") {
+        entries.push({
+          event: "tool_use",
+          stage: stage.name,
+          tool: activity.toolName,
+          toolCallId: activity.toolCallId,
+          timestamp: timestamp()
+        });
+      }
+
+      if (activity.type === "tool_result") {
+        entries.push({
+          event: "tool_result",
+          stage: stage.name,
+          tool: activity.toolName,
+          toolCallId: activity.toolCallId,
+          isError: activity.isError,
+          timestamp: timestamp()
+        });
+      }
+    }
+
+    entries.push({
+      event: "stage_end",
+      stage: stage.name,
+      status: stage.output.error ? "error" : "ok",
+      timestamp: timestamp()
+    });
+  }
+
+  return entries;
 }

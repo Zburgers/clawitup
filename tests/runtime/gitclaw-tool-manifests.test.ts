@@ -5,6 +5,7 @@ import { parse } from "yaml";
 const toolFiles = [
   "tools/graphify.yaml",
   "tools/git-diff.yaml",
+  "tools/list-files.yaml",
   "tools/rg-search.yaml",
   "tools/run-tests.yaml"
 ];

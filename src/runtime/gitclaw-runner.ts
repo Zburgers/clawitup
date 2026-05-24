@@ -28,7 +28,6 @@ export type GitclawStageRunnerHooks = {
 
 const READ_ONLY_AUDIT_TOOLS = [
   "read",
-  "read-file",
   "list-files",
   "git-diff",
   "graphify",
@@ -37,7 +36,6 @@ const READ_ONLY_AUDIT_TOOLS = [
 ] as const;
 const ORCHESTRATOR_AUDIT_TOOLS = [
   "read",
-  "read-file",
   "list-files",
   "git-diff",
   "graphify",
@@ -45,6 +43,15 @@ const ORCHESTRATOR_AUDIT_TOOLS = [
   "run-tests"
 ] as const;
 const REPORT_AUDIT_TOOLS = ["read"] as const;
+const DISALLOWED_AUDIT_TOOLS = [
+  "cli",
+  "write",
+  "memory",
+  "capture_photo",
+  "task_tracker",
+  "skill_learner",
+  "read-file"
+] as const;
 
 const STAGE_SKILLS: Record<AuditStageInput["name"], string> = {
   orchestrator: "orchestrate-audit",
@@ -83,7 +90,7 @@ export function createGitclawStageRunner(options: GitclawStageRunnerOptions = {}
       systemPrompt,
       systemPromptSuffix,
       allowedTools: runnerOptions.allowedTools ?? defaultAllowedTools(stage.name),
-      disallowedTools: runnerOptions.disallowedTools,
+      disallowedTools: runnerOptions.disallowedTools ?? [...DISALLOWED_AUDIT_TOOLS],
       maxTurns: runnerOptions.maxTurns ?? loadedAgent.manifest.runtime.max_turns,
       prompt: stage.prompt
     };
@@ -196,6 +203,7 @@ function parseAuditStageOutput(stage: AuditStageInput, messages: GCMessage[]): A
     const goal = typeof record.goal === "string" ? record.goal : undefined;
     const exploredPaths = normalizeStringArray(record.exploredPaths);
     const hotAreas = normalizeStringArray(record.hotAreas);
+    const observedFiles = normalizeStringArray(record.observedFiles);
     const findingIds = normalizeFindingIds(record.findingIds);
     const verifiedFindingIds = normalizeFindingIds(record.verifiedFindingIds);
     const verifiedFindings = Array.isArray(record.verifiedFindings)
@@ -209,6 +217,7 @@ function parseAuditStageOutput(stage: AuditStageInput, messages: GCMessage[]): A
       goal,
       exploredPaths,
       hotAreas,
+      observedFiles,
       report,
       notes,
       assistantOutput,
@@ -258,11 +267,11 @@ function buildStageInstructions(stageName: AuditStageInput["name"], workflowProm
 function stageOutputContract(stageName: AuditStageInput["name"]): string {
   switch (stageName) {
     case "orchestrator":
-      return "Return strict JSON only: {\"goal\": string, \"exploredPaths\": string[], \"hotAreas\": string[], \"report\": string, \"notes\"?: string}. Inspect the repository structure first, then name the audit goal and list the hot areas the Red Team should inspect next.";
+      return "Return strict JSON only: {\"goal\": string, \"exploredPaths\": string[], \"hotAreas\": string[], \"report\": string, \"notes\"?: string}. Mandatory tool order: (1) list-files scoped to the provided scope only, (2) graphify, (3) optional rg-search scoped to the same paths. Inspect the repository structure first, then name the audit goal and list the hot areas the Red Team should inspect next. Keep tool calls narrow to avoid large outputs.";
     case "red-team":
-      return "Return strict JSON only: {\"findingIds\": string[], \"report\": string, \"notes\"?: string, \"observedFiles\"?: string[]}. Keep candidate findings provisional and evidence-dense. If you cannot verify a referenced path exists, omit the lead or mark it for human review.";
+      return "Return strict JSON only: {\"findingIds\": string[], \"observedFiles\": string[], \"report\": string, \"notes\"?: string}. Keep candidate findings provisional and evidence-dense. If findingIds is non-empty, observedFiles must list the files you successfully read in this stage. A file path, function name, class name, or line-number claim is invalid unless it came from a successful tool result in this stage or from a previous verified handoff. If you cannot verify a referenced path exists, omit the lead or mark it for human review.";
     case "filter":
-      return "Return strict JSON only with verified findings: {\"verifiedFindings\": [{\"id\": string, \"status\": string, \"severity\": string, \"reasons\"?: string[], \"evidence\"?: string[]}], \"verifiedFindingIds\"?: string[], \"report\": string, \"notes\"?: string, \"observedFiles\"?: string[]}. If you did not directly inspect the claimed code, reject the finding or escalate it to human review.";
+      return "Return strict JSON only with verified findings: {\"verifiedFindings\": [{\"id\": string, \"status\": string, \"severity\": string, \"reasons\"?: string[], \"evidence\"?: string[]}], \"verifiedFindingIds\"?: string[], \"observedFiles\": string[], \"report\": string, \"notes\"?: string}. Allowed statuses: CONFIRMED, REJECTED_FALSE_POSITIVE, NEEDS_HUMAN_REVIEW, INSUFFICIENT_EVIDENCE, DUPLICATE, OUT_OF_SCOPE. If verifiedFindings or verifiedFindingIds is non-empty, observedFiles must list the files you successfully read in this stage. A file path, function name, class name, or line-number claim is invalid unless it came from a successful tool result in this stage or from a previous verified handoff. If you did not directly inspect the claimed code, reject the finding or escalate it to human review.";
     case "blue-team":
       return "Use only verified findings and return strict JSON: {\"report\": string, \"notes\"?: string}. Cite the verified evidence you are acting on.";
     case "ship-report":
@@ -283,6 +292,9 @@ function buildAuditSystemPrompt(): string {
     "The orchestrator must inspect repository structure before naming hot areas.",
     "Be concise, evidence-first, and report-first.",
     "Use only the available tools when they materially help.",
+    "The audit is sequential: this stage does not run later stages, and the CLI handles all stage transitions.",
+    "Tool names are hyphenated (list-files); do not use underscores.",
+    "Keep tool calls scoped and narrow; avoid broad rg-search or large file reads.",
     "Never create files, save memory, or mutate the repository."
   ].join("\n");
 }
@@ -358,12 +370,36 @@ function validateStageOutput(stageName: AuditStageInput["name"], output: AuditSt
       }
       if (
         (hasText(output.report) || hasText(output.goal) || hasNonEmptyArray(output.hotAreas)) &&
-        !hasAnyToolUse(output, ["list-files", "read-file", "read"])
+        !hasSuccessfulToolResult(output, ["list-files"])
       ) {
         return {
           stage: stageName,
           kind: "invalid_output",
-          message: "orchestrator stage produced a plan without inspecting the repository structure"
+          message: "orchestrator stage produced a plan without successfully listing files in scope"
+        };
+      }
+      if (!hasSuccessfulToolResult(output, ["graphify"])) {
+        return {
+          stage: stageName,
+          kind: "invalid_output",
+          message: "orchestrator stage produced a plan without running graphify"
+        };
+      }
+      const firstToolUse = firstToolUseName(output);
+      if (firstToolUse && firstToolUse !== "list-files") {
+        return {
+          stage: stageName,
+          kind: "invalid_output",
+          message: "orchestrator stage must start by listing files in scope"
+        };
+      }
+      const listIndex = indexOfToolUse(output, "list-files");
+      const graphifyIndex = indexOfToolUse(output, "graphify");
+      if (listIndex !== undefined && graphifyIndex !== undefined && graphifyIndex < listIndex) {
+        return {
+          stage: stageName,
+          kind: "invalid_output",
+          message: "orchestrator stage must run graphify after listing files"
         };
       }
       return undefined;
@@ -377,12 +413,19 @@ function validateStageOutput(stageName: AuditStageInput["name"], output: AuditSt
       }
       if (
         (hasText(output.report) || hasNonEmptyArray(output.findingIds)) &&
-        !hasAnyToolUse(output, ["read", "read-file"])
+        !hasSuccessfulToolResult(output, ["read"])
       ) {
         return {
           stage: stageName,
           kind: "invalid_output",
-          message: "red-team stage produced candidate findings without reading any files"
+          message: "red-team stage produced candidate findings without successfully reading any files"
+        };
+      }
+      if (hasNonEmptyArray(output.findingIds) && !hasObservedFilesBackedByReads(output)) {
+        return {
+          stage: stageName,
+          kind: "invalid_output",
+          message: "red-team stage produced candidate findings without observedFiles backed by successful reads"
         };
       }
       return undefined;
@@ -396,12 +439,22 @@ function validateStageOutput(stageName: AuditStageInput["name"], output: AuditSt
       }
       if (
         (hasText(output.report) || hasNonEmptyArray(output.verifiedFindingIds) || hasNonEmptyArray(output.verifiedFindings)) &&
-        !hasAnyToolUse(output, ["read", "read-file"])
+        !hasSuccessfulToolResult(output, ["read"])
       ) {
         return {
           stage: stageName,
           kind: "invalid_output",
-          message: "filter stage verified findings without reading any files"
+          message: "filter stage verified findings without successfully reading any files"
+        };
+      }
+      if (
+        (hasNonEmptyArray(output.verifiedFindingIds) || hasNonEmptyArray(output.verifiedFindings)) &&
+        !hasObservedFilesBackedByReads(output)
+      ) {
+        return {
+          stage: stageName,
+          kind: "invalid_output",
+          message: "filter stage verified findings without observedFiles backed by successful reads"
         };
       }
       return undefined;
@@ -533,10 +586,92 @@ function joinNotes(existing: string | undefined, next: string): string {
   return existing && existing.trim().length > 0 ? `${existing}\n${next}` : next;
 }
 
-function hasAnyToolUse(output: AuditStageOutput, toolNames: readonly string[]): boolean {
+function hasSuccessfulToolResult(output: AuditStageOutput, toolNames: readonly string[]): boolean {
+  const successfulCallIds = new Set(
+    output.toolActivity
+      ?.filter(
+        (activity) =>
+          activity.type === "tool_result" &&
+          toolNames.includes(activity.toolName) &&
+          activity.isError === false &&
+          typeof activity.content === "string" &&
+          activity.content.trim().length > 0
+      )
+      .map((activity) => activity.toolCallId)
+  );
+
   return Boolean(
     output.toolActivity?.some(
-      (activity) => activity.type === "tool_use" && toolNames.includes(activity.toolName)
+      (activity) =>
+        activity.type === "tool_use" &&
+        toolNames.includes(activity.toolName) &&
+        successfulCallIds.has(activity.toolCallId)
     )
   );
+}
+
+function firstToolUseName(output: AuditStageOutput): string | undefined {
+  return output.toolActivity?.find((activity) => activity.type === "tool_use")?.toolName;
+}
+
+function indexOfToolUse(output: AuditStageOutput, toolName: string): number | undefined {
+  if (!output.toolActivity) {
+    return undefined;
+  }
+  const index = output.toolActivity.findIndex(
+    (activity) => activity.type === "tool_use" && activity.toolName === toolName
+  );
+  return index >= 0 ? index : undefined;
+}
+
+function hasObservedFilesBackedByReads(output: AuditStageOutput): boolean {
+  const observedFiles = output.observedFiles;
+  if (!Array.isArray(observedFiles) || observedFiles.length === 0) {
+    return false;
+  }
+
+  const readPaths = successfulReadPaths(output);
+  return observedFiles.every((filePath) => readPaths.has(normalizePath(filePath)));
+}
+
+function successfulReadPaths(output: AuditStageOutput): Set<string> {
+  const successfulCallIds = new Set(
+    output.toolActivity
+      ?.filter(
+        (activity) =>
+          activity.type === "tool_result" &&
+          activity.toolName === "read" &&
+          activity.isError === false &&
+          typeof activity.content === "string" &&
+          activity.content.trim().length > 0
+      )
+      .map((activity) => activity.toolCallId)
+  );
+
+  const paths = new Set<string>();
+  for (const activity of output.toolActivity ?? []) {
+    if (
+      activity.type !== "tool_use" ||
+      activity.toolName !== "read" ||
+      !successfulCallIds.has(activity.toolCallId)
+    ) {
+      continue;
+    }
+
+    const readPath = toolArgPath(activity.args);
+    if (readPath) {
+      paths.add(normalizePath(readPath));
+    }
+  }
+
+  return paths;
+}
+
+function toolArgPath(args: Record<string, unknown>): string | undefined {
+  const value = args.path ?? args.file_path ?? args.filePath;
+  return typeof value === "string" && value.trim().length > 0 ? value : undefined;
+}
+
+function normalizePath(value: string): string {
+  return value.trim().replace(/^\.\//, "");
 }

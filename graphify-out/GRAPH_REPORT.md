@@ -1,16 +1,16 @@
 # Graph Report - clawitup  (2026-05-24)
 
 ## Corpus Check
-- 83 files · ~25,238 words
+- 88 files · ~29,958 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 669 nodes · 920 edges · 69 communities (47 shown, 22 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.8)
+- 717 nodes · 990 edges · 71 communities (49 shown, 22 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1e5bdc05`
+- Built from commit: `e8793e9c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -81,33 +81,33 @@
 - [[_COMMUNITY_Community 65|Community 65]]
 - [[_COMMUNITY_Community 66|Community 66]]
 - [[_COMMUNITY_Community 67|Community 67]]
-- [[_COMMUNITY_Community 68|Community 68]]
+- [[_COMMUNITY_Community 69|Community 69]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `ClawItUp v1.0 - Git-Native Red Team / Filter / Blue Team Audit Gate` - 19 edges
-2. `ClawItUp` - 19 edges
+1. `ClawItUp` - 23 edges
+2. `ClawItUp v1.0 - Git-Native Red Team / Filter / Blue Team Audit Gate` - 19 edges
 3. `ClawItUp v0.2 - Git-Native Red Team / Filter / Blue Team Audit Gate` - 19 edges
 4. `runAuditCommand()` - 14 edges
 5. `ClawItUp Audit Gate Design` - 13 edges
 6. `runAudit()` - 12 edges
 7. `Planning Notes` - 11 edges
-8. `runEval()` - 9 edges
-9. `parseEvalFixture()` - 9 edges
-10. `parseAuditStageOutput()` - 9 edges
+8. `parseAuditStageOutput()` - 10 edges
+9. `runEval()` - 9 edges
+10. `parseEvalFixture()` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `refreshGraphify()` --calls--> `runner`  [INFERRED]
   src/runtime/graphify.ts → tests/runtime/gitclaw-runner.test.ts
 - `runAudit()` --calls--> `runner`  [INFERRED]
   src/runtime/audit-runner.ts → tests/runtime/gitclaw-runner.test.ts
-- `resolveRunSelection()` --calls--> `resolveClawitupLayout()`  [EXTRACTED]
-  src/cli.ts → src/runtime/layout.ts
+- `hasRequiredStageOutputs()` --calls--> `stage`  [INFERRED]
+  src/commands/audit.ts → tests/runtime/audit-status.test.ts
+- `writeRunArtifacts()` --calls--> `stage`  [INFERRED]
+  src/commands/audit.ts → tests/runtime/audit-status.test.ts
 - `runAuditCommand()` --calls--> `createRunLayout()`  [EXTRACTED]
   src/commands/audit.ts → src/runtime/artifact-store.ts
-- `runAuditCommand()` --calls--> `runAudit()`  [EXTRACTED]
-  src/commands/audit.ts → src/runtime/audit-runner.ts
 
-## Communities (69 total, 22 thin omitted)
+## Communities (71 total, 22 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.07
@@ -130,8 +130,8 @@ Cohesion: 0.13
 Nodes (15): 10.1 Use TypeScript CLI, 10.2 CLI commands for MVP, 10.3 CLI commands for later, 10.4 SDK runner concept, 10.5 GitHub Actions Runtime, 10.6 Safety hooks, 10.7 Failure Handling, 10. GitClaw Runtime Direction (+7 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.17
-Nodes (12): 5.1 Initialize ClawItUp, 5.2 Run a focused audit, 5.3 Run a change-aware shipping gate, 5. Primary User Workflow, code:bash (clawitup audit --task tasks/auth-audit.md), code:txt (auth), code:txt (Audit my whole monorepo for everything.), code:bash (clawitup audit --ci) (+4 more)
+Cohesion: 0.33
+Nodes (6): 5.1 Initialize ClawItUp, 5.3 Run a change-aware shipping gate, 5. Primary User Workflow, code:bash (clawitup audit --ci), code:bash (clawitup init), code:txt ([clawitup:init] Git repository detected)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.18
@@ -158,8 +158,8 @@ Cohesion: 0.25
 Nodes (8): code:ts (// tests/cli/help.test.ts), code:json ({), code:ts (// src/cli.ts), code:ts (// src/index.ts), code:bash (npm test), code:bash (clawitup init), code:bash (git add package.json tsconfig.json vitest.config.ts src test), Task 1: Establish The TypeScript CLI Test Harness
 
 ### Community 12 - "Community 12"
-Cohesion: 0.1
-Nodes (32): ClawItUp, code:txt (bounded scope -> orchestrator -> red team -> filter -> blue ), code:bash (clawitup status), code:txt (runs/<run-id>/), code:bash (clawitup init --force), code:bash (clawitup audit --scope src/lib), code:bash (npm install), code:bash (clawitup init --force) (+24 more)
+Cohesion: 0.08
+Nodes (40): ClawItUp, code:txt (bounded scope -> orchestrator -> red team -> filter -> blue ), code:bash (clawitup audit --task tasks/auth-audit.md), code:bash (clawitup audit --ci), code:bash (clawitup status), code:txt (runs/<run-id>/), code:txt (runs/<run-id>/), code:bash (clawitup audit --scope src/runtime) (+32 more)
 
 ### Community 13 - "Community 13"
 Cohesion: 0.29
@@ -170,8 +170,8 @@ Cohesion: 0.33
 Nodes (6): 13.1 Demo features to ship for, 13.2 Demo commands, 13.3 Demo story, 13.4 The winning demo moment, 13. Demo Plan, code:bash (clawitup init)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.11
-Nodes (26): buildRunnerErrorOutput(), buildStageContext(), buildStageError(), buildStageInstructions(), clipForPrompt(), collectToolActivity(), extractAssistantContent(), extractFencedJson() (+18 more)
+Cohesion: 0.08
+Nodes (38): normalizeVerifications(), buildRunnerErrorOutput(), buildStageContext(), buildStageError(), buildStageInstructions(), clipForPrompt(), collectToolActivity(), DISALLOWED_AUDIT_TOOLS (+30 more)
 
 ### Community 16 - "Community 16"
 Cohesion: 0.33
@@ -190,12 +190,12 @@ Cohesion: 0.33
 Nodes (6): code:ts (// tests/commands/eval.test.ts), code:bash (npm test -- tests/commands/eval.test.ts), code:bash (clawitup eval examples/evals/auth-boundary.yaml), code:bash (npm test -- tests/commands/eval.test.ts), code:bash (git add src/commands/eval.ts src/runtime/eval-runner.ts test), Task 9: Build The Seeded Eval Fixture And Eval Command
 
 ### Community 20 - "Community 20"
-Cohesion: 0.08
-Nodes (32): audit, cli, memory, names, formatMemoryShow(), MemoryEntry, MemorySnapshot, readMemorySnapshot() (+24 more)
+Cohesion: 0.07
+Nodes (38): audit, cli, memory, names, formatMemoryShow(), MemoryEntry, MemorySnapshot, readMemorySnapshot() (+30 more)
 
 ### Community 21 - "Community 21"
-Cohesion: 0.06
-Nodes (40): policy, scope, summary, AuditCommandOptions, AuditCommandResult, auditExitCode(), buildScopeContract(), createRunId() (+32 more)
+Cohesion: 0.05
+Nodes (48): gateLogLines, gateLogs, policy, scope, summary, AuditCommandOptions, AuditCommandResult, auditExitCode() (+40 more)
 
 ### Community 26 - "Community 26"
 Cohesion: 0.33
@@ -206,16 +206,16 @@ Cohesion: 0.15
 Nodes (18): BoundedGateResults, buildDegradedGateNote(), normalizeGateLimit(), takeBoundedGateResults(), result, defaultGraphifyRunner(), graphifyDegradedNote(), graphifyMode() (+10 more)
 
 ### Community 28 - "Community 28"
-Cohesion: 0.18
-Nodes (17): AuditStageOutput, AgentModelSelection, AuditRunHeader, execFileAsync, formatAuditRunHeader(), formatMessage(), formatStageEnd(), formatThinking() (+9 more)
+Cohesion: 0.14
+Nodes (22): AuditStageName, AgentModelSelection, AuditRunHeader, AuditRunLogger, createAuditRunLogger(), createTerminalTheme(), execFileAsync, formatAuditRunHeader() (+14 more)
 
 ### Community 29 - "Community 29"
 Cohesion: 0.14
 Nodes (23): printEvalCommand(), runEvalCommand(), result, countFixtureFindings(), EvalFinding, EvalFindingKind, EvalFixture, EvalRunResult (+15 more)
 
 ### Community 30 - "Community 30"
-Cohesion: 0.11
-Nodes (28): resolveAuditArtifactRoot(), execFileAsync, fileExists(), getGitRepoRoot(), InitOptions, InitRunResult, InitWritePlan, planInitWrites() (+20 more)
+Cohesion: 0.13
+Nodes (22): execFileAsync, fileExists(), getGitRepoRoot(), InitOptions, InitRunResult, InitWritePlan, planInitWrites(), readTemplateContent() (+14 more)
 
 ### Community 31 - "Community 31"
 Cohesion: 0.29
@@ -266,45 +266,45 @@ Cohesion: 0.4
 Nodes (4): Constraints, Purpose, Steps, Verify Finding
 
 ### Community 47 - "Community 47"
-Cohesion: 0.1
-Nodes (25): AuditRunEvents, AuditRunInput, AuditRunResult, AuditStageError, AuditStageErrorKind, AuditStageName, AuditStageRun, AuditStageSkillName (+17 more)
+Cohesion: 0.06
+Nodes (37): blueTeamStageInputs, filterStage, stages, AuditRunEvents, AuditRunInput, AuditRunResult, AuditStageError, AuditStageErrorKind (+29 more)
 
 ### Community 64 - "Community 64"
 Cohesion: 0.4
 Nodes (4): ClawItUp v1.0.0, Highlights, Scope, Verified Real-Repo Run
 
 ### Community 65 - "Community 65"
-Cohesion: 0.2
-Nodes (5): blueTeamStageInputs, filterStage, stages, AuditStageInput, events
+Cohesion: 0.33
+Nodes (6): 5.2 Run a focused audit, code:bash (clawitup audit --task tasks/auth-audit.md), code:txt (auth), code:txt (Audit my whole monorepo for everything.), code:bash (clawitup audit --scope auth), code:bash (clawitup audit "Audit auth, RBAC, and organization boundary )
 
 ### Community 66 - "Community 66"
-Cohesion: 0.22
-Nodes (7): GitclawStageRunnerOptions, loadAgentCalls, queryMock, queryModels, seenAllowedTools, seenPrompts, seenSuffixes
-
-### Community 67 - "Community 67"
 Cohesion: 0.4
 Nodes (5): 15. Human and Agent Reading Guide, AI agents should read first, Humans should read first, Key docs mapping, Required external docs for implementers
 
-### Community 68 - "Community 68"
-Cohesion: 0.67
-Nodes (3): normalizeVerifications(), normalizeVerifications(), coerceVerificationList()
+### Community 67 - "Community 67"
+Cohesion: 0.5
+Nodes (3): ClawItUp v1.0.1, Highlights, Verification Targets
+
+### Community 69 - "Community 69"
+Cohesion: 0.2
+Nodes (3): args, limit, searchPath
 
 ## Knowledge Gaps
-- **297 isolated node(s):** `DEFAULT_MEMORY_FILES`, `ScopeModeSchema`, `ExpansionBudgetSchema`, `FindingSchema`, `Finding` (+292 more)
+- **315 isolated node(s):** `DEFAULT_MEMORY_FILES`, `ScopeModeSchema`, `ExpansionBudgetSchema`, `FindingSchema`, `Finding` (+310 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **22 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `runner` connect `Community 47` to `Community 66`, `Community 27`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `runner` connect `Community 47` to `Community 27`?**
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
 - **Why does `refreshGraphify()` connect `Community 27` to `Community 47`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
-- **Why does `runAudit()` connect `Community 47` to `Community 65`, `Community 68`, `Community 21`?**
   _High betweenness centrality (0.026) - this node is a cross-community bridge._
+- **Why does `runAudit()` connect `Community 47` to `Community 21`, `Community 15`?**
+  _High betweenness centrality (0.024) - this node is a cross-community bridge._
 - **What connects `DEFAULT_MEMORY_FILES`, `ScopeModeSchema`, `ExpansionBudgetSchema` to the rest of the system?**
-  _297 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _315 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.07 - nodes in this community are weakly interconnected._
 - **Should `Community 3` be split into smaller, more focused modules?**

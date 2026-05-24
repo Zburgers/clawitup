@@ -65,6 +65,7 @@ export type AuditStageOutput = {
   goal?: string;
   exploredPaths?: string[];
   hotAreas?: string[];
+  observedFiles?: string[];
   report?: string;
   notes?: string;
   assistantOutput?: string;
@@ -318,6 +319,7 @@ function summarizeStageOutput(output: AuditStageOutput): Record<string, unknown>
     goal: output.goal,
     exploredPaths: output.exploredPaths,
     hotAreas: output.hotAreas,
+    observedFiles: output.observedFiles,
     report: output.report,
     notes: output.notes,
     assistantOutput: output.assistantOutput
